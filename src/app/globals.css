@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FFF8F5;
+  --foreground: #2B1B2E;
+  --blush: #F8D7DF;
+  --rose: #D9577B;
+  --lilac: #E6DDF7;
+  --plum: #2B1B2E;
+}
+
+html {
+  scroll-behavior: auto; /* Managed by Lenis */
+  background-color: #FFF8F5;
+  color: #2B1B2E;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #FFF8F5;
+  color: #2B1B2E;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  selection-background-color: #F8D7DF;
+  selection-color: #2B1B2E;
+}
+
+::selection {
+  background-color: #F8D7DF;
+  color: #2B1B2E;
+}
+
+/* Lenis Recommended CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Subtle organic grain overlay */
+.grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Glassmorphism card styles */
+.glass-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(248, 215, 223, 0.65);
+}
+
+.glass-card-hover {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(43, 27, 46, 0.08), 0 4px 14px rgba(217, 87, 123, 0.1);
+  border-color: rgba(217, 87, 123, 0.4);
+}
+
+/* Custom desktop cursor follower */
+.custom-cursor {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(217, 87, 123, 0.25);
+  border: 1.5px solid rgba(217, 87, 123, 0.65);
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+  z-index: 9999;
+}
+
+.custom-cursor.active {
+  width: 44px;
+  height: 44px;
+  background-color: rgba(217, 87, 123, 0.15);
+  border-color: rgba(217, 87, 123, 0.85);
+}
+
+.custom-cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #D9577B;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+
+/* Soft gradients and badge chips */
+.soft-badge {
+  background: rgba(248, 215, 223, 0.5);
+  border: 1px solid rgba(217, 87, 123, 0.25);
+  color: #2B1B2E;
+}
+
+/* Reduced motion preference fallback */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .custom-cursor, .custom-cursor-dot {
+    display: none !important;
+  }
+}

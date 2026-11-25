@@ -36,10 +36,10 @@
 - [x] D3. Verify all 6 routes render correctly with zero errors - Complete: verified all 6 routes compile SSG and return HTTP 200 OK
 
 ### [E] LOGO, BRAND, GRAPHIC (all marked Concept/Sample, generic fictional names)
-- [ ] E1. /work/logo-design: 4 concept logos in SVG (wordmark + symbol), OLD vs NEW versions, draw-in animation, construction grid, palette HEX/RGB, type pairing, mockups in SVG/CSS, light/dark/mono, clear-space rules, scrubbed morph + draggable slider
-- [ ] E2. /work/branding: 4 full kits: logo suite, palette, type specimen, SVG patterns, iconography, dos/don'ts, applications (business card, letterhead, envelope, ID card, packaging box, tote bag, social set, banner, signage) with CSS 3D mockups
-- [ ] E3. /work/graphic-design: 12+ pieces generated in code (banners, flyers, tri-fold brochure, business cards, invitations, Instagram posts + carousels, story templates) with masonry, filter chips, lightbox, hover zoom
-- [ ] E4. /work: category filter (All/Product/Logo/Brand/Graphic) with layout animation, MaskImage hover reveal, cursor "View"
+- [x] E1. /work/logo-design: 4 concept logos in SVG (wordmark + symbol), OLD vs NEW versions, draw-in animation, construction grid, palette HEX/RGB, type pairing, mockups in SVG/CSS, light/dark/mono, clear-space rules, scrubbed morph + draggable slider - Complete: interactive Logo Lab with dynamic geometry, morph, and mockups
+- [x] E2. /work/branding: 4 full kits: logo suite, palette, type specimen, SVG patterns, iconography, dos/don'ts, applications (business card, letterhead, envelope, ID card, packaging box, tote bag, social set, banner, signage) with CSS 3D mockups - Complete: comprehensive brand kits with CSS 3D collateral and brand rules
+- [x] E3. /work/graphic-design: 12+ pieces generated in code (banners, flyers, tri-fold brochure, business cards, invitations, Instagram posts + carousels, story templates) with masonry, filter chips, lightbox, hover zoom - Complete: 12+ tactile design pieces with filter tabs and modal lightbox
+- [x] E4. /work: category filter (All/Product/Logo/Brand/Graphic) with layout animation, MaskImage hover reveal, cursor "View" - Complete: category filtered work showcase with MaskImage reveals and cursor triggers
 
 ### [F] SITE-WIDE UPGRADE
 - [ ] F1. Project cards redesigned: code-generated cover (hero screen on tilted device over gradient backdrop), category chip, tags, hover tilt/lift, consistent tokens

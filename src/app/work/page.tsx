@@ -9,6 +9,11 @@ import { graphics } from "@/data/graphics";
 import { MaskImage } from "@/components/motion";
 import ProjectCard from "@/components/cards/ProjectCard";
 import MockupFrame from "@/components/common/MockupFrame";
+import {
+  LogoVisualCard,
+  BrandKitVisualCard,
+  GraphicVisualCard,
+} from "@/components/visuals/WorkVisualCards";
 import { SparkleIcon } from "@/components/common/Stickers";
 import { ArrowUpRight, Palette, Layers, Sparkles, Image as ImageIcon } from "lucide-react";
 
@@ -103,23 +108,22 @@ export default function WorkPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-              {logos.map((logo) => (
+              {logos.map((logo, idx) => (
                 <div
                   key={logo.id}
-                  className="p-6 rounded-3xl bg-white border border-blush-200 shadow-soft glass-card-hover flex flex-col justify-between"
+                  className="group p-6 rounded-3xl bg-white border border-blush-200 shadow-soft glass-card-hover flex flex-col justify-between"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between mb-2.5">
                       <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-lilac-200 text-plum-900 border border-lilac-300">
                         Concept
                       </span>
                       <span className="text-[11px] text-plum-500">{logo.industry}</span>
                     </div>
-                    <div className="w-full aspect-square rounded-2xl bg-cream-50 border border-blush-100 flex items-center justify-center p-4 mb-4">
-                      <div className="w-16 h-16 rounded-2xl bg-blush-100 flex items-center justify-center font-serif text-2xl font-bold text-rose-600">
-                        {logo.title[0]}
-                      </div>
-                    </div>
+
+                    {/* Rich Geometry Grid & Vector Mark */}
+                    <LogoVisualCard title={logo.title} industry={logo.industry} index={idx} />
+
                     <h3 className="font-serif font-bold text-base text-plum mb-1">{logo.title}</h3>
                     <p className="text-xs text-plum-600 line-clamp-2 mb-3">{logo.summary}</p>
                   </div>
@@ -156,36 +160,32 @@ export default function WorkPage() {
               {brandKits.map((kit) => (
                 <div
                   key={kit.id}
-                  className="p-6 sm:p-8 rounded-3xl bg-white border border-blush-200 shadow-soft glass-card-hover flex flex-col justify-between"
+                  className="group p-6 sm:p-8 rounded-4xl bg-white border border-blush-200/90 shadow-soft glass-card-hover flex flex-col justify-between"
                 >
                   <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-lilac-200 text-plum-900 border border-lilac-300">
-                        Concept
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-lilac-200 text-plum-900 border border-lilac-300">
+                        Concept Brand
                       </span>
                       <span className="text-xs text-plum-500">{kit.industry}</span>
                     </div>
-                    <div className="w-full aspect-[16/9] rounded-2xl bg-gradient-to-br from-cream-100 via-white to-blush-50 border border-blush-200 p-6 flex flex-col justify-between mb-4">
-                      <div className="flex justify-between items-start">
-                        <span className="font-serif font-bold text-xl text-plum">{kit.title.split(" ")[0]}</span>
-                        <div className="flex gap-1">
-                          {kit.palette.map((p) => (
-                            <span key={p.name} className="w-3 h-3 rounded-full border border-black/10" style={{ backgroundColor: p.hex }} />
-                          ))}
-                        </div>
-                      </div>
-                      <span className="text-[10px] font-mono text-plum-400">Complete Brand Guidelines & Collateral</span>
+
+                    {/* Rich 3D Collateral Mockup */}
+                    <div className="mb-5">
+                      <BrandKitVisualCard slug={kit.slug} title={kit.title} palette={kit.palette} />
                     </div>
+
                     <h3 className="font-serif font-bold text-xl text-plum mb-2">{kit.title}</h3>
-                    <p className="text-xs sm:text-sm text-plum-600 leading-relaxed mb-4">{kit.summary}</p>
+                    <p className="font-sans text-xs sm:text-sm text-plum-600 leading-relaxed mb-4">{kit.summary}</p>
                   </div>
-                  <div className="pt-3 border-t border-blush-100 flex items-center justify-between text-xs text-plum-500">
-                    <span>{kit.industry}</span>
+                  <div className="pt-4 border-t border-blush-100 flex items-center justify-between text-xs text-plum-500">
+                    <span className="font-medium text-plum-600">{kit.industry}</span>
                     <Link
                       href="/work/branding"
-                      className="text-xs font-semibold text-rose-700 hover:underline"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-cream-50 hover:bg-rose-500 text-rose-700 hover:text-white border border-blush-200 transition-all font-semibold"
                     >
-                      Explore Brand Kit →
+                      <span>Explore Brand Kit</span>
+                      <ArrowUpRight className="w-3 h-3" />
                     </Link>
                   </div>
                 </div>
@@ -215,19 +215,21 @@ export default function WorkPage() {
               {graphics.map((item) => (
                 <div
                   key={item.id}
-                  className="p-6 rounded-3xl bg-white border border-blush-200 shadow-soft glass-card-hover flex flex-col justify-between"
+                  className="group p-6 rounded-3xl bg-white border border-blush-200 shadow-soft glass-card-hover flex flex-col justify-between"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between mb-2.5">
                       <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-lilac-200 text-plum-900 border border-lilac-300">
                         Sample
                       </span>
                       <span className="text-[11px] text-plum-500 capitalize">{item.category}</span>
                     </div>
-                    <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-cream-100 via-blush-50 to-rose-50 border border-blush-200 flex flex-col justify-center items-center text-center p-4 mb-4">
-                      <span className="font-serif font-bold text-xs text-plum leading-tight mb-1">{item.title}</span>
-                      <span className="text-[9px] font-mono text-rose-700">{item.dimensions}</span>
+
+                    {/* Rich Rendered Graphic Visual */}
+                    <div className="mb-4">
+                      <GraphicVisualCard category={item.category} title={item.title} dimensions={item.dimensions} />
                     </div>
+
                     <h3 className="font-serif font-bold text-sm text-plum mb-1">{item.title}</h3>
                     <p className="text-[11px] text-plum-600 line-clamp-2 mb-3">{item.summary}</p>
                   </div>

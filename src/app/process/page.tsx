@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SparkleIcon } from "@/components/common/Stickers";
 import { Compass, Layers, Smartphone, Sparkles, Cpu, ArrowRight } from "lucide-react";
 import { SplitText, MagneticButton } from "@/components/motion";
+import { ProcessStepVisual } from "@/components/visuals/ProcessVisuals";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -86,10 +87,10 @@ const processSteps = [
 export default function ProcessPage() {
   return (
     <div className="py-12 sm:py-20">
-      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blush-100 text-rose-800 text-xs font-semibold tracking-wide border border-blush-200 mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blush-100 text-rose-800 text-xs font-semibold tracking-wide border border-blush-200 mb-4 shadow-soft-sm">
             <SparkleIcon className="w-3.5 h-3.5 text-rose-600" />
             <span>Methodology</span>
           </div>
@@ -105,45 +106,55 @@ export default function ProcessPage() {
           </p>
         </div>
 
-        {/* Process Steps */}
-        <div className="space-y-8">
-          {processSteps.map((step) => {
+        {/* Process Steps with Side-by-Side Visual Artifacts */}
+        <div className="space-y-12 sm:space-y-16">
+          {processSteps.map((step, idx) => {
             const Icon = step.icon;
+            const isEven = idx % 2 === 1;
+
             return (
               <div
                 key={step.step}
-                className="p-8 sm:p-12 rounded-4xl bg-white border border-blush-200 shadow-soft-lg grid grid-cols-1 md:grid-cols-12 gap-8 items-start"
+                className="p-8 sm:p-12 rounded-4xl bg-white border border-blush-200/90 shadow-soft-lg grid grid-cols-1 md:grid-cols-12 gap-10 items-center overflow-hidden"
               >
-                <div className="md:col-span-4 flex flex-col justify-between">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-blush-100 text-rose-700 flex items-center justify-center font-serif text-lg font-bold">
-                      {step.step}
+                {/* Text Column */}
+                <div className={`md:col-span-7 space-y-6 ${isEven ? "md:order-2" : "md:order-1"}`}>
+                  <div>
+                    <div className="flex items-center gap-3.5 mb-3">
+                      <div className="w-12 h-12 rounded-2xl bg-blush-100 text-rose-700 flex items-center justify-center font-serif text-lg font-bold shadow-soft-sm">
+                        {step.step}
+                      </div>
+                      <Icon className="w-6 h-6 text-rose-600" />
                     </div>
-                    <Icon className="w-6 h-6 text-rose-600" />
+                    <h2 className="font-serif text-2xl sm:text-3xl font-bold text-plum mb-1.5">{step.title}</h2>
+                    <p className="font-sans text-xs sm:text-sm text-rose-800 font-medium">
+                      {step.tagline}
+                    </p>
                   </div>
-                  <h2 className="font-serif text-2xl font-bold text-plum mb-2">{step.title}</h2>
-                  <p className="font-sans text-xs sm:text-sm text-rose-800 font-medium">
-                    {step.tagline}
-                  </p>
-                </div>
 
-                <div className="md:col-span-8 space-y-6">
                   <p className="font-sans text-sm text-plum-600 leading-relaxed">
                     {step.description}
                   </p>
 
-                  <div className="p-5 rounded-2xl bg-cream-50 border border-blush-200">
-                    <span className="text-xs font-bold uppercase tracking-wider text-plum-500 block mb-2">
+                  <div className="p-5 rounded-2xl bg-cream-50 border border-blush-200/80">
+                    <span className="text-xs font-bold uppercase tracking-wider text-rose-700 block mb-2.5">
                       Key Deliverables & Artifacts:
                     </span>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {step.deliverables.map((d, dIdx) => (
                         <div key={dIdx} className="text-xs text-plum-700 flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-rose-600 shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-rose-500 shrink-0" />
                           <span>{d}</span>
                         </div>
                       ))}
                     </div>
+                  </div>
+                </div>
+
+                {/* Visual Artifact Column */}
+                <div className={`md:col-span-5 flex justify-center w-full ${isEven ? "md:order-1" : "md:order-2"}`}>
+                  <div className="w-full max-w-md">
+                    <ProcessStepVisual stepNumber={step.step} />
                   </div>
                 </div>
               </div>
@@ -152,18 +163,18 @@ export default function ProcessPage() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-16 text-center p-8 rounded-4xl bg-blush-100/60 border border-blush-200">
-          <h3 className="font-serif text-2xl font-bold text-plum mb-2">
+        <div className="mt-16 text-center p-10 sm:p-14 rounded-4xl bg-gradient-to-br from-cream-100 via-blush-100 to-white border border-blush-300 shadow-soft-lg">
+          <h3 className="font-serif text-2xl sm:text-3xl font-bold text-plum mb-3">
             Ready to design your product with this process?
           </h3>
-          <p className="text-xs sm:text-sm text-plum-600 mb-6">
-            Let's collaborate to transform your users' journeys into simple, caring interfaces.
+          <p className="text-xs sm:text-sm text-plum-600 mb-8 max-w-xl mx-auto">
+            Let's collaborate to transform your users' journeys into simple, caring, and high-converting interfaces.
           </p>
           <MagneticButton
             as="a"
             href="/contact"
             cursorState="View"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-rose-500 text-white font-sans text-xs sm:text-sm font-semibold tracking-wide hover:bg-rose-600 shadow-soft"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-rose-500 text-white font-sans text-xs sm:text-sm font-semibold tracking-wide hover:bg-rose-600 shadow-soft"
           >
             <span>Start a conversation</span>
             <ArrowRight className="w-4 h-4" />

@@ -100,9 +100,9 @@ export function HealthcareDashboardScreen({ wireframe = false }: { wireframe?: b
 
 export function HealthcareDoctorListScreen({ wireframe = false }: { wireframe?: boolean }) {
   const doctors = [
-    { name: "Dr. Ananya Sharma", role: "Cardiology", exp: "12 yrs", rating: "4.9" },
-    { name: "Dr. Rajesh Varma", role: "Pediatrics", exp: "9 yrs", rating: "4.8" },
-    { name: "Dr. Sneha Patel", role: "Dermatology", exp: "7 yrs", rating: "4.9" },
+    { name: "Dr. Ananya Sharma", role: "Cardiology", status: "Verified On-Call", rating: "4.9" },
+    { name: "Dr. Rajesh Varma", role: "Pediatrics", status: "Video Consult", rating: "4.8" },
+    { name: "Dr. Sneha Patel", role: "Dermatology", status: "Available Today", rating: "4.9" },
   ];
 
   return (
@@ -314,8 +314,8 @@ export function HealthcareInsuranceCardScreen({ wireframe = false }: { wireframe
 export function HealthcareFamilyProfilesScreen({ wireframe = false }: { wireframe?: boolean }) {
   const members = [
     { name: "Priya (Self)", relation: "Primary Account" },
-    { name: "Kishorbhai Lakkad", relation: "Father • 58 yrs" },
-    { name: "Geetaben Lakkad", relation: "Mother • 54 yrs" },
+    { name: "Kishorbhai Lakkad", relation: "Father • Dependent" },
+    { name: "Geetaben Lakkad", relation: "Mother • Dependent" },
   ];
 
   return (

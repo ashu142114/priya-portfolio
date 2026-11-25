@@ -167,32 +167,23 @@ export default function Chapter1Hero() {
           </div>
         </div>
 
-        {/* Roles Strip */}
-        <div className="mt-12 pt-6 border-t border-[var(--border-color)] flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm font-sans font-medium text-plum-700">
-          <span className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] shrink-0" />
-            <span>UI/UX Designer</span>
-          </span>
-          <span className="hidden sm:inline text-plum-300">•</span>
-          <span className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] shrink-0" />
-            <span>Mobile App Designer</span>
-          </span>
-          <span className="hidden sm:inline text-plum-300">•</span>
-          <span className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] shrink-0" />
-            <span>Website Designer</span>
-          </span>
-          <span className="hidden sm:inline text-plum-300">•</span>
-          <span className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] shrink-0" />
-            <span>Logo Designer</span>
-          </span>
-          <span className="hidden sm:inline text-plum-300">•</span>
-          <span className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] shrink-0" />
-            <span>Brand & Advertising Kit Designer</span>
-          </span>
+        {/* Polished 2026 Roles Strip */}
+        <div className="mt-14 pt-8 border-t border-[var(--border-color)] flex flex-wrap items-center justify-center sm:justify-between gap-3 text-xs sm:text-sm font-sans font-medium text-plum-700">
+          {[
+            "UI/UX Designer",
+            "Mobile App Designer",
+            "Website Designer",
+            "Logo Designer",
+            "Brand & Advertising Kit Designer",
+          ].map((role, idx) => (
+            <div
+              key={idx}
+              className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/75 backdrop-blur-xs border border-[var(--border-color)] shadow-soft-xs hover:border-[var(--accent-primary)] hover:bg-white transition-all cursor-default"
+            >
+              <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] shrink-0" />
+              <span className="font-semibold text-plum">{role}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

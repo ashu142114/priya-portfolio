@@ -24,11 +24,11 @@
 - [x] B5. Believable "before" (legacy) variant of each project's key screen: weak hierarchy, cramped spacing, inconsistent fonts, harsh colours, tiny tap targets, too many CTAs. Mark as "recreated legacy example" - Complete: LegacyScreens.tsx with 6 recreated cluttered legacy screens
 
 ### [C] HOME CHAPTERS 4-7 (keep Chapters 1-3 intact, keep 01/07 progress indicator)
-- [ ] C1. Chapter 4 DESIGN PROCESS: one phone transforms through Research (sticky notes) -> Flows (SVG lines draw) -> Wireframe (grey) -> Hi-fi UI (theme colours fill) -> Prototype (tap hotspots, screen transition). Pinned, scrubbed, step indicator
-- [ ] C2. Chapter 5 DESIGN SYSTEM LAB: colour scales 50-900 -> type scale -> spacing/radius -> components assemble -> a full screen composes itself. Token labels beside each piece, values read live from CSS variables, live tokens.css code block that updates with theme
-- [ ] C3. Chapter 6 BRAND KIT: SVG logo stroke draw-in -> swatches slide in -> type specimen -> brand assembles onto business card, social post, banner mockups
-- [ ] C4. Chapter 7 SELECTED WORK + FINAL CTA: 3 featured project cards (parallax, tilt, cursor "View") + giant CTA with magnetic buttons (email, WhatsApp)
-- [ ] C5. Roles strip under hero polished (UI/UX, Mobile App, Website, Logo, Brand & Advertising Kit designer)
+- [x] C1. Chapter 4 DESIGN PROCESS: one phone transforms through Research (sticky notes) -> Flows (SVG lines draw) -> Wireframe (grey) -> Hi-fi UI (theme colours fill) -> Prototype (tap hotspots, screen transition). Pinned, scrubbed, step indicator - Complete: 5-stage transforming device
+- [x] C2. Chapter 5 DESIGN SYSTEM LAB: colour scales 50-900 -> type scale -> spacing/radius -> components assemble -> a full screen composes itself. Token labels beside each piece, values read live from CSS variables, live tokens.css code block that updates with theme - Complete: interactive tokens lab with live tokens.css
+- [x] C3. Chapter 6 BRAND KIT: SVG logo stroke draw-in -> swatches slide in -> type specimen -> brand assembles onto business card, social post, banner mockups - Complete: animated stroke draw-in and assembled tactile collateral suite
+- [x] C4. Chapter 7 SELECTED WORK + FINAL CTA: 3 featured project cards (parallax, tilt, cursor "View") + giant CTA with magnetic buttons (email, WhatsApp) - Complete: 3 parallax project showcases and giant editorial magnetic CTA
+- [x] C5. Roles strip under hero polished (UI/UX, Mobile App, Website, Logo, Brand & Advertising Kit designer) - Complete: polished 2026 frosted pill chips with micro-interactions
 
 ### [D] CASE STUDIES /work/[slug] for ALL 6 projects (one template, data-driven by projects.ts story)
 - [ ] D1. Build the case study template on ONE project (Healthcare App) with 10 distinct scroll moments + sticky left rail

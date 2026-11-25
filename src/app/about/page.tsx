@@ -3,6 +3,7 @@ import { siteConfig } from "@/data/site";
 import { skillCategories, designTools, spokenLanguages } from "@/data/skills";
 import { experiences, education, aboutNarrative } from "@/data/about";
 import { SparkleIcon } from "@/components/common/Stickers";
+import { SplitText } from "@/components/motion";
 import { MapPin, Mail, Phone, Calendar, ArrowRight, Briefcase, GraduationCap } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -22,9 +23,12 @@ export default function AboutPage() {
             <SparkleIcon className="w-3 h-3 text-rose-500" />
             <span>Story & Philosophy</span>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-plum tracking-tight">
+          <SplitText
+            as="h1"
+            className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-plum tracking-tight"
+          >
             Hi, I'm Priya K. Lakkad
-          </h1>
+          </SplitText>
           <p className="font-sans text-sm sm:text-base text-plum-600 mt-3">
             UI/UX Designer | Product Designer • Surat, Gujarat, India
           </p>

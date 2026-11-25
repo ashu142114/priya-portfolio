@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/data/site";
 import { HelpCircle, ArrowRight } from "lucide-react";
+import { SplitText } from "@/components/motion";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -54,9 +55,12 @@ export default function FAQPage() {
             <HelpCircle className="w-3.5 h-3.5 text-rose-600" />
             <span>Questions & Answers</span>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl font-bold text-plum tracking-tight">
+          <SplitText
+            as="h1"
+            className="font-serif text-4xl sm:text-5xl font-bold text-plum tracking-tight"
+          >
             Frequently Asked Questions
-          </h1>
+          </SplitText>
           <p className="font-sans text-sm sm:text-base text-plum-600 mt-3 leading-relaxed">
             Answers to common questions about my design scope, tools, process, and collaboration.
           </p>

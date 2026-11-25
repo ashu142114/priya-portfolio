@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { services } from "@/data/services";
 import { SparkleIcon } from "@/components/common/Stickers";
+import { SplitText } from "@/components/motion";
 import {
   ArrowRight,
   CheckCircle2,
@@ -42,9 +43,12 @@ export default function ServicesPage() {
             <SparkleIcon className="w-3 h-3 text-rose-500" />
             <span>Design Offerings</span>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-plum tracking-tight">
+          <SplitText
+            as="h1"
+            className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-plum tracking-tight"
+          >
             How We Can Work Together
-          </h1>
+          </SplitText>
           <p className="font-sans text-sm sm:text-base text-plum-600 mt-4 leading-relaxed">
             I help startups, founders, and product teams shape clear, human-centered digital products from initial
             discovery to interactive Figma prototypes and production design systems.

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { siteConfig } from "@/data/site";
 import { SparkleIcon } from "@/components/common/Stickers";
+import { SplitText } from "@/components/motion";
 import { Mail, MessageCircle, Send, CheckCircle2, MapPin } from "lucide-react";
 
 export default function ContactPage() {
@@ -57,9 +58,12 @@ export default function ContactPage() {
             <SparkleIcon className="w-3 h-3 text-rose-500" />
             <span>Get in Touch</span>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-plum tracking-tight">
+          <SplitText
+            as="h1"
+            className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-plum tracking-tight"
+          >
             Let's Talk Design
-          </h1>
+          </SplitText>
           <p className="font-sans text-sm sm:text-base text-plum-600 mt-3 leading-relaxed">
             Have a new project, mobile app idea, or opportunity in mind? Send a direct message or
             reach out via WhatsApp or email.

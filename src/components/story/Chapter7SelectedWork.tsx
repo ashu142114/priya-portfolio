@@ -4,9 +4,9 @@ import Link from "next/link";
 import { projects } from "@/data/projects";
 import { siteConfig } from "@/data/site";
 import { SparkleIcon } from "@/components/common/Stickers";
-import { Parallax, MagneticButton } from "@/components/motion";
-import MockupFrame from "@/components/common/MockupFrame";
-import { ArrowUpRight, Mail, MessageCircle, ArrowRight } from "lucide-react";
+import { MagneticButton } from "@/components/motion";
+import ProjectCard from "@/components/cards/ProjectCard";
+import { Mail, MessageCircle, ArrowRight } from "lucide-react";
 
 export default function Chapter7SelectedWork() {
   const featured = projects.filter((p) => p.featured).slice(0, 3);
@@ -34,77 +34,12 @@ export default function Chapter7SelectedWork() {
 
           <div className="space-y-16">
             {featured.map((project, idx) => (
-              <div
+              <ProjectCard
                 key={project.id}
-                className="p-8 sm:p-12 rounded-4xl bg-white border border-blush-200 shadow-soft-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
-              >
-                {/* Details Column */}
-                <div className={`lg:col-span-6 flex flex-col justify-between ${idx % 2 === 1 ? "lg:order-2" : "lg:order-1"}`}>
-                  <div>
-                    <div className="flex flex-wrap items-center gap-2 mb-3">
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blush-100 text-rose-800">
-                        {project.category}
-                      </span>
-                      {project.domainTags.map((tag) => (
-                        <span key={tag} className="text-xs text-plum-500 font-medium">
-                          • {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <h3 className="font-serif text-2xl sm:text-3xl font-bold text-plum mb-3">
-                      <Link href={`/work/${project.slug}`} className="hover:text-rose-700 transition-colors">
-                        {project.title}
-                      </Link>
-                    </h3>
-
-                    <p className="font-sans text-sm text-plum-600 leading-relaxed mb-6">
-                      {project.summary}
-                    </p>
-
-                    <div className="space-y-1 text-xs text-plum-500 pb-6 border-b border-blush-100">
-                      <div><strong className="text-plum">Role:</strong> {project.role}</div>
-                      <div><strong className="text-plum">Tools:</strong> {project.tools.join(", ")}</div>
-                    </div>
-                  </div>
-
-                  <div className="pt-6">
-                    <MagneticButton
-                      as="a"
-                      href={`/work/${project.slug}`}
-                      cursorState="View"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-rose-500 text-white font-sans text-xs font-semibold shadow-soft hover:bg-rose-600 transition-all"
-                    >
-                      <span>Explore Case Study</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </MagneticButton>
-                  </div>
-                </div>
-
-                {/* Visual Column with Parallax Depth */}
-                <div className={`lg:col-span-6 flex justify-center ${idx % 2 === 1 ? "lg:order-1" : "lg:order-2"}`}>
-                  <Parallax speed="slow" className="w-full flex justify-center">
-                    <Link
-                      href={`/work/${project.slug}`}
-                      data-cursor="View"
-                      className="block transform hover:scale-102 transition-transform duration-300"
-                    >
-                      <MockupFrame
-                        type="mobile"
-                        variant={
-                          project.slug === "healthcare-mobile-app"
-                            ? "healthcare"
-                            : project.slug === "womens-health-app"
-                            ? "cycle"
-                            : "booking"
-                        }
-                        title={project.title}
-                        category={project.domain}
-                      />
-                    </Link>
-                  </Parallax>
-                </div>
-              </div>
+                project={project}
+                layout="featured"
+                index={idx}
+              />
             ))}
           </div>
 

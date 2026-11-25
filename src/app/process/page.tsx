@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SparkleIcon } from "@/components/common/Stickers";
 import { Compass, Layers, Smartphone, Sparkles, Cpu, ArrowRight } from "lucide-react";
+import { SplitText, MagneticButton } from "@/components/motion";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -92,9 +93,12 @@ export default function ProcessPage() {
             <SparkleIcon className="w-3.5 h-3.5 text-rose-600" />
             <span>Methodology</span>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-plum tracking-tight">
+          <SplitText
+            as="h1"
+            className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-plum tracking-tight"
+          >
             How The Design Builds Itself
-          </h1>
+          </SplitText>
           <p className="font-sans text-sm sm:text-base text-plum-600 mt-4 leading-relaxed">
             A structured, 5-step creative process designed to turn complex, high-friction requirements into
             empathetic, delightful digital products.
@@ -155,13 +159,15 @@ export default function ProcessPage() {
           <p className="text-xs sm:text-sm text-plum-600 mb-6">
             Let's collaborate to transform your users' journeys into simple, caring interfaces.
           </p>
-          <Link
+          <MagneticButton
+            as="a"
             href="/contact"
+            cursorState="View"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-rose-500 text-white font-sans text-xs sm:text-sm font-semibold tracking-wide hover:bg-rose-600 shadow-soft"
           >
             <span>Start a conversation</span>
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </MagneticButton>
         </div>
       </div>
     </div>

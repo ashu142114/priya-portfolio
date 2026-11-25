@@ -4,6 +4,7 @@ import { skillCategories, designTools, spokenLanguages } from "@/data/skills";
 import { experiences, education } from "@/data/about";
 import { projects } from "@/data/projects";
 import { SparkleIcon } from "@/components/common/Stickers";
+import { SplitText } from "@/components/motion";
 import { Download, Mail, Phone, MapPin, ExternalLink, Calendar, Briefcase, GraduationCap } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -23,9 +24,12 @@ export default function ResumePage() {
             <span className="text-xs font-semibold uppercase tracking-wider text-rose-600">
               Curriculum Vitae
             </span>
-            <h1 className="font-serif text-3xl sm:text-4xl font-bold text-plum mt-1">
+            <SplitText
+              as="h1"
+              className="font-serif text-3xl sm:text-4xl font-bold text-plum mt-1"
+            >
               Resume: Priya K. Lakkad
-            </h1>
+            </SplitText>
           </div>
 
           <a

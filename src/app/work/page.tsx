@@ -7,6 +7,7 @@ import { logos } from "@/data/logos";
 import { brandKits } from "@/data/brandKits";
 import { graphics } from "@/data/graphics";
 import { MaskImage } from "@/components/motion";
+import ProjectCard from "@/components/cards/ProjectCard";
 import MockupFrame from "@/components/common/MockupFrame";
 import { SparkleIcon } from "@/components/common/Stickers";
 import { ArrowUpRight, Palette, Layers, Sparkles, Image as ImageIcon } from "lucide-react";
@@ -72,88 +73,13 @@ export default function WorkPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project) => (
-                <div
+              {projects.map((project, idx) => (
+                <ProjectCard
                   key={project.id}
-                  className="group rounded-4xl bg-white border border-blush-200 shadow-soft glass-card-hover overflow-hidden flex flex-col justify-between"
-                >
-                  <div className="p-6 sm:p-7">
-                    {/* Visual Preview with MaskImage Reveal */}
-                    <Link
-                      href={`/work/${project.slug}`}
-                      data-cursor="View"
-                      className="block mb-5 overflow-hidden rounded-2xl bg-cream-50"
-                    >
-                      <MaskImage className="w-full aspect-[16/10] flex items-center justify-center p-3">
-                        <MockupFrame
-                          type="mobile"
-                          variant={
-                            project.slug === "healthcare-mobile-app"
-                              ? "healthcare"
-                              : project.slug === "womens-health-app"
-                              ? "cycle"
-                              : project.slug === "diet-nutrition-module"
-                              ? "nutrition"
-                              : project.slug === "invitation-app"
-                              ? "invitation"
-                              : project.slug === "ai-healthcare-module"
-                              ? "ai"
-                              : "booking"
-                          }
-                          title={project.title}
-                          category={project.domain}
-                        />
-                      </MaskImage>
-                    </Link>
-
-                    {/* Metadata Tags */}
-                    <div className="flex flex-wrap items-center gap-2 mb-3">
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blush-100 text-rose-800">
-                        {project.category}
-                      </span>
-                      {project.domainTags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2.5 py-0.5 rounded-full text-[11px] bg-cream-100 text-plum-600 border border-blush-200"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <h3 className="font-serif font-bold text-xl text-plum mb-2 group-hover:text-rose-700 transition-colors">
-                      <Link href={`/work/${project.slug}`} data-cursor="View">
-                        {project.title}
-                      </Link>
-                    </h3>
-
-                    <p className="font-sans text-xs sm:text-sm text-plum-600 leading-relaxed mb-6 line-clamp-3">
-                      {project.summary}
-                    </p>
-
-                    {/* Role & Tools */}
-                    <div className="space-y-1 text-xs text-plum-500 pt-4 border-t border-blush-100">
-                      <div>
-                        <span className="font-semibold text-plum-700">Role:</span> {project.role}
-                      </div>
-                      <div>
-                        <span className="font-semibold text-plum-700">Tools:</span> {project.tools.join(", ")}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card Footer Link */}
-                  <div className="p-6 pt-0">
-                    <Link
-                      href={`/work/${project.slug}`}
-                      data-cursor="View"
-                      className="w-full inline-flex items-center justify-between px-5 py-3 rounded-2xl bg-cream-50 hover:bg-rose-500 text-plum hover:text-white font-sans text-xs font-semibold border border-blush-200 hover:border-transparent transition-all duration-200"
-                    >
-                      <span>Read Case Study Story</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
+                  project={project}
+                  layout="grid"
+                  index={idx}
+                />
               ))}
             </div>
           </div>

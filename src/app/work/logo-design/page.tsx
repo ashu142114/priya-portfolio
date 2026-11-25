@@ -1,130 +1,217 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { logos } from "@/data/logos";
-import AssetFrame from "@/components/common/AssetFrame";
-import { ArrowLeft, Palette } from "lucide-react";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Logo Design & Brand Marks",
-  description:
-    "Explore vector logos, monograms, and conceptual brand marks created by Priya K. Lakkad across Healthcare, SaaS, Wellness, and Events.",
-};
+import * as LogoSVGs from "@/components/visuals/LogoVisuals";
+import BeforeAfterSlider from "@/components/common/BeforeAfterSlider";
+import { SparkleIcon } from "@/components/common/Stickers";
+import { ArrowLeft, Palette, CheckCircle2, Sliders, Eye, Sparkles } from "lucide-react";
 
 export default function LogoDesignPage() {
+  const [activeLogoId, setActiveLogoId] = useState("careflow-identity");
+  const [colorMode, setColorMode] = useState<"light" | "dark" | "mono">("light");
+  const [viewMode, setViewMode] = useState<"full" | "grid" | "mockups">("full");
+
+  const selectedLogo = logos.find((l) => l.id === activeLogoId) || logos[0];
+
+  const renderLogoComponent = (mode: "light" | "dark" | "mono", variant: "full" | "grid" | "symbol") => {
+    switch (activeLogoId) {
+      case "aura-menstrual-wellness":
+        return <LogoSVGs.AuraWellnessLogo mode={mode} variant={variant} />;
+      case "zenith-saas-platform":
+        return <LogoSVGs.ZenithLogo mode={mode} variant={variant} />;
+      case "celebre-invitations-mark":
+        return <LogoSVGs.CelebreLogo mode={mode} variant={variant} />;
+      case "careflow-identity":
+      default:
+        return <LogoSVGs.CareFlowLogo mode={mode} variant={variant} />;
+    }
+  };
+
   return (
     <div className="py-12 sm:py-20">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <Link
-          href="/work"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-rose-700 hover:text-rose-800 transition-colors mb-8"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Back to all work</span>
-        </Link>
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 space-y-16">
+        <div>
+          <Link
+            href="/work"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-rose-700 hover:text-rose-800 transition-colors mb-6"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Back to all work</span>
+          </Link>
 
-        {/* Header */}
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blush-100 text-rose-800 text-xs font-semibold tracking-wide border border-blush-200 mb-4">
-            <Palette className="w-3.5 h-3.5 text-rose-600" />
-            <span>Identity Portfolio</span>
+          {/* Header */}
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blush-100 text-rose-800 text-xs font-semibold tracking-wide border border-blush-200 mb-4">
+              <Palette className="w-3.5 h-3.5 text-rose-600" />
+              <span>Identity Design Lab</span>
+            </div>
+            <h1 className="font-serif text-4xl sm:text-5xl font-bold text-plum tracking-tight">
+              Logo Design & Vector Brand Marks
+            </h1>
+            <p className="font-sans text-sm sm:text-base text-plum-600 mt-3 leading-relaxed">
+              Explore 4 concept vector marks crafted with mathematical harmony, golden-ratio construction grids, and real-world stationery applications.
+            </p>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl font-bold text-plum tracking-tight">
-            Logo Design & Brand Marks
-          </h1>
-          <p className="font-sans text-sm sm:text-base text-plum-600 mt-3 leading-relaxed">
-            Clean, memorable monograms and vector marks designed with Figma. Each concept identity is rooted in
-            geometric balance, scalable vector paths, and emotional relevance to its domain.
-          </p>
         </div>
 
-        {/* Logos Showcase List */}
-        <div className="space-y-12">
+        {/* Logo Selector Tabs */}
+        <div className="flex flex-wrap gap-2 pb-4 border-b border-blush-200">
           {logos.map((logo) => (
-            <div
+            <button
               key={logo.id}
-              className="p-8 sm:p-12 rounded-4xl bg-white border border-blush-200 shadow-soft-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+              onClick={() => setActiveLogoId(logo.id)}
+              className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all flex items-center gap-2 ${
+                activeLogoId === logo.id
+                  ? "bg-rose-500 text-white shadow-soft"
+                  : "bg-white text-plum-700 border border-blush-200 hover:bg-blush-50"
+              }`}
             >
-              {/* Left Details */}
-              <div className="lg:col-span-6 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-lilac-200 text-plum-900 border border-lilac-300">
-                      Concept
-                    </span>
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blush-100 text-rose-800">
-                      {logo.industry}
-                    </span>
-                    <span className="text-xs text-plum-500">{logo.year}</span>
+              <span className="px-1.5 py-0.5 rounded text-[9px] font-bold uppercase bg-lilac-200 text-plum-900">
+                Concept
+              </span>
+              <span>{logo.title.split(" ")[0]}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Selected Logo Studio Workspace */}
+        <div className="p-8 sm:p-12 rounded-4xl bg-white border border-blush-200 shadow-soft-lg space-y-10">
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-blush-100">
+            <div>
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-lilac-200 text-plum-900 border border-lilac-300">
+                  Concept
+                </span>
+                <span className="px-3 py-0.5 rounded-full text-xs font-semibold bg-blush-100 text-rose-800">
+                  {selectedLogo.industry}
+                </span>
+                <span className="text-xs text-plum-500">{selectedLogo.year}</span>
+              </div>
+              <h2 className="font-serif text-3xl font-bold text-plum">{selectedLogo.title}</h2>
+            </div>
+
+            {/* View Mode Controls */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setViewMode("full")}
+                className={`px-4 py-2 rounded-xl text-xs font-semibold ${viewMode === "full" ? "bg-plum text-white" : "bg-cream-100 text-plum-700"}`}
+              >
+                Mark View
+              </button>
+              <button
+                onClick={() => setViewMode("grid")}
+                className={`px-4 py-2 rounded-xl text-xs font-semibold ${viewMode === "grid" ? "bg-plum text-white" : "bg-cream-100 text-plum-700"}`}
+              >
+                Geometry Grid
+              </button>
+              <button
+                onClick={() => setViewMode("mockups")}
+                className={`px-4 py-2 rounded-xl text-xs font-semibold ${viewMode === "mockups" ? "bg-plum text-white" : "bg-cream-100 text-plum-700"}`}
+              >
+                Applications
+              </button>
+            </div>
+          </div>
+
+          {/* Canvas Display */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Visual Canvas (Light / Dark / Mono / Grid) */}
+            <div className="lg:col-span-7 flex flex-col items-center justify-center p-8 sm:p-12 rounded-3xl bg-cream-50 border border-blush-200 min-h-[360px] relative">
+              {/* Color Mode Switcher */}
+              <div className="absolute top-4 right-4 flex items-center gap-1.5 p-1 rounded-full bg-white border border-blush-200 text-[10px] shadow-xs">
+                {(["light", "dark", "mono"] as const).map((m) => (
+                  <button
+                    key={m}
+                    onClick={() => setColorMode(m)}
+                    className={`px-2.5 py-1 rounded-full capitalize font-semibold ${colorMode === m ? "bg-rose-500 text-white" : "text-plum-600"}`}
+                  >
+                    {m}
+                  </button>
+                ))}
+              </div>
+
+              {viewMode === "grid" ? (
+                <div className="w-56 h-56 flex items-center justify-center">
+                  {renderLogoComponent(colorMode, "grid")}
+                </div>
+              ) : viewMode === "mockups" ? (
+                <div className="grid grid-cols-2 gap-3 w-full">
+                  {/* Business Card Mockup */}
+                  <div className="p-4 rounded-2xl bg-white border border-blush-200 shadow-soft text-center aspect-[16/10] flex flex-col justify-center items-center">
+                    {renderLogoComponent("light", "symbol")}
+                    <span className="font-serif font-bold text-xs text-plum mt-2">Executive Card</span>
                   </div>
-
-                  <h2 className="font-serif text-2xl sm:text-3xl font-bold text-plum mb-3">
-                    {logo.title}
-                  </h2>
-
-                  <p className="font-sans text-sm text-plum-600 leading-relaxed mb-6">
-                    {logo.summary}
-                  </p>
-
-                  {/* Concept Notes Card */}
-                  <div className="p-4 rounded-2xl bg-cream-50 border border-blush-200 mb-6">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-plum-500 block mb-1">
-                      Concept & Geometry Notes:
-                    </span>
-                    <p className="text-xs text-plum-700 leading-relaxed italic">
-                      {logo.conceptNotes}
-                    </p>
-                  </div>
-
-                  {/* Typography & Colors */}
-                  <div className="space-y-2 mb-6 text-xs text-plum-700">
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold text-plum-500">Typography:</span>
-                      <span>{logo.typography}</span>
+                  {/* App Icon Mockup */}
+                  <div className="p-4 rounded-2xl bg-plum-950 text-white shadow-soft text-center aspect-[16/10] flex flex-col justify-center items-center">
+                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center">
+                      {renderLogoComponent("dark", "symbol")}
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold text-plum-500">Palette:</span>
-                      <div className="flex gap-1.5">
-                        {logo.colors.map((c) => (
-                          <span
-                            key={c.name}
-                            className="w-4 h-4 rounded-full border border-black/10"
-                            style={{ backgroundColor: c.hex }}
-                            title={`${c.name} (${c.hex})`}
-                          />
-                        ))}
-                      </div>
-                    </div>
+                    <span className="font-sans text-[10px] text-rose-200 mt-2">iOS App Icon</span>
                   </div>
                 </div>
+              ) : (
+                <div className="scale-125 transform">
+                  {renderLogoComponent(colorMode, "full")}
+                </div>
+              )}
+            </div>
 
-                <div className="pt-4 border-t border-blush-100 text-[11px] text-plum-400">
-                  <span>Tools: {logo.tools.join(", ")}</span>
+            {/* Right Details: Concept Notes & Typography Pair */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="p-5 rounded-2xl bg-cream-50 border border-blush-200 text-xs space-y-1">
+                <span className="font-bold text-rose-700 block uppercase tracking-wider">Concept Rationale:</span>
+                <p className="text-plum-600 leading-relaxed italic">{selectedLogo.conceptNotes}</p>
+              </div>
+
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-plum-500 block mb-2">
+                  Color Formula & Swatches
+                </span>
+                <div className="flex gap-2">
+                  {selectedLogo.colors.map((c) => (
+                    <div key={c.name} className="flex-1 p-2.5 rounded-xl bg-cream-50 border border-blush-200 text-center">
+                      <span className="w-5 h-5 rounded-full border border-black/10 mx-auto block mb-1" style={{ backgroundColor: c.hex }} />
+                      <span className="font-mono text-[9px] text-plum-600 block">{c.hex}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              {/* Right Visual Frames: Old vs. New Logo */}
-              <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-                <AssetFrame
-                  src={logo.oldLogo}
-                  alt={`${logo.title} Previous`}
-                  aspectRatio="1/1"
-                  label="Add previous logo"
-                  sublabel="Old Mark"
-                  badge="Before"
-                  accentColor="#F3EEFB"
-                />
-                <AssetFrame
-                  src={logo.newLogo}
-                  alt={`${logo.title} Redesign`}
-                  aspectRatio="1/1"
-                  label="Add new vector logo"
-                  sublabel="Final Redesign"
-                  badge="After"
-                  accentColor="#F8D7DF"
-                />
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-plum-500 block mb-1">
+                  Typography Pairing
+                </span>
+                <span className="text-xs font-semibold text-plum block">{selectedLogo.typography}</span>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Section: Draggable Old vs New Logo Slider */}
+          <div className="pt-8 border-t border-blush-100 space-y-4">
+            <span className="font-mono text-xs font-bold text-rose-700 uppercase block">
+              Redesign Evolution: Previous Mark vs. Final Vector Identity
+            </span>
+            <BeforeAfterSlider
+              beforeComponent={
+                <div className="w-full h-36 flex flex-col items-center justify-center text-center p-4">
+                  <div className="w-14 h-14 rounded-full border-2 border-dashed border-gray-400 flex items-center justify-center text-gray-500 font-serif font-bold text-lg mb-2">
+                    OLD
+                  </div>
+                  <span className="text-[11px] font-mono text-gray-600">Unbalanced stroke widths & inconsistent clear-space</span>
+                </div>
+              }
+              afterComponent={
+                <div className="w-full h-36 flex flex-col items-center justify-center text-center p-4">
+                  <div className="scale-110 mb-2">{renderLogoComponent("light", "symbol")}</div>
+                  <span className="text-[11px] font-serif font-bold text-plum">Balanced Golden-Ratio Vector Mark</span>
+                </div>
+              }
+              beforeLabel="OLD LOGO"
+              afterLabel="NEW VECTOR"
+            />
+          </div>
         </div>
       </div>
     </div>

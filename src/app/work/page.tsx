@@ -6,7 +6,8 @@ import { projects } from "@/data/projects";
 import { logos } from "@/data/logos";
 import { brandKits } from "@/data/brandKits";
 import { graphics } from "@/data/graphics";
-import AssetFrame from "@/components/common/AssetFrame";
+import { MaskImage } from "@/components/motion";
+import MockupFrame from "@/components/common/MockupFrame";
 import { SparkleIcon } from "@/components/common/Stickers";
 import { ArrowUpRight, Palette, Layers, Sparkles, Image as ImageIcon } from "lucide-react";
 
@@ -77,17 +78,32 @@ export default function WorkPage() {
                   className="group rounded-4xl bg-white border border-blush-200 shadow-soft glass-card-hover overflow-hidden flex flex-col justify-between"
                 >
                   <div className="p-6 sm:p-7">
-                    {/* Visual Preview with auto-fallback */}
-                    <Link href={`/work/${project.slug}`} className="block mb-5 overflow-hidden rounded-2xl">
-                      <AssetFrame
-                        src={project.cover}
-                        alt={project.title}
-                        aspectRatio="16/10"
-                        label={`Add real screen for ${project.title}`}
-                        sublabel={project.domainTags[0]}
-                        badge="Case Study"
-                        className="group-hover:scale-102 transition-transform duration-500"
-                      />
+                    {/* Visual Preview with MaskImage Reveal */}
+                    <Link
+                      href={`/work/${project.slug}`}
+                      data-cursor="View"
+                      className="block mb-5 overflow-hidden rounded-2xl bg-cream-50"
+                    >
+                      <MaskImage className="w-full aspect-[16/10] flex items-center justify-center p-3">
+                        <MockupFrame
+                          type="mobile"
+                          variant={
+                            project.slug === "healthcare-mobile-app"
+                              ? "healthcare"
+                              : project.slug === "womens-health-app"
+                              ? "cycle"
+                              : project.slug === "diet-nutrition-module"
+                              ? "nutrition"
+                              : project.slug === "invitation-app"
+                              ? "invitation"
+                              : project.slug === "ai-healthcare-module"
+                              ? "ai"
+                              : "booking"
+                          }
+                          title={project.title}
+                          category={project.domain}
+                        />
+                      </MaskImage>
                     </Link>
 
                     {/* Metadata Tags */}
@@ -106,7 +122,9 @@ export default function WorkPage() {
                     </div>
 
                     <h3 className="font-serif font-bold text-xl text-plum mb-2 group-hover:text-rose-700 transition-colors">
-                      <Link href={`/work/${project.slug}`}>{project.title}</Link>
+                      <Link href={`/work/${project.slug}`} data-cursor="View">
+                        {project.title}
+                      </Link>
                     </h3>
 
                     <p className="font-sans text-xs sm:text-sm text-plum-600 leading-relaxed mb-6 line-clamp-3">
@@ -128,6 +146,7 @@ export default function WorkPage() {
                   <div className="p-6 pt-0">
                     <Link
                       href={`/work/${project.slug}`}
+                      data-cursor="View"
                       className="w-full inline-flex items-center justify-between px-5 py-3 rounded-2xl bg-cream-50 hover:bg-rose-500 text-plum hover:text-white font-sans text-xs font-semibold border border-blush-200 hover:border-transparent transition-all duration-200"
                     >
                       <span>Read Case Study Story</span>
@@ -170,21 +189,19 @@ export default function WorkPage() {
                       </span>
                       <span className="text-[11px] text-plum-500">{logo.industry}</span>
                     </div>
-                    <AssetFrame
-                      src={logo.newLogo}
-                      alt={logo.title}
-                      aspectRatio="1/1"
-                      label={logo.title}
-                      sublabel={logo.industry}
-                      badge="Logo Mark"
-                      className="mb-4"
-                    />
+                    <div className="w-full aspect-square rounded-2xl bg-cream-50 border border-blush-100 flex items-center justify-center p-4 mb-4">
+                      <div className="w-16 h-16 rounded-2xl bg-blush-100 flex items-center justify-center font-serif text-2xl font-bold text-rose-600">
+                        {logo.title[0]}
+                      </div>
+                    </div>
                     <h3 className="font-serif font-bold text-base text-plum mb-1">{logo.title}</h3>
                     <p className="text-xs text-plum-600 line-clamp-2 mb-3">{logo.summary}</p>
                   </div>
                   <div className="pt-3 border-t border-blush-100 flex items-center justify-between text-[11px] text-plum-500">
                     <span>{logo.industry}</span>
-                    <span className="font-semibold text-rose-700">{logo.year}</span>
+                    <Link href="/work/logo-design" className="font-semibold text-rose-700 hover:underline">
+                      Explore Mark →
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -222,31 +239,19 @@ export default function WorkPage() {
                       </span>
                       <span className="text-xs text-plum-500">{kit.industry}</span>
                     </div>
-                    <AssetFrame
-                      src={kit.mockups[0]?.file}
-                      alt={kit.title}
-                      aspectRatio="16/9"
-                      label={kit.title}
-                      sublabel="Brand Kit Presentation"
-                      badge="Identity System"
-                      className="mb-4"
-                    />
+                    <div className="w-full aspect-[16/9] rounded-2xl bg-gradient-to-br from-cream-100 via-white to-blush-50 border border-blush-200 p-6 flex flex-col justify-between mb-4">
+                      <div className="flex justify-between items-start">
+                        <span className="font-serif font-bold text-xl text-plum">{kit.title.split(" ")[0]}</span>
+                        <div className="flex gap-1">
+                          {kit.palette.map((p) => (
+                            <span key={p.name} className="w-3 h-3 rounded-full border border-black/10" style={{ backgroundColor: p.hex }} />
+                          ))}
+                        </div>
+                      </div>
+                      <span className="text-[10px] font-mono text-plum-400">Complete Brand Guidelines & Collateral</span>
+                    </div>
                     <h3 className="font-serif font-bold text-xl text-plum mb-2">{kit.title}</h3>
                     <p className="text-xs sm:text-sm text-plum-600 leading-relaxed mb-4">{kit.summary}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {kit.palette.map((p) => (
-                        <div
-                          key={p.name}
-                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-cream-100 border border-blush-200 text-[10px] font-medium text-plum"
-                        >
-                          <span
-                            className="w-2.5 h-2.5 rounded-full border border-black/10 shrink-0"
-                            style={{ backgroundColor: p.hex }}
-                          />
-                          <span>{p.name.split(" ")[0]}</span>
-                        </div>
-                      ))}
-                    </div>
                   </div>
                   <div className="pt-3 border-t border-blush-100 flex items-center justify-between text-xs text-plum-500">
                     <span>{kit.industry}</span>
@@ -293,21 +298,18 @@ export default function WorkPage() {
                       </span>
                       <span className="text-[11px] text-plum-500 capitalize">{item.category}</span>
                     </div>
-                    <AssetFrame
-                      src={item.file}
-                      alt={item.title}
-                      aspectRatio="4/3"
-                      label={item.title}
-                      sublabel={item.dimensions}
-                      badge={item.category}
-                      className="mb-4"
-                    />
+                    <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-cream-100 via-blush-50 to-rose-50 border border-blush-200 flex flex-col justify-center items-center text-center p-4 mb-4">
+                      <span className="font-serif font-bold text-xs text-plum leading-tight mb-1">{item.title}</span>
+                      <span className="text-[9px] font-mono text-rose-700">{item.dimensions}</span>
+                    </div>
                     <h3 className="font-serif font-bold text-sm text-plum mb-1">{item.title}</h3>
                     <p className="text-[11px] text-plum-600 line-clamp-2 mb-3">{item.summary}</p>
                   </div>
                   <div className="pt-3 border-t border-blush-100 flex items-center justify-between text-[11px] text-plum-500">
                     <span className="capitalize">{item.category}</span>
-                    <span className="font-semibold text-rose-700">Figma / Canva</span>
+                    <Link href="/work/graphic-design" className="font-semibold text-rose-700 hover:underline">
+                      Inspect →
+                    </Link>
                   </div>
                 </div>
               ))}

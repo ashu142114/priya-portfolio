@@ -31,9 +31,9 @@
 - [x] C5. Roles strip under hero polished (UI/UX, Mobile App, Website, Logo, Brand & Advertising Kit designer) - Complete: polished 2026 frosted pill chips with micro-interactions
 
 ### [D] CASE STUDIES /work/[slug] for ALL 6 projects (one template, data-driven by projects.ts story)
-- [ ] D1. Build the case study template on ONE project (Healthcare App) with 10 distinct scroll moments + sticky left rail
-- [ ] D2. Roll out to the other 5 projects (each with unique screens + before/after)
-- [ ] D3. Verify all 6 routes render correctly with zero errors
+- [x] D1. Build the case study template on ONE project (Healthcare App) with 10 distinct scroll moments + sticky left rail - Complete: CaseStudyView.tsx with sticky left rail and 10 scroll chapters
+- [x] D2. Roll out to the other 5 projects (each with unique screens + before/after) - Complete: dynamic project mapping across all 6 slugs with custom hero, legacy before, and hi-fi screens
+- [x] D3. Verify all 6 routes render correctly with zero errors - Complete: verified all 6 routes compile SSG and return HTTP 200 OK
 
 ### [E] LOGO, BRAND, GRAPHIC (all marked Concept/Sample, generic fictional names)
 - [ ] E1. /work/logo-design: 4 concept logos in SVG (wordmark + symbol), OLD vs NEW versions, draw-in animation, construction grid, palette HEX/RGB, type pairing, mockups in SVG/CSS, light/dark/mono, clear-space rules, scrubbed morph + draggable slider

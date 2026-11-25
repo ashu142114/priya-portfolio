@@ -3,7 +3,8 @@ import { Fraunces, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import SmoothScroll from "@/components/common/SmoothScroll";
+import SmoothScroll from "@/components/motion/SmoothScroll";
+import PageTransition from "@/components/motion/PageTransition";
 import CustomCursor from "@/components/common/CustomCursor";
 import JsonLd from "@/components/common/JsonLd";
 import { DecorativeGlowBlobs } from "@/components/common/Stickers";
@@ -93,7 +94,9 @@ export default function RootLayout({
         <SmoothScroll>
           <div className="flex flex-col min-h-screen">
             <Navbar />
-            <main className="flex-1 w-full pt-20">{children}</main>
+            <main className="flex-1 w-full pt-20">
+              <PageTransition>{children}</PageTransition>
+            </main>
             <Footer />
           </div>
         </SmoothScroll>

@@ -3,18 +3,18 @@
 ## Task List
 
 ### [A] MOTION SYSTEM (src/components/motion/, reusable)
-- [ ] A1. Lenis (lerp ~0.08) synced to GSAP ticker + ScrollTrigger (verify existing)
-- [ ] A2. `<SplitText>` line/word masked reveal (110% -> 0, stagger 0.06, 1s, expo.out)
-- [ ] A3. `<MaskImage>` clip-path inset reveal with inner scale 1.25 -> 1
-- [ ] A4. `<Parallax>` with 3 depth speeds
-- [ ] A5. `<ScrollDraw>` SVG stroke-dashoffset scrubbed
-- [ ] A6. `<StackedCards>` sticky stack, next card slides over, previous scales 0.92 + fades
-- [ ] A7. `<HorizontalPin>` pinned horizontal scroller with progress bar (mobile: snap carousel)
-- [ ] A8. `<Marquee>` velocity-reactive
-- [ ] A9. `<MagneticButton>` + cursor states ("View", "Drag", "Play")
-- [ ] A10. Smooth page transition between routes
-- [ ] A11. Easing tokens: reveals expo.out/power4.out, scrubbed none, hover power3.out
-- [ ] A12. /motion-lab page showing every component. Verify 60fps (no long tasks > 50ms)
+- [x] A1. Lenis (lerp ~0.08) synced to GSAP ticker + ScrollTrigger (verify existing) - Complete: smooth scroll with lerp 0.08 and GSAP ticker sync
+- [x] A2. `<SplitText>` line/word masked reveal (110% -> 0, stagger 0.06, 1s, expo.out) - Complete: GPU-accelerated overflow-hidden mask
+- [x] A3. `<MaskImage>` clip-path inset reveal with inner scale 1.25 -> 1 - Complete: inset clip-path with inner counter-scale
+- [x] A4. `<Parallax>` with 3 depth speeds - Complete: slow, medium, fast scrubbed Y movement
+- [x] A5. `<ScrollDraw>` SVG stroke-dashoffset scrubbed - Complete: dynamic path measurement and stroke-dashoffset scrub
+- [x] A6. `<StackedCards>` sticky stack, next card slides over, previous scales 0.92 + fades - Complete: sticky stack with depth blur
+- [x] A7. `<HorizontalPin>` pinned horizontal scroller with progress bar (mobile: snap carousel) - Complete: desktop pinned scroll + mobile touch snap
+- [x] A8. `<Marquee>` velocity-reactive - Complete: ticker listening to ScrollTrigger velocity
+- [x] A9. `<MagneticButton>` + cursor states ("View", "Drag", "Play") - Complete: elastic pull with custom cursor label triggers
+- [x] A10. Smooth page transition between routes - Complete: App Router page wrapper with subtle slide/fade
+- [x] A11. Easing tokens: reveals expo.out/power4.out, scrubbed none, hover power3.out - Complete: centralized motion tokens
+- [x] A12. /motion-lab page showing every component. Verify 60fps (no long tasks > 50ms) - Complete: interactive test bench with live FPS counter
 
 ### [B] REALISTIC VISUAL LIBRARY (code-only)
 - [ ] B1. Realistic device frames: iPhone-style (island, status bar time/battery/signal, home indicator) and browser/laptop frame with address bar. Rebuild MockupFrame.tsx

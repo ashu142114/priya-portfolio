@@ -359,7 +359,7 @@ export default function PinnedStorySection() {
           <div className="md:hidden flex flex-col gap-6">
             {/* Mobile Card 1 */}
             <div className="p-6 rounded-3xl bg-white border border-blush-200 shadow-soft">
-              <span className="text-xs font-bold font-serif text-rose-500">01 / 03</span>
+              <span className="text-xs font-bold font-serif text-rose-700">01 / 03</span>
               <h3 className="font-serif text-xl font-bold text-plum mt-1 mb-2">
                 Research & User Flows
               </h3>
@@ -368,20 +368,20 @@ export default function PinnedStorySection() {
               </p>
               <div className="p-3 rounded-2xl bg-cream-50 border border-blush-200 text-xs font-medium text-plum flex items-center justify-between">
                 <span>Task Mapping</span>
-                <span className="text-rose-600 font-bold">3-Tap Flow</span>
+                <span className="text-rose-700 font-bold">3-Tap Flow</span>
               </div>
             </div>
 
             {/* Mobile Card 2 */}
             <div className="p-6 rounded-3xl bg-white border border-blush-200 shadow-soft">
-              <span className="text-xs font-bold font-serif text-rose-500">02 / 03</span>
+              <span className="text-xs font-bold font-serif text-rose-700">02 / 03</span>
               <h3 className="font-serif text-xl font-bold text-plum mt-1 mb-2">
                 Wireframes to Finished UI
               </h3>
               <p className="text-xs text-plum-600 leading-relaxed mb-4">
                 Grey wireframe layouts morph into soft, human-centered pastel interfaces with Figma prototypes.
               </p>
-              <div className="p-3 rounded-2xl bg-blush-100 border border-blush-200 text-xs font-medium text-rose-700 flex items-center justify-between">
+              <div className="p-3 rounded-2xl bg-blush-100 border border-blush-200 text-xs font-medium text-rose-800 flex items-center justify-between">
                 <span>Hi-Fi Screens</span>
                 <span className="font-bold">Warm Cream & Rose</span>
               </div>
@@ -389,7 +389,7 @@ export default function PinnedStorySection() {
 
             {/* Mobile Card 3 */}
             <div className="p-6 rounded-3xl bg-white border border-blush-200 shadow-soft">
-              <span className="text-xs font-bold font-serif text-rose-500">03 / 03</span>
+              <span className="text-xs font-bold font-serif text-rose-700">03 / 03</span>
               <h3 className="font-serif text-xl font-bold text-plum mt-1 mb-2">
                 Brand & Marketing Design
               </h3>
@@ -398,7 +398,7 @@ export default function PinnedStorySection() {
               </p>
               <div className="p-3 rounded-2xl bg-lilac-100 border border-lilac-200 text-xs font-medium text-plum flex items-center justify-between">
                 <span>Collateral Suite</span>
-                <span className="text-rose-600 font-bold">Canva & Figma</span>
+                <span className="text-rose-700 font-bold">Canva & Figma</span>
               </div>
             </div>
           </div>

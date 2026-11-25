@@ -129,7 +129,7 @@ export default function Navbar() {
       {/* Mobile Full-Screen Soft Pink Menu Drawer */}
       <div
         className={`fixed inset-0 z-40 bg-cream-100/95 backdrop-blur-xl md:hidden transition-all duration-300 ease-in-out flex flex-col justify-between px-6 pt-24 pb-10 ${
-          mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none hidden"
         }`}
         aria-hidden={!mobileMenuOpen}
       >

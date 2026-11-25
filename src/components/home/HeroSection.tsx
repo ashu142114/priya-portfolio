@@ -55,9 +55,9 @@ export default function HeroSection() {
             </div>
 
             {/* Quick credentials snippet */}
-            <div className="mt-10 pt-6 border-t border-blush-200/80 flex flex-wrap items-center gap-6 text-xs text-plum-500 font-sans">
+            <div className="mt-10 pt-6 border-t border-blush-200/80 flex flex-wrap items-center gap-6 text-xs text-plum-600 font-sans">
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
                 <span>UI/UX Designer at ProjectTree</span>
               </div>
               <div className="flex items-center gap-2">

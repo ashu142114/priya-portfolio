@@ -40,14 +40,14 @@ export default function AboutSnippetSection() {
                 </div>
 
                 {/* Current Role Card Overlay */}
-                <div className="relative z-10 p-3.5 rounded-2xl bg-white/90 backdrop-blur-md border border-blush-200 shadow-soft-sm flex items-center justify-between text-xs">
+                <div className="relative z-10 p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-blush-200 shadow-soft-sm flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-lg bg-blush-100 flex items-center justify-center text-rose-600">
+                    <div className="w-7 h-7 rounded-lg bg-blush-100 flex items-center justify-center text-rose-700">
                       <Award className="w-4 h-4" />
                     </div>
                     <div>
                       <span className="font-semibold block text-plum">ProjectTree</span>
-                      <span className="text-[10px] text-plum-400">UI/UX Designer (11/2024 - Present)</span>
+                      <span className="text-[10px] text-plum-600">UI/UX Designer (11/2024 - Present)</span>
                     </div>
                   </div>
                 </div>
@@ -86,7 +86,7 @@ export default function AboutSnippetSection() {
             <div className="w-full space-y-4 pb-8 border-b border-blush-200/80">
               {/* Tools */}
               <div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-plum-400 block mb-2">
+                <span className="text-xs font-semibold uppercase tracking-wider text-plum-600 block mb-2">
                   Design Tools
                 </span>
                 <div className="flex flex-wrap gap-2">
@@ -95,9 +95,9 @@ export default function AboutSnippetSection() {
                       key={t.name}
                       className="px-4 py-1.5 rounded-full bg-white border border-blush-300 text-xs font-semibold text-plum shadow-soft-sm flex items-center gap-2"
                     >
-                      <span className="w-2 h-2 rounded-full bg-rose-500" />
+                      <span className="w-2 h-2 rounded-full bg-rose-600" />
                       <span>{t.name}</span>
-                      <span className="text-[10px] text-plum-400 font-normal">({t.experience})</span>
+                      <span className="text-[10px] text-plum-600 font-normal">({t.experience})</span>
                     </span>
                   ))}
                 </div>
@@ -105,7 +105,7 @@ export default function AboutSnippetSection() {
 
               {/* Languages */}
               <div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-plum-400 block mb-2">
+                <span className="text-xs font-semibold uppercase tracking-wider text-plum-600 block mb-2">
                   Languages
                 </span>
                 <div className="flex flex-wrap gap-2">

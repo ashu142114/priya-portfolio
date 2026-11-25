@@ -50,10 +50,10 @@ export function MockupFrame({
                   P.
                 </div>
                 <div>
-                  <h4 className="font-serif font-semibold text-plum text-base md:text-lg leading-tight">
+                  <div className="font-serif font-semibold text-plum text-base md:text-lg leading-tight">
                     {title}
-                  </h4>
-                  <p className="text-xs font-sans text-plum-500">{category} Experience</p>
+                  </div>
+                  <p className="text-xs font-sans text-plum-600">{category} Experience</p>
                 </div>
               </div>
               <span className="px-3 py-1 rounded-full text-xs font-medium bg-rose-100 text-rose-700">
@@ -140,10 +140,10 @@ export function MockupFrame({
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] uppercase tracking-wider text-rose-500 font-bold">
+                  <span className="text-[10px] uppercase tracking-wider text-rose-700 font-bold">
                     Cycle Day 14
                   </span>
-                  <h4 className="font-serif font-bold text-plum text-lg leading-tight">Ovulation Window</h4>
+                  <div className="font-serif font-bold text-plum text-lg leading-tight">Ovulation Window</div>
                 </div>
                 <div className="w-8 h-8 rounded-full bg-blush-200 flex items-center justify-center text-rose-600">
                   <SparkleIcon className="w-3.5 h-3.5" />
@@ -191,9 +191,9 @@ export function MockupFrame({
                   AI
                 </div>
                 <div>
-                  <h4 className="font-serif font-bold text-plum text-sm">Health Assistant</h4>
-                  <span className="text-[9px] text-rose-600 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Active Triage
+                  <div className="font-serif font-bold text-plum text-sm">Health Assistant</div>
+                  <span className="text-[9px] text-rose-700 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" /> Active Triage
                   </span>
                 </div>
               </div>
@@ -265,21 +265,21 @@ export function MockupFrame({
             <div className="flex flex-col gap-3">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] font-sans font-medium text-plum-500">Welcome Back</span>
-                  <h4 className="font-serif font-bold text-plum text-base">Sarah Jenkins</h4>
+                  <span className="text-[10px] font-sans font-medium text-plum-600">Welcome Back</span>
+                  <div className="font-serif font-bold text-plum text-base">Sarah Jenkins</div>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-blush-200 flex items-center justify-center font-serif text-xs font-bold text-rose-600">
+                <div className="w-8 h-8 rounded-full bg-blush-200 flex items-center justify-center font-serif text-xs font-bold text-rose-700">
                   SJ
                 </div>
               </div>
 
               {/* Telemedicine Appointment Card */}
-              <div className="p-3 rounded-2xl bg-gradient-to-br from-rose-500 to-rose-600 text-white shadow-soft">
+              <div className="p-3 rounded-2xl bg-gradient-to-br from-rose-600 to-rose-700 text-white shadow-soft">
                 <div className="flex items-center justify-between text-[10px] text-rose-100 mb-1">
                   <span>Upcoming Visit</span>
                   <span className="px-2 py-0.5 rounded-full bg-white/20">Today, 2:30 PM</span>
                 </div>
-                <h5 className="font-serif font-semibold text-sm">Dr. Alena Vance</h5>
+                <div className="font-serif font-semibold text-sm">Dr. Alena Vance</div>
                 <span className="text-[11px] text-rose-100 block">General Physician & Wellness</span>
                 <div className="mt-2.5 pt-2 border-t border-rose-400/50 flex justify-between items-center text-[10px]">
                   <span>Video Consultation</span>

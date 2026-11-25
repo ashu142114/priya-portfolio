@@ -12,9 +12,6 @@ export default function WorkPage() {
 
   const filteredProjects = useMemo(() => {
     if (activeFilter === "All") return projects;
-    if (activeFilter === "Event") {
-      return projects.filter((p) => p.domain === "Event Management");
-    }
     return projects.filter((p) => p.domain === activeFilter);
   }, [activeFilter]);
 
@@ -42,8 +39,6 @@ export default function WorkPage() {
               const count =
                 domain === "All"
                   ? projects.length
-                  : domain === "Event"
-                  ? projects.filter((p) => p.domain === "Event Management").length
                   : projects.filter((p) => p.domain === domain).length;
 
               return (

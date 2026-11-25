@@ -37,7 +37,7 @@ export default function WhatIDoSection() {
                     <div className="w-12 h-12 rounded-2xl bg-blush-100 text-rose-600 flex items-center justify-center group-hover:bg-rose-500 group-hover:text-white transition-colors duration-300">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="font-serif text-lg font-bold text-plum-300">
+                    <span className="font-serif text-lg font-bold text-plum-500">
                       0{index + 1}
                     </span>
                   </div>
@@ -74,9 +74,10 @@ export default function WhatIDoSection() {
 
                   <Link
                     href="/services"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-rose-600 hover:text-rose-700 transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-rose-700 hover:text-rose-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 rounded-md"
+                    aria-label={`Learn more about ${service.title}`}
                   >
-                    <span>Learn more</span>
+                    <span>Explore service</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>

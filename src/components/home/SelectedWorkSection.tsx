@@ -49,10 +49,10 @@ export default function SelectedWorkSection() {
                   <div>
                     {/* Domain Tag & Period */}
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blush-100 text-rose-700 border border-blush-200">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blush-100 text-rose-800 border border-blush-200">
                         {project.domain}
                       </span>
-                      <span className="text-xs font-sans text-plum-400 font-medium">
+                      <span className="text-xs font-sans text-plum-600 font-medium">
                         {project.period}
                       </span>
                     </div>
@@ -89,7 +89,8 @@ export default function SelectedWorkSection() {
 
                     <Link
                       href={`/work/${project.slug}`}
-                      className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-rose-500 text-white font-sans text-xs sm:text-sm font-semibold tracking-wide shadow-soft-sm hover:bg-rose-600 transition-all active:scale-95"
+                      className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-rose-500 text-white font-sans text-xs sm:text-sm font-semibold tracking-wide shadow-soft-sm hover:bg-rose-600 transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+                      aria-label={`Explore case study for ${project.title}`}
                     >
                       <span>Explore case study</span>
                       <ArrowUpRight className="w-4 h-4" />

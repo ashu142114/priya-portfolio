@@ -2,8 +2,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { projects } from "@/data/projects";
 import { MockupFrame } from "@/components/common/MockupFrame";
-import { SparkleIcon, FourPointStar } from "@/components/common/Stickers";
-import { ArrowLeft, ArrowRight, CheckCircle2, Layers, Search, Cpu, Compass } from "lucide-react";
+import AssetFrame from "@/components/common/AssetFrame";
+import BeforeAfterSlider from "@/components/common/BeforeAfterSlider";
+import { SparkleIcon } from "@/components/common/Stickers";
+import { ArrowLeft, ArrowRight, CheckCircle2, Search, Sliders, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 
 export async function generateStaticParams() {
@@ -39,11 +41,11 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
         <div className="flex items-center gap-2 text-xs font-sans text-plum-500 mb-8">
-          <Link href="/" className="hover:text-rose-600 transition-colors">
+          <Link href="/" className="hover:text-rose-700 transition-colors">
             Home
           </Link>
           <span>/</span>
-          <Link href="/work" className="hover:text-rose-600 transition-colors">
+          <Link href="/work" className="hover:text-rose-700 transition-colors">
             Work
           </Link>
           <span>/</span>
@@ -53,7 +55,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         {/* Back Link */}
         <Link
           href="/work"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-rose-600 hover:text-rose-700 transition-colors mb-6"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-rose-700 hover:text-rose-800 transition-colors mb-6"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to all projects</span>
@@ -61,7 +63,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
         {/* Case Study Header */}
         <header className="mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blush-100 text-rose-700 text-xs font-semibold tracking-wide border border-blush-200 mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blush-100 text-rose-800 text-xs font-semibold tracking-wide border border-blush-200 mb-4">
             <span>{project.domain}</span>
             <span>•</span>
             <span>{project.period}</span>
@@ -78,7 +80,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           {/* Project Details Strip */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 p-6 rounded-3xl bg-white/80 border border-blush-200 shadow-soft-sm">
             <div>
-              <span className="block text-[11px] font-sans text-plum-400 uppercase tracking-wider font-semibold">
+              <span className="block text-[11px] font-sans text-plum-500 uppercase tracking-wider font-semibold">
                 Role
               </span>
               <span className="font-serif font-bold text-sm text-plum mt-0.5 block">
@@ -86,7 +88,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               </span>
             </div>
             <div>
-              <span className="block text-[11px] font-sans text-plum-400 uppercase tracking-wider font-semibold">
+              <span className="block text-[11px] font-sans text-plum-500 uppercase tracking-wider font-semibold">
                 Industry Domain
               </span>
               <span className="font-serif font-bold text-sm text-plum mt-0.5 block">
@@ -94,7 +96,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               </span>
             </div>
             <div>
-              <span className="block text-[11px] font-sans text-plum-400 uppercase tracking-wider font-semibold">
+              <span className="block text-[11px] font-sans text-plum-500 uppercase tracking-wider font-semibold">
                 Design Tool
               </span>
               <span className="font-serif font-bold text-sm text-plum mt-0.5 block">
@@ -102,7 +104,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               </span>
             </div>
             <div>
-              <span className="block text-[11px] font-sans text-plum-400 uppercase tracking-wider font-semibold">
+              <span className="block text-[11px] font-sans text-plum-500 uppercase tracking-wider font-semibold">
                 Deliverables
               </span>
               <span className="font-serif font-bold text-sm text-plum mt-0.5 block">
@@ -136,7 +138,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {/* Problem Card */}
           <div className="p-8 rounded-3xl bg-white border border-blush-200 shadow-soft">
-            <div className="w-10 h-10 rounded-2xl bg-rose-100 flex items-center justify-center text-rose-600 mb-4">
+            <div className="w-10 h-10 rounded-2xl bg-rose-100 flex items-center justify-center text-rose-700 mb-4">
               <Search className="w-5 h-5" />
             </div>
             <h2 className="font-serif text-2xl font-bold text-plum mb-3">The Problem</h2>
@@ -147,7 +149,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
           {/* Solution Card */}
           <div className="p-8 rounded-3xl bg-white border border-blush-200 shadow-soft">
-            <div className="w-10 h-10 rounded-2xl bg-blush-200 flex items-center justify-center text-rose-700 mb-4">
+            <div className="w-10 h-10 rounded-2xl bg-blush-200 flex items-center justify-center text-rose-800 mb-4">
               <SparkleIcon className="w-5 h-5" />
             </div>
             <h2 className="font-serif text-2xl font-bold text-plum mb-3">The Solution</h2>
@@ -156,6 +158,27 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             </p>
           </div>
         </div>
+
+        {/* Interactive Before & After Slider */}
+        <section className="mb-16">
+          <div className="text-center max-w-xl mx-auto mb-8">
+            <span className="text-xs font-semibold uppercase tracking-wider text-rose-700">
+              Interactive Comparison
+            </span>
+            <h2 className="font-serif text-3xl font-bold text-plum mt-1">
+              Before & After Redesign
+            </h2>
+            <p className="text-xs text-plum-600 mt-2">
+              Drag the center slider left and right to compare legacy clutter with the streamlined redesign.
+            </p>
+          </div>
+
+          <BeforeAfterSlider />
+
+          <p className="text-xs text-center text-plum-500 italic mt-3">
+            * {project.story.beforeAfter.notes}
+          </p>
+        </section>
 
         {/* Key Features / Scope */}
         <section className="mb-16 p-8 sm:p-10 rounded-3xl bg-white/90 border border-blush-200 shadow-soft">
@@ -168,7 +191,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 key={idx}
                 className="p-4 rounded-2xl bg-cream-50 border border-blush-100 flex items-start gap-3"
               >
-                <CheckCircle2 className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
                 <span className="text-sm font-sans text-plum-700 font-medium">{feature}</span>
               </div>
             ))}
@@ -178,7 +201,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         {/* Process Breakdown (5 Steps) */}
         <section className="mb-16">
           <div className="text-center max-w-xl mx-auto mb-10">
-            <span className="text-xs font-semibold uppercase tracking-wider text-rose-600">
+            <span className="text-xs font-semibold uppercase tracking-wider text-rose-700">
               End-to-End Methodology
             </span>
             <h2 className="font-serif text-3xl font-bold text-plum mt-1">Design Process</h2>
@@ -187,40 +210,40 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           <div className="space-y-6">
             {/* Step 1: Research */}
             <div className="p-6 sm:p-8 rounded-3xl bg-white border border-blush-200 shadow-soft flex flex-col sm:flex-row gap-6 items-start">
-              <div className="w-12 h-12 rounded-2xl bg-blush-100 text-rose-600 font-serif font-bold text-xl flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-2xl bg-blush-100 text-rose-800 font-serif font-bold text-xl flex items-center justify-center shrink-0">
                 01
               </div>
               <div>
                 <h3 className="font-serif text-xl font-bold text-plum mb-2">UX Research & Discovery</h3>
-                <p className="text-sm text-plum-600 leading-relaxed">{project.process.research}</p>
+                <p className="text-sm text-plum-600 leading-relaxed">{project.story.research}</p>
               </div>
             </div>
 
             {/* Step 2: Flows */}
             <div className="p-6 sm:p-8 rounded-3xl bg-white border border-blush-200 shadow-soft flex flex-col sm:flex-row gap-6 items-start">
-              <div className="w-12 h-12 rounded-2xl bg-blush-100 text-rose-600 font-serif font-bold text-xl flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-2xl bg-blush-100 text-rose-800 font-serif font-bold text-xl flex items-center justify-center shrink-0">
                 02
               </div>
               <div>
                 <h3 className="font-serif text-xl font-bold text-plum mb-2">User Flows & Architecture</h3>
-                <p className="text-sm text-plum-600 leading-relaxed">{project.process.flows}</p>
+                <p className="text-sm text-plum-600 leading-relaxed">{project.story.userFlow}</p>
               </div>
             </div>
 
             {/* Step 3: Wireframes */}
             <div className="p-6 sm:p-8 rounded-3xl bg-white border border-blush-200 shadow-soft flex flex-col sm:flex-row gap-6 items-start">
-              <div className="w-12 h-12 rounded-2xl bg-blush-100 text-rose-600 font-serif font-bold text-xl flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-2xl bg-blush-100 text-rose-800 font-serif font-bold text-xl flex items-center justify-center shrink-0">
                 03
               </div>
               <div>
                 <h3 className="font-serif text-xl font-bold text-plum mb-2">Wireframing & Iteration</h3>
-                <p className="text-sm text-plum-600 leading-relaxed">{project.process.wireframes}</p>
+                <p className="text-sm text-plum-600 leading-relaxed">{project.story.wireframes}</p>
               </div>
             </div>
 
             {/* Step 4: UI Design */}
             <div className="p-6 sm:p-8 rounded-3xl bg-white border border-blush-200 shadow-soft flex flex-col sm:flex-row gap-6 items-start">
-              <div className="w-12 h-12 rounded-2xl bg-blush-100 text-rose-600 font-serif font-bold text-xl flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-2xl bg-blush-100 text-rose-800 font-serif font-bold text-xl flex items-center justify-center shrink-0">
                 04
               </div>
               <div>
@@ -231,51 +254,101 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
             {/* Step 5: Interactive Prototype */}
             <div className="p-6 sm:p-8 rounded-3xl bg-white border border-blush-200 shadow-soft flex flex-col sm:flex-row gap-6 items-start">
-              <div className="w-12 h-12 rounded-2xl bg-blush-100 text-rose-600 font-serif font-bold text-xl flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-2xl bg-blush-100 text-rose-800 font-serif font-bold text-xl flex items-center justify-center shrink-0">
                 05
               </div>
               <div>
                 <h3 className="font-serif text-xl font-bold text-plum mb-2">Interactive Figma Prototype</h3>
-                <p className="text-sm text-plum-600 leading-relaxed">{project.process.prototype}</p>
+                <p className="text-sm text-plum-600 leading-relaxed">{project.story.prototype}</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Key Screens Gallery */}
+        {/* Design System Tokens Used */}
+        <section className="mb-16 p-8 sm:p-10 rounded-3xl bg-white border border-blush-200 shadow-soft">
+          <div className="flex items-center gap-2 mb-6">
+            <Sliders className="w-5 h-5 text-rose-600" />
+            <h2 className="font-serif text-2xl font-bold text-plum">
+              Design System Tokens Used
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-4 rounded-2xl bg-cream-50 border border-blush-100">
+              <span className="text-xs font-bold uppercase tracking-wider text-plum-500 block mb-2">
+                Color Tokens
+              </span>
+              <div className="space-y-2">
+                {project.story.designSystem.colors.map((c) => (
+                  <div key={c.name} className="flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="w-3.5 h-3.5 rounded-full border border-black/10 shrink-0"
+                        style={{ backgroundColor: c.hex }}
+                      />
+                      <span className="text-plum font-medium">{c.name}</span>
+                    </div>
+                    <span className="font-mono text-[11px] text-plum-500">{c.hex}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-cream-50 border border-blush-100">
+              <span className="text-xs font-bold uppercase tracking-wider text-plum-500 block mb-2">
+                Typography
+              </span>
+              <div className="space-y-2.5">
+                {project.story.designSystem.fonts.map((f) => (
+                  <div key={f.name} className="text-xs">
+                    <span className="font-bold text-plum block">{f.name}</span>
+                    <span className="text-[11px] text-plum-500">{f.usage}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-cream-50 border border-blush-100">
+              <span className="text-xs font-bold uppercase tracking-wider text-plum-500 block mb-2">
+                Core Components
+              </span>
+              <div className="space-y-1.5 text-xs text-plum-700">
+                {project.story.designSystem.components.map((comp) => (
+                  <div key={comp} className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-600 shrink-0" />
+                    <span>{comp}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Key Screens Gallery with Auto-Fallback */}
         <section className="mb-16">
           <div className="text-center max-w-xl mx-auto mb-10">
-            <span className="text-xs font-semibold uppercase tracking-wider text-rose-600">
+            <span className="text-xs font-semibold uppercase tracking-wider text-rose-700">
               Interface Highlights
             </span>
             <h2 className="font-serif text-3xl font-bold text-plum mt-1">Key Screens Gallery</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {project.screens.map((screen, sIdx) => (
+            {project.story.hiFiScreens.map((screen, sIdx) => (
               <div
                 key={sIdx}
                 className="p-6 rounded-3xl bg-white border border-blush-200 shadow-soft flex flex-col justify-between"
               >
-                <div className="mb-6 p-4 rounded-2xl bg-cream-50 border border-blush-100 flex justify-center items-center">
-                  <div className="w-full max-w-[240px]">
-                    <MockupFrame
-                      type={screen.type}
-                      variant={
-                        project.id.includes("womens")
-                          ? "cycle"
-                          : project.id.includes("ai")
-                          ? "ai"
-                          : project.id.includes("nutrition")
-                          ? "nutrition"
-                          : "healthcare"
-                      }
-                      title={screen.title}
-                      category={project.domain}
-                      accentColor={screen.accentColor}
-                    />
-                  </div>
-                </div>
+                <AssetFrame
+                  src={screen.file}
+                  alt={screen.title}
+                  aspectRatio="16/9"
+                  label={`Add real screen (${screen.title})`}
+                  sublabel={screen.description}
+                  badge={`Screen 0${sIdx + 1}`}
+                  accentColor={screen.accentColor}
+                  className="mb-4"
+                />
 
                 <div>
                   <h3 className="font-serif text-lg font-bold text-plum mb-1">{screen.title}</h3>
@@ -288,16 +361,16 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           </div>
         </section>
 
-        {/* Project Outcome Section (Placeholder clearly marked in single data file) */}
+        {/* Project Outcome Section */}
         <section className="mb-16 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-cream-100 to-blush-100 border border-blush-300 shadow-soft">
           <div className="flex items-center gap-2 mb-3">
-            <SparkleIcon className="w-4 h-4 text-rose-500" />
+            <SparkleIcon className="w-4 h-4 text-rose-600" />
             <h2 className="font-serif text-2xl font-bold text-plum">Project Outcome</h2>
           </div>
           <p className="font-sans text-sm sm:text-base text-plum-700 leading-relaxed bg-white/70 p-4 rounded-2xl border border-blush-200">
-            {project.outcome}
+            {project.story.outcome}
           </p>
-          <span className="block text-[11px] text-plum-400 mt-2 italic">
+          <span className="block text-[11px] text-plum-500 mt-2 italic">
             * Note for Priya: Edit your specific project metrics or client feedback directly in /src/data/projects.ts
           </span>
         </section>
@@ -305,7 +378,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         {/* Next Project Card */}
         <div className="p-8 sm:p-10 rounded-3xl bg-white border border-blush-200 shadow-soft-lg flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-rose-600 block mb-1">
+            <span className="text-xs font-semibold uppercase tracking-wider text-rose-700 block mb-1">
               Next Project
             </span>
             <h4 className="font-serif text-2xl font-bold text-plum">{nextProject.title}</h4>

@@ -1,16 +1,36 @@
 import Link from "next/link";
 import { services } from "@/data/services";
 import { SparkleIcon } from "@/components/common/Stickers";
-import { ArrowRight, CheckCircle2, Compass, Smartphone, RefreshCw, PenTool } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Compass,
+  Smartphone,
+  Monitor,
+  RefreshCw,
+  Palette,
+  Award,
+  Megaphone,
+  Sparkles,
+} from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Design Services",
+  title: "8 Core Design Services",
   description:
-    "Explore UI/UX design services offered by Priya K. Lakkad: UX research & user flows, mobile & web app design in Figma, product redesigns, and brand & marketing collateral.",
+    "Explore UI/UX, mobile app, website, product redesign, logo design, brand kits, advertising creatives, and invitation design by Priya K. Lakkad.",
 };
 
-const serviceIcons = [Compass, Smartphone, RefreshCw, PenTool];
+const serviceIcons = [
+  Compass,
+  Smartphone,
+  Monitor,
+  RefreshCw,
+  Palette,
+  Award,
+  Megaphone,
+  Sparkles,
+];
 
 export default function ServicesPage() {
   return (

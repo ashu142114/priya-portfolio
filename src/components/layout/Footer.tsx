@@ -75,7 +75,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-serif text-sm font-bold text-plum mb-3 tracking-wide">Explore</h4>
+            <h3 className="font-serif text-sm font-bold text-plum mb-3 tracking-wide">Explore</h3>
             <ul className="space-y-2 text-xs sm:text-sm font-sans text-plum-600">
               <li>
                 <Link href="/work" className="hover:text-rose-600 transition-colors">
@@ -85,6 +85,16 @@ export default function Footer() {
               <li>
                 <Link href="/services" className="hover:text-rose-600 transition-colors">
                   Design Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/process" className="hover:text-rose-600 transition-colors">
+                  5-Step Process
+                </Link>
+              </li>
+              <li>
+                <Link href="/design-system" className="hover:text-rose-600 transition-colors">
+                  Design System Lab
                 </Link>
               </li>
               <li>
@@ -98,8 +108,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-rose-600 transition-colors">
-                  Get in Touch
+                <Link href="/faq" className="hover:text-rose-600 transition-colors">
+                  Frequently Asked Questions
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="hover:text-rose-600 transition-colors">
+                  Privacy Policy
                 </Link>
               </li>
             </ul>

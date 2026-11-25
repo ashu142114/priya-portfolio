@@ -7,15 +7,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
     "/work",
+    "/work/logo-design",
+    "/work/branding",
+    "/work/graphic-design",
     "/services",
+    "/process",
+    "/design-system",
     "/about",
     "/resume",
+    "/faq",
+    "/privacy",
     "/contact",
   ].map((route) => ({
     url: `${siteUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
-    priority: route === "" ? 1.0 : 0.8,
+    priority: route === "" ? 1.0 : route.startsWith("/work") ? 0.9 : 0.8,
   }));
 
   const projectRoutes = projects.map((project) => ({

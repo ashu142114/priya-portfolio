@@ -1,0 +1,68 @@
+# Project Build Progress: Priya K. Lakkad Portfolio (Branch: scroll-story)
+
+## Task List
+
+### [A] MOTION SYSTEM (src/components/motion/, reusable)
+- [ ] A1. Lenis (lerp ~0.08) synced to GSAP ticker + ScrollTrigger (verify existing)
+- [ ] A2. `<SplitText>` line/word masked reveal (110% -> 0, stagger 0.06, 1s, expo.out)
+- [ ] A3. `<MaskImage>` clip-path inset reveal with inner scale 1.25 -> 1
+- [ ] A4. `<Parallax>` with 3 depth speeds
+- [ ] A5. `<ScrollDraw>` SVG stroke-dashoffset scrubbed
+- [ ] A6. `<StackedCards>` sticky stack, next card slides over, previous scales 0.92 + fades
+- [ ] A7. `<HorizontalPin>` pinned horizontal scroller with progress bar (mobile: snap carousel)
+- [ ] A8. `<Marquee>` velocity-reactive
+- [ ] A9. `<MagneticButton>` + cursor states ("View", "Drag", "Play")
+- [ ] A10. Smooth page transition between routes
+- [ ] A11. Easing tokens: reveals expo.out/power4.out, scrubbed none, hover power3.out
+- [ ] A12. /motion-lab page showing every component. Verify 60fps (no long tasks > 50ms)
+
+### [B] REALISTIC VISUAL LIBRARY (code-only)
+- [ ] B1. Realistic device frames: iPhone-style (island, status bar time/battery/signal, home indicator) and browser/laptop frame with address bar. Rebuild MockupFrame.tsx
+- [ ] B2. Inline SVG icon set (lucide) + avatar generator (initials/gradients) + chart primitives (sparkline, ring, bar, calendar)
+- [ ] B3. Screens as React components using theme tokens, with realistic sample content, 6-8 per project:
+  - Healthcare App (dashboard, doctor list, booking calendar + slots, telemedicine call, lab reports, insurance card, family profiles)
+  - Women's Health App (cycle ring + predicted dates, phase-coloured calendar, symptom logger, insights, health records, PCOD/PCOS info article)
+  - AI Healthcare Module (chat bubbles, quick-reply chips, typing indicator, suggestion cards)
+  - Diet & Nutrition (calorie ring, macro bars, water tracker, meal log, weekly chart)
+  - Invitation App (template picker, editor with controls, preview card, share sheet)
+  - Service Booking Platform (service list, provider cards, date/time picker, confirmation)
+- [ ] B4. Auto-generated wireframe variant of each screen (grey boxes/outlines via a "wireframe" prop)
+- [ ] B5. Believable "before" (legacy) variant of each project's key screen: weak hierarchy, cramped spacing, inconsistent fonts, harsh colours, tiny tap targets, too many CTAs. Mark as "recreated legacy example"
+
+### [C] HOME CHAPTERS 4-7 (keep Chapters 1-3 intact, keep 01/07 progress indicator)
+- [ ] C1. Chapter 4 DESIGN PROCESS: one phone transforms through Research (sticky notes) -> Flows (SVG lines draw) -> Wireframe (grey) -> Hi-fi UI (theme colours fill) -> Prototype (tap hotspots, screen transition). Pinned, scrubbed, step indicator
+- [ ] C2. Chapter 5 DESIGN SYSTEM LAB: colour scales 50-900 -> type scale -> spacing/radius -> components assemble -> a full screen composes itself. Token labels beside each piece, values read live from CSS variables, live tokens.css code block that updates with theme
+- [ ] C3. Chapter 6 BRAND KIT: SVG logo stroke draw-in -> swatches slide in -> type specimen -> brand assembles onto business card, social post, banner mockups
+- [ ] C4. Chapter 7 SELECTED WORK + FINAL CTA: 3 featured project cards (parallax, tilt, cursor "View") + giant CTA with magnetic buttons (email, WhatsApp)
+- [ ] C5. Roles strip under hero polished (UI/UX, Mobile App, Website, Logo, Brand & Advertising Kit designer)
+
+### [D] CASE STUDIES /work/[slug] for ALL 6 projects (one template, data-driven by projects.ts story)
+- [ ] D1. Build the case study template on ONE project (Healthcare App) with 10 distinct scroll moments + sticky left rail
+- [ ] D2. Roll out to the other 5 projects (each with unique screens + before/after)
+- [ ] D3. Verify all 6 routes render correctly with zero errors
+
+### [E] LOGO, BRAND, GRAPHIC (all marked Concept/Sample, generic fictional names)
+- [ ] E1. /work/logo-design: 4 concept logos in SVG (wordmark + symbol), OLD vs NEW versions, draw-in animation, construction grid, palette HEX/RGB, type pairing, mockups in SVG/CSS, light/dark/mono, clear-space rules, scrubbed morph + draggable slider
+- [ ] E2. /work/branding: 4 full kits: logo suite, palette, type specimen, SVG patterns, iconography, dos/don'ts, applications (business card, letterhead, envelope, ID card, packaging box, tote bag, social set, banner, signage) with CSS 3D mockups
+- [ ] E3. /work/graphic-design: 12+ pieces generated in code (banners, flyers, tri-fold brochure, business cards, invitations, Instagram posts + carousels, story templates) with masonry, filter chips, lightbox, hover zoom
+- [ ] E4. /work: category filter (All/Product/Logo/Brand/Graphic) with layout animation, MaskImage hover reveal, cursor "View"
+
+### [F] SITE-WIDE UPGRADE
+- [ ] F1. Project cards redesigned: code-generated cover (hero screen on tilted device over gradient backdrop), category chip, tags, hover tilt/lift, consistent tokens
+- [ ] F2. /design-system page: full tokens, component library, 4 themes + light/dark, tokens.css block
+- [ ] F3. /process, /services (8 cards), /about, /resume, /contact, /faq: replace old fade-ups with SplitText + staggered reveals; consistent layout and spacing
+- [ ] F4. Page transitions + custom cursor states applied site-wide; remove all dated or duplicate animations
+- [ ] F5. SEO: per-page metadata, Open Graph image, JSON-LD Person (no invented claims), sitemap with all routes, robots, /llms.txt, canonical
+
+### [G] FINAL QA
+- [ ] G1. Crawl every route in sitemap: HTTP 200, no console errors, no broken links
+- [ ] G2. Grep entire codebase for invented metrics/percentages/years/clients/testimonials/awards/prices; remove any
+- [ ] G3. Confirm every logo/brand/graphic item shows a Concept/Sample chip
+- [ ] G4. Test widths 390, 768, 1280, 1920: no horizontal overflow, no clipped text, no overlap
+- [ ] G5. prefers-reduced-motion check; keyboard navigation and focus states check
+- [ ] G6. Lighthouse audit and optimizations
+- [ ] G7. Final lint + build + commit. Write /README.md asset checklist
+- [ ] G8. Final report: tick-list from PROGRESS.md, BLOCKED items, known weak spots, and scroll-jank findings
+
+## BLOCKED
+*(None yet)*

@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 export const alt = "Priya K. Lakkad — UI/UX & Product Designer";
 export const size = {
   width: 1200,

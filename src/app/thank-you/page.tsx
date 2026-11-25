@@ -26,8 +26,7 @@ export default function ThankYouPage() {
         </h1>
 
         <p className="font-sans text-sm text-plum-600 leading-relaxed mb-8">
-          Thank you for getting in touch. I review design proposals and inquiries daily and will reply within
-          24 hours.
+          Thank you for getting in touch. I review design proposals and inquiries promptly and will get back to you soon.
         </p>
 
         <div className="flex flex-col gap-3">

@@ -8,7 +8,7 @@ import { Image as ImageIcon, Sparkles } from "lucide-react";
 interface AssetFrameProps {
   src?: string;
   alt: string;
-  aspectRatio?: "16/9" | "4/3" | "1/1" | "9/16" | "3/4";
+  aspectRatio?: "16/9" | "16/10" | "4/3" | "1/1" | "9/16" | "3/4";
   label?: string;
   sublabel?: string;
   className?: string;
@@ -35,6 +35,8 @@ export default function AssetFrame({
   const aspectClass =
     aspectRatio === "9/16"
       ? "aspect-[9/16]"
+      : aspectRatio === "16/10"
+      ? "aspect-[16/10]"
       : aspectRatio === "4/3"
       ? "aspect-[4/3]"
       : aspectRatio === "1/1"

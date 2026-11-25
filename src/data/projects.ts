@@ -190,9 +190,9 @@ export const projects: Project[] = [
       },
       prototype:
         "Full clickable Figma prototype mapping appointment booking, video call join screen, and lab report accordion transitions.",
-      outcome: "Add real outcome here (e.g. Delivered 40+ responsive screens ready for developer handoff).",
+      outcome: "Add real outcome here (e.g. Final design handoff and design system documentation).",
     },
-    outcome: "Add result here (e.g. Completed design system with 40+ responsive screens ready for development handoff).",
+    outcome: "Add result here (e.g. Completed design system ready for development handoff).",
     tags: ["Mobile App", "Healthcare", "Telemedicine", "User Flows", "Figma"],
   },
   {
@@ -320,9 +320,9 @@ export const projects: Project[] = [
       },
       prototype:
         "Figma prototype simulating daily logging flow, animated ring completion, and switching between months.",
-      outcome: "Add real outcome here (e.g. Designed 30+ accessible mobile screens with 95% user test completion).",
+      outcome: "Add real outcome here (e.g. Completed screen designs and user testing findings).",
     },
-    outcome: "Add result here (e.g. Conducted usability evaluations demonstrating 95% task completion on first-time cycle setup).",
+    outcome: "Add result here (e.g. Usability evaluations conducted on first-time cycle setup).",
     tags: ["Mobile App", "Women's Health", "Cycle Tracking", "PCOD/PCOS", "UX Research"],
   },
   {
@@ -438,9 +438,9 @@ export const projects: Project[] = [
       },
       prototype:
         "Figma prototype demonstrating streaming message reveals and interactive suggestion button taps.",
-      outcome: "Add real outcome here (e.g. Created 25+ conversational interaction states with edge-case handling).",
+      outcome: "Add real outcome here (e.g. Conversational interaction states and edge-case handling).",
     },
-    outcome: "Add result here (e.g. Delivered 25+ conversational interaction states and error handling edge cases).",
+    outcome: "Add result here (e.g. Delivered conversational interaction states and error handling edge cases).",
     tags: ["Healthcare", "AI Flows", "Conversational UI", "Interaction Design", "Figma"],
   },
   {
@@ -556,9 +556,9 @@ export const projects: Project[] = [
       },
       prototype:
         "Figma prototype showing progress ring fill animation upon logging meals and water glasses.",
-      outcome: "Add real outcome here (e.g. Reduced food entry flow from 3 minutes to under 20 seconds).",
+      outcome: "Add real outcome here (e.g. Streamlined meal logging flow and user testing findings).",
     },
-    outcome: "Add result here (e.g. Streamlined food entry flow to under 20 seconds per meal log).",
+    outcome: "Add result here (e.g. Streamlined food entry flow and user feedback).",
     tags: ["Mobile App", "Nutrition", "Habit Tracking", "Dashboard", "Figma"],
   },
   {
@@ -624,11 +624,11 @@ export const projects: Project[] = [
       brief:
         "Design a delightful mobile invitation studio where hosts can personalize luxury event stationery and track RSVPs without sending clunky PDF attachments.",
       research:
-        "Found that 75% of guests ignore RSVPs if forced to create an account or install an app; engineered a zero-login web link.",
+        "Identified that guest drop-off increases when forced to create an account or install an app; engineered a zero-login web link.",
       userFlow:
         "Simplified the host journey: Template Selection → Event Details Input → Instant Live Preview → Direct WhatsApp Share.",
       wireframes:
-        "Prototyped a bottom-sheet editor ensuring the invitation card remains 100% visible while editing typography and colors.",
+        "Prototyped a bottom-sheet editor ensuring the invitation card remains clearly visible while editing typography and colors.",
       beforeAfter: {
         before: "/projects/invitation-app/before.png",
         after: "/projects/invitation-app/after.png",
@@ -674,9 +674,9 @@ export const projects: Project[] = [
       },
       prototype:
         "Interactive Figma prototype illustrating 3D card envelope opening and instant RSVP confirmation.",
-      outcome: "Add real outcome here (e.g. Created 30+ responsive templates and frictionless RSVP flows).",
+      outcome: "Add real outcome here (e.g. Responsive templates and guest RSVP flows).",
     },
-    outcome: "Add result here (e.g. Completed 30+ card template guidelines and zero-friction guest RSVP flows).",
+    outcome: "Add result here (e.g. Card template guidelines and guest RSVP flows).",
     tags: ["Event Management", "Mobile App", "Invitation Design", "Visual Design", "Canva"],
   },
   {
@@ -748,7 +748,7 @@ export const projects: Project[] = [
       brief:
         "Architect a responsive, multi-industry booking engine that clarifies complex service packages, eliminates slot reservation friction, and boosts conversion.",
       research:
-        "Identified that hidden checkout fees and ambiguous cancellation rules accounted for 42% of customer drop-offs.",
+        "Identified that hidden checkout fees and ambiguous cancellation rules were primary causes of customer drop-off.",
       userFlow:
         "Structured a clear 3-step funnel: Choose Service & Specialist → Select Real-time Slot → Review Transparent Summary.",
       wireframes:
@@ -804,9 +804,9 @@ export const projects: Project[] = [
       },
       prototype:
         "Figma clickable prototype testing slot booking validation, deposit payment, and confirmation toast.",
-      outcome: "Add real outcome here (e.g. Created complete design system with 50+ responsive screens).",
+      outcome: "Add real outcome here (e.g. Complete design system and responsive screens).",
     },
-    outcome: "Add result here (e.g. Created comprehensive design system covering 50+ desktop and mobile screens).",
+    outcome: "Add result here (e.g. Comprehensive design system covering desktop and mobile screens).",
     tags: ["SaaS", "E-commerce", "Web & Mobile", "Booking System", "Design System"],
   },
 ];

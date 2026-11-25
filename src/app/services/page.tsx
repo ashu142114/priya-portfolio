@@ -9,7 +9,7 @@ import {
   Monitor,
   RefreshCw,
   Palette,
-  Award,
+  Layers,
   Megaphone,
   Sparkles,
 } from "lucide-react";
@@ -27,7 +27,7 @@ const serviceIcons = [
   Monitor,
   RefreshCw,
   Palette,
-  Award,
+  Layers,
   Megaphone,
   Sparkles,
 ];

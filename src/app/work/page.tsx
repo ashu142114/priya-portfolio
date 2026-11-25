@@ -1,165 +1,137 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { projects, categoriesList } from "@/data/projects";
+import { projects } from "@/data/projects";
 import { logos } from "@/data/logos";
 import { brandKits } from "@/data/brandKits";
 import { graphics } from "@/data/graphics";
-import { MockupFrame } from "@/components/common/MockupFrame";
 import AssetFrame from "@/components/common/AssetFrame";
 import { SparkleIcon } from "@/components/common/Stickers";
-import { ArrowUpRight, Palette, Layers, Award, Image as ImageIcon } from "lucide-react";
+import { ArrowUpRight, Palette, Layers, Sparkles, Image as ImageIcon } from "lucide-react";
+
+const categories = [
+  { id: "All", label: "All Work" },
+  { id: "Product", label: "Product & UI/UX" },
+  { id: "Logo", label: "Logos & Marks" },
+  { id: "Brand", label: "Brand Identity Kits" },
+  { id: "Graphic", label: "Advertising & Graphics" },
+] as const;
+
+type Category = (typeof categories)[number]["id"];
 
 export default function WorkPage() {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
+  const [activeCategory, setActiveCategory] = useState<Category>("All");
 
   return (
     <div className="py-12 sm:py-20">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blush-100 text-rose-700 text-xs font-semibold tracking-wide border border-blush-200 mb-4">
-            <SparkleIcon className="w-3 h-3 text-rose-500" />
+        <div className="max-w-3xl mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blush-100 text-rose-800 text-xs font-semibold tracking-wide border border-blush-200 mb-4">
+            <SparkleIcon className="w-3.5 h-3.5 text-rose-600" />
             <span>Design Portfolio</span>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-plum tracking-tight">
-            Work & Case Studies
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-plum tracking-tight">
+            Selected Works
           </h1>
-          <p className="font-sans text-sm sm:text-base text-plum-600 mt-4 leading-relaxed">
-            Thoughtful digital products, logo marks, brand identity kits, and marketing collateral designed with Figma.
+          <p className="font-sans text-base sm:text-lg text-plum-600 mt-4 leading-relaxed">
+            A comprehensive collection of user-centered mobile apps, web design systems, concept logos, and advertising creatives.
           </p>
-
-          {/* Quick Hub Navigation Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8 max-w-2xl mx-auto">
-            <Link
-              href="/work"
-              onClick={() => setActiveCategory("Product")}
-              className="p-3 rounded-2xl bg-white border border-blush-200 text-center hover:border-rose-400 hover:shadow-soft-sm transition-all"
-            >
-              <span className="block font-serif font-bold text-xs text-plum">Product Design</span>
-              <span className="text-[10px] text-plum-400">6 Projects</span>
-            </Link>
-            <Link
-              href="/work/logo-design"
-              className="p-3 rounded-2xl bg-white border border-blush-200 text-center hover:border-rose-400 hover:shadow-soft-sm transition-all"
-            >
-              <span className="block font-serif font-bold text-xs text-plum">Logo Marks</span>
-              <span className="text-[10px] text-plum-400">4 Identities</span>
-            </Link>
-            <Link
-              href="/work/branding"
-              className="p-3 rounded-2xl bg-white border border-blush-200 text-center hover:border-rose-400 hover:shadow-soft-sm transition-all"
-            >
-              <span className="block font-serif font-bold text-xs text-plum">Brand Kits</span>
-              <span className="text-[10px] text-plum-400">4 Systems</span>
-            </Link>
-            <Link
-              href="/work/graphic-design"
-              className="p-3 rounded-2xl bg-white border border-blush-200 text-center hover:border-rose-400 hover:shadow-soft-sm transition-all"
-            >
-              <span className="block font-serif font-bold text-xs text-plum">Graphics & Print</span>
-              <span className="text-[10px] text-plum-400">4 Suites</span>
-            </Link>
-          </div>
-
-          {/* Category Filter Chips */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
-            {categoriesList.map((cat) => {
-              const isActive = activeCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`min-h-[44px] px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-2 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 ${
-                    isActive
-                      ? "bg-rose-500 text-white shadow-soft font-semibold"
-                      : "bg-white text-plum-700 border border-blush-200 hover:border-rose-300 hover:bg-blush-50"
-                  }`}
-                  aria-pressed={isActive}
-                >
-                  <span>{cat}</span>
-                </button>
-              );
-            })}
-          </div>
         </div>
 
-        {/* Section 1: Product Design Projects (Shown if All or Product) */}
+        {/* Category Filters Bar */}
+        <div className="flex flex-wrap gap-2 mb-14 pb-4 border-b border-blush-200">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`min-h-[44px] px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${
+                activeCategory === cat.id
+                  ? "bg-rose-500 text-white shadow-soft"
+                  : "bg-white text-plum-700 border border-blush-200 hover:border-rose-300 hover:bg-blush-50"
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Section 1: Product Design (Shown if All or Product) */}
         {(activeCategory === "All" || activeCategory === "Product") && (
-          <div className="mb-16">
+          <div className="mb-20">
             <div className="flex items-center justify-between mb-8 pb-3 border-b border-blush-200">
               <div className="flex items-center gap-2">
                 <Layers className="w-5 h-5 text-rose-500" />
                 <h2 className="font-serif text-2xl font-bold text-plum">Product & UI/UX Design</h2>
               </div>
-              <span className="text-xs text-plum-500 font-medium">{projects.length} Mobile & Web Apps</span>
+              <span className="text-xs text-plum-500 font-medium">
+                {projects.length} Case Studies
+              </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project) => (
                 <div
                   key={project.id}
-                  className="group rounded-3xl p-6 sm:p-8 bg-white/90 backdrop-blur-md border border-blush-200/90 shadow-soft glass-card-hover flex flex-col justify-between"
+                  className="group rounded-4xl bg-white border border-blush-200 shadow-soft glass-card-hover overflow-hidden flex flex-col justify-between"
                 >
-                  <div>
+                  <div className="p-6 sm:p-7">
                     {/* Visual Preview with auto-fallback */}
-                    <div className="mb-6 rounded-2xl bg-gradient-to-b from-cream-100 to-blush-50/50 p-6 flex justify-center items-center border border-blush-100 overflow-hidden min-h-[280px]">
-                      <div className="w-full max-w-[240px] transform group-hover:scale-105 transition-transform duration-500">
-                        <MockupFrame
-                          type={project.screens[0]?.type || "mobile"}
-                          variant={
-                            project.id.includes("womens")
-                              ? "cycle"
-                              : project.id.includes("ai")
-                              ? "ai"
-                              : project.id.includes("nutrition")
-                              ? "nutrition"
-                              : "healthcare"
-                          }
-                          title={project.title}
-                          category={project.domain}
-                        />
-                      </div>
-                    </div>
+                    <Link href={`/work/${project.slug}`} className="block mb-5 overflow-hidden rounded-2xl">
+                      <AssetFrame
+                        src={project.cover}
+                        alt={project.title}
+                        aspectRatio="16/10"
+                        label={`Add real screen for ${project.title}`}
+                        sublabel={project.domainTags[0]}
+                        badge="Case Study"
+                        className="group-hover:scale-102 transition-transform duration-500"
+                      />
+                    </Link>
 
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="px-3 py-1 rounded-full text-[11px] font-semibold bg-blush-100 text-rose-800 border border-blush-200">
-                        {project.domain}
+                    {/* Metadata Tags */}
+                    <div className="flex flex-wrap items-center gap-2 mb-3">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blush-100 text-rose-800">
+                        {project.category}
                       </span>
-                      <span className="text-[11px] font-sans text-plum-600 font-medium">
-                        {project.period}
-                      </span>
-                    </div>
-
-                    <h3 className="font-serif text-2xl font-bold text-plum group-hover:text-rose-600 transition-colors mb-2">
-                      {project.title}
-                    </h3>
-
-                    <p className="font-sans text-xs sm:text-sm text-plum-600 leading-relaxed mb-6">
-                      {project.summary}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-blush-100 flex items-center justify-between">
-                    <div className="flex items-center gap-1.5">
-                      {project.tools.map((tool) => (
+                      {project.domainTags.map((tag) => (
                         <span
-                          key={tool}
-                          className="px-2.5 py-0.5 rounded-full bg-cream-100 text-[10px] font-medium text-plum border border-blush-200"
+                          key={tag}
+                          className="px-2.5 py-0.5 rounded-full text-[11px] bg-cream-100 text-plum-600 border border-blush-200"
                         >
-                          {tool}
+                          {tag}
                         </span>
                       ))}
                     </div>
 
+                    <h3 className="font-serif font-bold text-xl text-plum mb-2 group-hover:text-rose-700 transition-colors">
+                      <Link href={`/work/${project.slug}`}>{project.title}</Link>
+                    </h3>
+
+                    <p className="font-sans text-xs sm:text-sm text-plum-600 leading-relaxed mb-6 line-clamp-3">
+                      {project.summary}
+                    </p>
+
+                    {/* Role & Tools */}
+                    <div className="space-y-1 text-xs text-plum-500 pt-4 border-t border-blush-100">
+                      <div>
+                        <span className="font-semibold text-plum-700">Role:</span> {project.role}
+                      </div>
+                      <div>
+                        <span className="font-semibold text-plum-700">Tools:</span> {project.tools.join(", ")}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card Footer Link */}
+                  <div className="p-6 pt-0">
                     <Link
                       href={`/work/${project.slug}`}
-                      className="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-rose-500 text-white text-xs font-semibold hover:bg-rose-600 transition-all active:scale-95 shadow-soft-sm"
-                      aria-label={`Explore case study for ${project.title}`}
+                      className="w-full inline-flex items-center justify-between px-5 py-3 rounded-2xl bg-cream-50 hover:bg-rose-500 text-plum hover:text-white font-sans text-xs font-semibold border border-blush-200 hover:border-transparent transition-all duration-200"
                     >
-                      <span>Case Study</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
+                      <span>Read Case Study Story</span>
+                      <ArrowUpRight className="w-4 h-4" />
                     </Link>
                   </div>
                 </div>
@@ -168,9 +140,9 @@ export default function WorkPage() {
           </div>
         )}
 
-        {/* Section 2: Logo Designs (Shown if All or Logo) */}
+        {/* Section 2: Logo Design (Shown if All or Logo) */}
         {(activeCategory === "All" || activeCategory === "Logo") && (
-          <div className="mb-16">
+          <div className="mb-20">
             <div className="flex items-center justify-between mb-8 pb-3 border-b border-blush-200">
               <div className="flex items-center gap-2">
                 <Palette className="w-5 h-5 text-rose-500" />
@@ -192,6 +164,12 @@ export default function WorkPage() {
                   className="p-6 rounded-3xl bg-white border border-blush-200 shadow-soft glass-card-hover flex flex-col justify-between"
                 >
                   <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-lilac-200 text-plum-900 border border-lilac-300">
+                        Concept
+                      </span>
+                      <span className="text-[11px] text-plum-500">{logo.industry}</span>
+                    </div>
                     <AssetFrame
                       src={logo.newLogo}
                       alt={logo.title}
@@ -216,10 +194,10 @@ export default function WorkPage() {
 
         {/* Section 3: Brand Kits (Shown if All or Brand) */}
         {(activeCategory === "All" || activeCategory === "Brand") && (
-          <div className="mb-16">
+          <div className="mb-20">
             <div className="flex items-center justify-between mb-8 pb-3 border-b border-blush-200">
               <div className="flex items-center gap-2">
-                <Award className="w-5 h-5 text-rose-500" />
+                <Sparkles className="w-5 h-5 text-rose-500" />
                 <h2 className="font-serif text-2xl font-bold text-plum">Brand Identity Kits</h2>
               </div>
               <Link
@@ -238,6 +216,12 @@ export default function WorkPage() {
                   className="p-6 sm:p-8 rounded-3xl bg-white border border-blush-200 shadow-soft glass-card-hover flex flex-col justify-between"
                 >
                   <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-lilac-200 text-plum-900 border border-lilac-300">
+                        Concept
+                      </span>
+                      <span className="text-xs text-plum-500">{kit.industry}</span>
+                    </div>
                     <AssetFrame
                       src={kit.mockups[0]?.file}
                       alt={kit.title}
@@ -303,6 +287,12 @@ export default function WorkPage() {
                   className="p-6 rounded-3xl bg-white border border-blush-200 shadow-soft glass-card-hover flex flex-col justify-between"
                 >
                   <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-lilac-200 text-plum-900 border border-lilac-300">
+                        Sample
+                      </span>
+                      <span className="text-[11px] text-plum-500 capitalize">{item.category}</span>
+                    </div>
                     <AssetFrame
                       src={item.file}
                       alt={item.title}

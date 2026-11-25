@@ -74,7 +74,7 @@ export default function ResumePage() {
               Professional Summary
             </h3>
             <p className="font-sans text-xs sm:text-sm text-plum-700 leading-relaxed">
-              UI/UX and Product Designer with 2 years of experience designing user-centered digital products,
+              UI/UX and Product Designer designing user-centered digital products,
               mobile applications and responsive websites across healthcare, SaaS, e-commerce and
               event-management domains. Experienced in UX research, user flows, wireframing, interactive
               prototyping, responsive UI design, product redesign, problem solving and visual design, using Figma

@@ -3,7 +3,7 @@ import { siteConfig } from "@/data/site";
 import { skillCategories, designTools, spokenLanguages } from "@/data/skills";
 import { experiences, education, aboutNarrative } from "@/data/about";
 import { SparkleIcon } from "@/components/common/Stickers";
-import { MapPin, Mail, Phone, Calendar, ArrowRight, Award, GraduationCap } from "lucide-react";
+import { MapPin, Mail, Phone, Calendar, ArrowRight, Briefcase, GraduationCap } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -79,7 +79,7 @@ export default function AboutPage() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-blush-100 mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-2xl bg-blush-100 flex items-center justify-center text-rose-600">
-                      <Award className="w-5 h-5" />
+                      <Briefcase className="w-5 h-5" />
                     </div>
                     <div>
                       <h3 className="font-serif text-xl font-bold text-plum">{exp.title}</h3>

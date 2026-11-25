@@ -176,7 +176,7 @@ export const brandKits: BrandKitEntry[] = [
     usageRules: [
       "Embossed foil accents should be reserved for couple/host names and milestone dates.",
       "Never compress or alter ligature spacing in the customized headline wordmark.",
-      "Maintain a 15% minimum margin border on all digital and printed invitation canvases.",
+      "Maintain a generous margin border on all digital and printed invitation canvases.",
     ],
     mockups: [
       {

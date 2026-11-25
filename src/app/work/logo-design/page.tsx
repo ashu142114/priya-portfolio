@@ -1,14 +1,13 @@
 import Link from "next/link";
 import { logos } from "@/data/logos";
 import AssetFrame from "@/components/common/AssetFrame";
-import { SparkleIcon } from "@/components/common/Stickers";
-import { ArrowLeft, Palette, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Palette } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Logo Design & Brand Marks",
   description:
-    "Explore vector logos, monograms, and brand marks created by Priya K. Lakkad across Healthcare, SaaS, Wellness, and Events.",
+    "Explore vector logos, monograms, and conceptual brand marks created by Priya K. Lakkad across Healthcare, SaaS, Wellness, and Events.",
 };
 
 export default function LogoDesignPage() {
@@ -33,14 +32,14 @@ export default function LogoDesignPage() {
             Logo Design & Brand Marks
           </h1>
           <p className="font-sans text-sm sm:text-base text-plum-600 mt-3 leading-relaxed">
-            Clean, memorable monograms and vector marks designed with Figma. Each identity is rooted in
+            Clean, memorable monograms and vector marks designed with Figma. Each concept identity is rooted in
             geometric balance, scalable vector paths, and emotional relevance to its domain.
           </p>
         </div>
 
         {/* Logos Showcase List */}
         <div className="space-y-12">
-          {logos.map((logo, idx) => (
+          {logos.map((logo) => (
             <div
               key={logo.id}
               className="p-8 sm:p-12 rounded-4xl bg-white border border-blush-200 shadow-soft-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
@@ -49,6 +48,9 @@ export default function LogoDesignPage() {
               <div className="lg:col-span-6 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 mb-3">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-lilac-200 text-plum-900 border border-lilac-300">
+                      Concept
+                    </span>
                     <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blush-100 text-rose-800">
                       {logo.industry}
                     </span>

@@ -13,7 +13,7 @@ export interface SiteConfig {
   city: string;
   state: string;
   country: string;
-  experienceYears: string;
+  experienceSince: string;
   currentRole: {
     title: string;
     company: string;
@@ -50,7 +50,7 @@ export const siteConfig: SiteConfig = {
   city: "Surat",
   state: "Gujarat",
   country: "India",
-  experienceYears: "2+ years",
+  experienceSince: "11/2024",
   currentRole: {
     title: "UI/UX Designer",
     company: "ProjectTree",

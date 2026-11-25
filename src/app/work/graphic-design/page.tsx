@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { graphics } from "@/data/graphics";
 import AssetFrame from "@/components/common/AssetFrame";
-import { ArrowLeft, Image as ImageIcon, Sparkles } from "lucide-react";
+import { ArrowLeft, Image as ImageIcon } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Advertising, Print & Marketing Collateral",
   description:
-    "Explore advertising banners, flyers, brochures, business cards, invitations, and social media creatives designed by Priya K. Lakkad.",
+    "Explore advertising banners, flyers, brochures, business cards, invitations, and social media creative samples designed by Priya K. Lakkad.",
 };
 
 export default function GraphicDesignPage() {
@@ -32,7 +32,7 @@ export default function GraphicDesignPage() {
             Graphic & Advertising Design
           </h1>
           <p className="font-sans text-sm sm:text-base text-plum-600 mt-3 leading-relaxed">
-            High-impact marketing collateral, print-ready files, social media creative suites, and bespoke luxury invitations crafted in Figma and Canva.
+            High-impact marketing collateral samples, print-ready layouts, social media creative suites, and bespoke invitations crafted in Figma and Canva.
           </p>
         </div>
 
@@ -55,6 +55,9 @@ export default function GraphicDesignPage() {
                 />
 
                 <div className="flex items-center gap-2 mb-2">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-lilac-200 text-plum-900 border border-lilac-300">
+                    Sample
+                  </span>
                   <span className="px-3 py-0.5 rounded-full text-[11px] font-semibold bg-blush-100 text-rose-800 capitalize">
                     {item.category}
                   </span>

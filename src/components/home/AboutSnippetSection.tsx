@@ -2,7 +2,7 @@ import Link from "next/link";
 import { siteConfig } from "@/data/site";
 import { designTools, spokenLanguages } from "@/data/skills";
 import { SparkleIcon } from "@/components/common/Stickers";
-import { ArrowRight, MapPin, Award, GraduationCap } from "lucide-react";
+import { ArrowRight, MapPin, Briefcase, GraduationCap } from "lucide-react";
 
 export default function AboutSnippetSection() {
   return (
@@ -43,7 +43,7 @@ export default function AboutSnippetSection() {
                 <div className="relative z-10 p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-blush-200 shadow-soft-sm flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2">
                     <div className="w-7 h-7 rounded-lg bg-blush-100 flex items-center justify-center text-rose-700">
-                      <Award className="w-4 h-4" />
+                      <Briefcase className="w-4 h-4" />
                     </div>
                     <div>
                       <span className="font-semibold block text-plum">ProjectTree</span>

@@ -198,7 +198,7 @@ export default function Chapter3BeforeAfter() {
                   <div className="flex items-center justify-between pb-3 border-b border-blush-100 mb-4">
                     <div>
                       <span className="text-[10px] font-semibold text-rose-700 uppercase tracking-wider block">
-                        CareFlow Telemedicine
+                        CareFlow Telemedicine (Concept)
                       </span>
                       <h4 className="font-serif font-bold text-base text-plum">
                         Appointment Confirmed

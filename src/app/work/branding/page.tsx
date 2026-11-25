@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { brandKits } from "@/data/brandKits";
 import AssetFrame from "@/components/common/AssetFrame";
-import { ArrowLeft, Award, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Sparkles, CheckCircle2 } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Brand Identity Kits & Design Systems",
   description:
-    "Explore comprehensive brand identity kits, color guidelines, typography rules, and collateral mockups by Priya K. Lakkad.",
+    "Explore comprehensive conceptual brand identity kits, color guidelines, typography rules, and collateral mockups by Priya K. Lakkad.",
 };
 
 export default function BrandingPage() {
@@ -25,14 +25,14 @@ export default function BrandingPage() {
         {/* Header */}
         <div className="max-w-3xl mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blush-100 text-rose-800 text-xs font-semibold tracking-wide border border-blush-200 mb-4">
-            <Award className="w-3.5 h-3.5 text-rose-600" />
+            <Sparkles className="w-3.5 h-3.5 text-rose-600" />
             <span>Brand Systems</span>
           </div>
           <h1 className="font-serif text-4xl sm:text-5xl font-bold text-plum tracking-tight">
             Brand Identity Kits
           </h1>
           <p className="font-sans text-sm sm:text-base text-plum-600 mt-3 leading-relaxed">
-            Holistic brand systems that connect seamlessly across digital platforms, app interfaces, and print stationery.
+            Holistic conceptual brand systems designed to connect seamlessly across digital platforms, app interfaces, and print stationery.
           </p>
         </div>
 
@@ -45,9 +45,14 @@ export default function BrandingPage() {
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <div className="lg:col-span-7">
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blush-100 text-rose-800 inline-block mb-3">
-                    {kit.industry} • {kit.year}
-                  </span>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-lilac-200 text-plum-900 border border-lilac-300">
+                      Concept
+                    </span>
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blush-100 text-rose-800 inline-block">
+                      {kit.industry} • {kit.year}
+                    </span>
+                  </div>
                   <h2 className="font-serif text-3xl font-bold text-plum mb-3">{kit.title}</h2>
                   <p className="font-sans text-sm text-plum-600 leading-relaxed mb-6">
                     {kit.summary}

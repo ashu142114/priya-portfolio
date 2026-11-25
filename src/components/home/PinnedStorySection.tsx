@@ -322,7 +322,7 @@ export default function PinnedStorySection() {
                         P.
                       </div>
                       <div>
-                        <h5 className="font-serif font-bold text-xs text-plum">CareFlow Brand</h5>
+                        <h5 className="font-serif font-bold text-xs text-plum">CareFlow Brand <span className="text-[10px] text-plum-500 font-sans font-normal">(Concept)</span></h5>
                         <span className="text-[10px] text-plum-400">Design System Palette</span>
                       </div>
                     </div>

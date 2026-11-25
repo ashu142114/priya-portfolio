@@ -694,11 +694,11 @@ export const projects: Project[] = [
     tools: ["Figma"],
     cover: "/projects/service-based-booking-platform/cover.png",
     summary:
-      "A versatile web and mobile booking platform supporting multiple service industries (wellness, personal care, professional consultations) with intuitive service discovery, transparent pricing, and instant calendar scheduling.",
+      "A versatile web and mobile booking platform supporting multiple service industries (wellness, personal care, professional consultations) with intuitive service discovery, transparent fee structures, and instant calendar scheduling.",
     problem:
       "Service businesses often lose customers due to confusing multi-page scheduling funnels, hidden add-on costs, and mismatched calendar time slots.",
     solution:
-      "Developed an end-to-end booking architecture with clear service categorization, transparent pricing drawers, live provider calendar integration, and automated confirmation reminders.",
+      "Developed an end-to-end booking architecture with clear service categorization, transparent fee drawers, live provider calendar integration, and automated confirmation reminders.",
     features: [
       "Cross-industry service catalog with rich previews and duration indicators",
       "Dynamic real-time calendar slot picker with timezone synchronization",
@@ -721,7 +721,7 @@ export const projects: Project[] = [
     screens: [
       {
         title: "Service Selection & Catalog",
-        description: "Clean service cards with pricing, duration, and expandable package details.",
+        description: "Clean service cards with rates, duration, and expandable package details.",
         type: "web",
         accentColor: "#F8D7DF",
       },
@@ -761,7 +761,7 @@ export const projects: Project[] = [
       hiFiScreens: [
         {
           title: "Service Catalog & Package Details",
-          description: "Clean service cards with clear duration and pricing breakdown.",
+          description: "Clean service cards with clear duration and rate breakdown.",
           file: "/projects/service-based-booking-platform/screen-1.png",
           accentColor: "#F8D7DF",
         },
@@ -793,7 +793,7 @@ export const projects: Project[] = [
         ],
         fonts: [
           { name: "Fraunces", usage: "Platform headings & service titles" },
-          { name: "DM Sans", usage: "Pricing cards, time slots & checkout notes" },
+          { name: "DM Sans", usage: "Service cards, time slots & checkout notes" },
         ],
         components: [
           "Service Catalog Card",

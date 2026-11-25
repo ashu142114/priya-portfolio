@@ -155,9 +155,9 @@ export function LegacyBookingScreen({ className = "" }: LegacyScreenProps) {
       </div>
       <div className="p-2 bg-white border border-gray-300 space-y-1">
         <div className="font-bold">Select Sub-package Add-on:</div>
-        <div>[x] Service Charge ($15)</div>
-        <div>[ ] Weekend Premium ($25)</div>
-        <div>[ ] Priority Specialist Access ($40)</div>
+        <div>[x] Standard Booking Add-on</div>
+        <div>[ ] Weekend Slot Add-on</div>
+        <div>[ ] Priority Specialist Access</div>
       </div>
       <div className="text-[8px] text-gray-500 pt-1 text-center">
         Recreated legacy example for comparative case study

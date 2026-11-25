@@ -9,24 +9,35 @@
   --rose: #D9577B;
   --lilac: #E6DDF7;
   --plum: #2B1B2E;
+
+  /* Dynamic Design Tokens for Story Scrubbing */
+  --bg-primary: #FFF8F5;
+  --text-primary: #2B1B2E;
+  --accent-primary: #D9577B;
+  --accent-secondary: #F8D7DF;
+  --surface: rgba(255, 255, 255, 0.88);
+  --border-color: rgba(248, 215, 223, 0.8);
+  --card-radius: 28px;
 }
 
 html {
   scroll-behavior: auto; /* Managed by Lenis */
-  background-color: #FFF8F5;
-  color: #2B1B2E;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body {
-  background-color: #FFF8F5;
-  color: #2B1B2E;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
-  selection-background-color: #F8D7DF;
-  selection-color: #2B1B2E;
+  selection-background-color: var(--accent-secondary);
+  selection-color: var(--text-primary);
+  transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 ::selection {
@@ -63,10 +74,12 @@ html.lenis, html.lenis body {
 
 /* Glassmorphism card styles */
 .glass-card {
-  background: rgba(255, 255, 255, 0.72);
+  background: var(--surface);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(248, 215, 223, 0.65);
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  transition: background 0.6s ease, border-color 0.6s ease, border-radius 0.6s ease;
 }
 
 .glass-card-hover {

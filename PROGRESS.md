@@ -42,11 +42,11 @@
 - [x] E4. /work: category filter (All/Product/Logo/Brand/Graphic) with layout animation, MaskImage hover reveal, cursor "View" - Complete: category filtered work showcase with MaskImage reveals and cursor triggers
 
 ### [F] SITE-WIDE UPGRADE
-- [ ] F1. Project cards redesigned: code-generated cover (hero screen on tilted device over gradient backdrop), category chip, tags, hover tilt/lift, consistent tokens
-- [ ] F2. /design-system page: full tokens, component library, 4 themes + light/dark, tokens.css block
-- [ ] F3. /process, /services (8 cards), /about, /resume, /contact, /faq: replace old fade-ups with SplitText + staggered reveals; consistent layout and spacing
-- [ ] F4. Page transitions + custom cursor states applied site-wide; remove all dated or duplicate animations
-- [ ] F5. SEO: per-page metadata, Open Graph image, JSON-LD Person (no invented claims), sitemap with all routes, robots, /llms.txt, canonical
+- [x] F1. Project cards redesigned: code-generated cover (hero screen on tilted device over gradient backdrop), category chip, tags, hover tilt/lift, consistent tokens - Complete: ProjectCard with 3D tilted PhoneFrame on glowing gradient backdrop
+- [x] F2. /design-system page: full tokens, component library, 4 themes + light/dark, tokens.css block - Complete: interactive tokens lab with theme presets, component specimens, and live tokens.css
+- [x] F3. /process, /services (8 cards), /about, /resume, /contact, /faq: replace old fade-ups with SplitText + staggered reveals; consistent layout and spacing - Complete: SplitText headers and MagneticButton CTAs on all 6 core subpages
+- [x] F4. Page transitions + custom cursor states applied site-wide; remove all dated or duplicate animations - Complete: custom cursor (View/Drag/Play) and route transitions verified site-wide
+- [x] F5. SEO: per-page metadata, Open Graph image, JSON-LD Person (no invented claims), sitemap with all routes, robots, /llms.txt, canonical - Complete: dedicated layouts with per-page metadata, OpenGraph image, Person schema, robots, and sitemap
 
 ### [G] FINAL QA
 - [ ] G1. Crawl every route in sitemap: HTTP 200, no console errors, no broken links

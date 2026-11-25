@@ -17,17 +17,11 @@
 - [x] A12. /motion-lab page showing every component. Verify 60fps (no long tasks > 50ms) - Complete: interactive test bench with live FPS counter
 
 ### [B] REALISTIC VISUAL LIBRARY (code-only)
-- [ ] B1. Realistic device frames: iPhone-style (island, status bar time/battery/signal, home indicator) and browser/laptop frame with address bar. Rebuild MockupFrame.tsx
-- [ ] B2. Inline SVG icon set (lucide) + avatar generator (initials/gradients) + chart primitives (sparkline, ring, bar, calendar)
-- [ ] B3. Screens as React components using theme tokens, with realistic sample content, 6-8 per project:
-  - Healthcare App (dashboard, doctor list, booking calendar + slots, telemedicine call, lab reports, insurance card, family profiles)
-  - Women's Health App (cycle ring + predicted dates, phase-coloured calendar, symptom logger, insights, health records, PCOD/PCOS info article)
-  - AI Healthcare Module (chat bubbles, quick-reply chips, typing indicator, suggestion cards)
-  - Diet & Nutrition (calorie ring, macro bars, water tracker, meal log, weekly chart)
-  - Invitation App (template picker, editor with controls, preview card, share sheet)
-  - Service Booking Platform (service list, provider cards, date/time picker, confirmation)
-- [ ] B4. Auto-generated wireframe variant of each screen (grey boxes/outlines via a "wireframe" prop)
-- [ ] B5. Believable "before" (legacy) variant of each project's key screen: weak hierarchy, cramped spacing, inconsistent fonts, harsh colours, tiny tap targets, too many CTAs. Mark as "recreated legacy example"
+- [x] B1. Realistic device frames: iPhone-style (island, status bar time/battery/signal, home indicator) and browser/laptop frame with address bar. Rebuild MockupFrame.tsx - Complete: realistic iPhone bezel + Dynamic Island and macOS browser chrome
+- [x] B2. Inline SVG icon set (lucide) + avatar generator (initials/gradients) + chart primitives (sparkline, ring, bar, calendar) - Complete: Primitives.tsx with SVG sparklines, progress rings, bar charts, and calendar grids
+- [x] B3. Screens as React components using theme tokens, with realistic sample content, 6-8 per project - Complete: ProjectScreens.tsx covering Healthcare, Women's Health, AI, Nutrition, Invitations, Service Booking
+- [x] B4. Auto-generated wireframe variant of each screen (grey boxes/outlines via a "wireframe" prop) - Complete: wireframe prop switches screens to neutral grey wireframes with outlined components
+- [x] B5. Believable "before" (legacy) variant of each project's key screen: weak hierarchy, cramped spacing, inconsistent fonts, harsh colours, tiny tap targets, too many CTAs. Mark as "recreated legacy example" - Complete: LegacyScreens.tsx with 6 recreated cluttered legacy screens
 
 ### [C] HOME CHAPTERS 4-7 (keep Chapters 1-3 intact, keep 01/07 progress indicator)
 - [ ] C1. Chapter 4 DESIGN PROCESS: one phone transforms through Research (sticky notes) -> Flows (SVG lines draw) -> Wireframe (grey) -> Hi-fi UI (theme colours fill) -> Prototype (tap hotspots, screen transition). Pinned, scrubbed, step indicator

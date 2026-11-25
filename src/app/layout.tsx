@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/common/SmoothScroll";
 import CustomCursor from "@/components/common/CustomCursor";
+import JsonLd from "@/components/common/JsonLd";
 import { DecorativeGlowBlobs } from "@/components/common/Stickers";
 import { siteConfig } from "@/data/site";
 
@@ -77,6 +78,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${fraunces.variable} ${dmSans.variable}`}>
+      <head>
+        <JsonLd />
+      </head>
       <body className="font-sans bg-cream-100 text-plum antialiased selection:bg-blush-200 selection:text-plum min-h-screen relative overflow-x-hidden">
         {/* Subtle background grain texture */}
         <div className="fixed inset-0 grain-overlay -z-20 pointer-events-none" aria-hidden="true" />

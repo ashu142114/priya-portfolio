@@ -1,0 +1,34 @@
+# Priya K. Lakkad - UI/UX & Product Designer
+
+> Portfolio and design philosophy of Priya K. Lakkad, a UI/UX & Product Designer based in Surat, Gujarat, India.
+
+## Contact Information
+- Name: Priya K. Lakkad
+- Title: UI/UX Designer | Product Designer
+- Email: priyalakkad11@gmail.com
+- Phone / WhatsApp: +91 70486 28505
+- Location: Surat, Gujarat, India
+- Current Role: UI/UX Designer at ProjectTree (since 11/2024)
+- Education: BCA, V.N. Borad Mahila BCA College, Junagadh (2024)
+
+## Core Domains
+- Healthcare (Patient portals, telemedicine, lab reports, menstrual cycle tracking, AI triage)
+- SaaS (Multi-service booking platforms, task scheduling, internal workflows)
+- E-commerce (Checkout funnels, service catalogs, appointment booking)
+- Event Management (Digital invitations, guest RSVP tracking, custom cards)
+
+## Design Tools
+- Figma (Primary tool for user flows, wireframes, high-fidelity UI design, component systems, and interactive prototypes)
+- Canva (Brand identity, social media creatives, flyers, brochures, business cards, invitations)
+
+## Key Projects
+1. Healthcare Mobile App: Appointment booking, telemedicine consultations, lab reports, insurance, yoga & fitness routines, family health management.
+2. Women's Health App: Menstrual health tracking, cycle calendar, period prediction, confidential health records, PCOD/PCOS guidance.
+3. AI Healthcare Module: Reassuring conversational AI interaction flows and healthcare triage designed for simplicity and accessibility.
+4. Diet & Nutrition Module: Nutrition tracking, calorie and macro targets, hydration meters, meal logging, health progress.
+5. Invitation App: Curated invitation creation, customization canvas, RSVP tracking, modern sharing flow.
+6. Service-Based Booking Platform: Multi-industry service discovery, provider calendar selection, transparent checkout, appointment management.
+
+## Technical & Professional Boundaries
+- Specialization: UI/UX & Product Design exclusively.
+- Does NOT do: Web coding, WordPress, Shopify, or AI video generation.

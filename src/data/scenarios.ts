@@ -3,6 +3,7 @@ export interface Persona {
   age: number;
   role: string;
   goal: string;
+  pain?: string;
 }
 
 export interface ProjectScenario {
@@ -11,6 +12,8 @@ export interface ProjectScenario {
   tagline: string;
   tone: string;
   badgeLabel: "Concept" | "Sample";
+  radius?: string;
+  iconStyle?: string;
   palette: {
     primary: string;
     primarySoft: string;

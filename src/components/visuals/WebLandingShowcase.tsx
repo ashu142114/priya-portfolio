@@ -88,7 +88,7 @@ export function WebLandingShowcase() {
   }, []);
 
   const site = WEB_SITES[activeIdx];
-  const translateY = -(innerScroll * 220);
+  const translateY = -(innerScroll * 340);
 
   return (
     <div ref={sectionRef} className="space-y-6">
@@ -195,6 +195,41 @@ export function WebLandingShowcase() {
                 </div>
               ))}
             </section>
+
+            {/* Sample Testimonials Band */}
+            <section className="px-6 sm:px-10 py-8 border-t" style={{ backgroundColor: site.bg }}>
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="font-serif font-bold text-base">Community Perspectives</h4>
+                <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase bg-white border">
+                  Sample
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { quote: "The clean appointment summary and clear INR fee breakdown remove hesitation before booking.", author: "Rohan M. • Surat (Sample)" },
+                  { quote: "Readable labels and calm colors make everyday tracking effortless on mobile and desktop.", author: "Meera K. • Ahmedabad (Sample)" },
+                ].map((t) => (
+                  <div key={t.author} className="p-4 rounded-2xl bg-white border text-xs space-y-2">
+                    <p className="opacity-85 leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
+                    <p className="font-bold text-[10px]" style={{ color: site.accent }}>{t.author}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Footer Band */}
+            <footer className="px-6 sm:px-10 py-6 bg-slate-900 text-white text-[11px] flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <div className="font-serif font-bold text-sm">{site.title.split(" — ")[0]}</div>
+                <div className="text-slate-400 text-[10px]">Concept Web UI • Designed by Priya K. Lakkad</div>
+              </div>
+              <div className="flex gap-4 text-slate-300 text-[10px]">
+                <span>Overview</span>
+                <span>Features</span>
+                <span>Pricing (INR)</span>
+                <span>Contact</span>
+              </div>
+            </footer>
           </div>
 
           {/* Scrub Scroll Indicator Pill inside Browser */}

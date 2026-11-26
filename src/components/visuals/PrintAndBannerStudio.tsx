@@ -450,6 +450,105 @@ export function PrintAndBannerStudio() {
           ))}
         </div>
       </section>
+
+      {/* ===================================================================== */}
+      {/* 5. A4/A3 FLYERS, MENU CARD, CERTIFICATE & BIRTHDAY INVITATION         */}
+      {/* ===================================================================== */}
+      <section className="space-y-6">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-blush-200 pb-4">
+          <div>
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-lilac-200 text-plum-900 border border-lilac-300 mr-2">
+              Sample
+            </span>
+            <span className="text-xs font-mono text-rose-700 font-bold uppercase">
+              05 • A4/A3 Flyers, Menu Card, Certificate &amp; Birthday Invite
+            </span>
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-plum mt-1">
+              Print Collateral &amp; Event Stationery
+            </h3>
+          </div>
+        </div>
+
+        {/* 4 Flyers Grid: Event, Clinic, Salon, Sale */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { tag: "A4 Event Flyer", title: "Surat Design & Craft Pop-Up", sub: "14 Dec • 10 AM – 8 PM • Vesu", bg: "#FFFBF2", accent: "#B45309", ink: "#291D12" },
+            { tag: "A4 Clinic Flyer", title: "MediCare Plus Health Camp", sub: "Preventive Checkup • ₹499 Panel", bg: "#F4FAFA", accent: "#0D7C85", ink: "#0F292E" },
+            { tag: "A3 Salon Flyer", title: "Aura Botanical Hair & Skin", sub: "Monsoon Rituals • BookEase Slot", bg: "#FDF4F6", accent: "#C04868", ink: "#2B1B2E" },
+            { tag: "A4 Festive Sale", title: "Diwali Artisan Home Edit", sub: "Curated Brass & Linen • Surat", bg: "#1E1B2E", accent: "#F59E0B", ink: "#FFFFFF" },
+          ].map((flyer) => (
+            <div
+              key={flyer.tag}
+              className="aspect-[3/4] rounded-2xl p-5 border border-blush-200 shadow-soft flex flex-col justify-between"
+              style={{ backgroundColor: flyer.bg, color: flyer.ink }}
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-[9px] font-mono uppercase tracking-wider opacity-75">{flyer.tag}</span>
+                <span className="px-2 py-0.5 rounded-full text-[8px] font-bold uppercase" style={{ backgroundColor: flyer.accent, color: "#fff" }}>
+                  Sample
+                </span>
+              </div>
+              <div className="space-y-2">
+                <div className="h-1 w-10 rounded-full" style={{ backgroundColor: flyer.accent }} />
+                <h4 className="font-serif text-lg font-bold leading-snug">{flyer.title}</h4>
+                <p className="text-[11px] opacity-80">{flyer.sub}</p>
+              </div>
+              <div className="pt-3 border-t border-current/15 flex items-center justify-between text-[9px] font-mono opacity-80">
+                <span>Print 300 DPI • CMYK</span>
+                <span>Surat</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Menu Card, Certificate, Birthday Invitation */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Cafe Menu Card */}
+          <div className="rounded-2xl bg-[#FFFDF9] border border-amber-200 p-5 shadow-soft space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono uppercase text-amber-800 font-bold">Menu Card • Sample</span>
+              <span className="text-[10px] text-amber-700">120 × 210mm</span>
+            </div>
+            <h4 className="font-serif text-lg font-bold text-[#291D12]">Saffron &amp; Bean Cafe</h4>
+            <div className="space-y-2 text-xs text-[#291D12]">
+              {[
+                { item: "Cardamom Cold Brew", price: "₹180" },
+                { item: "Paneer Pesto Sourdough", price: "₹260" },
+                { item: "Almond Rose Tart", price: "₹210" },
+              ].map((m) => (
+                <div key={m.item} className="flex justify-between border-b border-amber-100 pb-1">
+                  <span>{m.item}</span>
+                  <span className="font-bold">{m.price}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Completion Certificate */}
+          <div className="rounded-2xl bg-white border-4 border-double border-slate-300 p-5 shadow-soft flex flex-col justify-between text-center space-y-2">
+            <span className="text-[9px] font-mono uppercase tracking-widest text-slate-500">Certificate • Sample</span>
+            <h4 className="font-serif text-lg font-bold text-slate-900">Design Workshop Honor</h4>
+            <p className="text-[11px] text-slate-600">Presented to Ananya Deshmukh for completing Human-Centered UI Systems.</p>
+            <div className="pt-2 border-t border-slate-100 flex justify-between text-[9px] text-slate-500 font-mono">
+              <span>Surat Chapter</span>
+              <span>Seal Verified</span>
+            </div>
+          </div>
+
+          {/* Birthday Invitation Card */}
+          <div className="rounded-2xl bg-gradient-to-br from-[#FDF2F8] via-[#FCE7F3] to-[#F3E8FF] border border-rose-200 p-5 shadow-soft flex flex-col justify-between space-y-2">
+            <div className="flex justify-between items-center">
+              <span className="text-[9px] font-mono uppercase text-rose-700 font-bold">Birthday Invite • Sample</span>
+              <Sparkles className="w-3.5 h-3.5 text-rose-600" />
+            </div>
+            <h4 className="font-serif text-xl font-bold text-[#2B1B2E]">Aarav Turns 5!</h4>
+            <p className="text-[11px] text-[#4B364F]">Join us for games, cake &amp; stories • Saturday, 5:00 PM • Piplod Garden</p>
+            <div className="pt-2 border-t border-rose-200/70 text-[9px] font-mono text-rose-800">
+              RSVP via Utsav Studio QR
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

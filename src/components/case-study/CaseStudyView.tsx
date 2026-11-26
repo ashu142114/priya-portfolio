@@ -13,14 +13,21 @@ import {
   HorizontalPin,
   MagneticButton,
 } from "@/components/motion";
-import { PhoneFrame, TabletFrame, BrowserFrame } from "@/components/visuals/DeviceFrame";
+import { PhoneFrame, AndroidFrame, TabletFrame, BrowserFrame } from "@/components/visuals/DeviceFrame";
 import * as Screens from "@/components/visuals/ProjectScreens";
 import * as Legacy from "@/components/visuals/LegacyScreens";
 import {
   ScenarioMobileHero,
-  ScenarioAdminDashboard,
   ScenarioUiStates,
 } from "@/components/visuals/DeepProjectScreens";
+import { ScreenWrapper } from "@/components/factory/ScreenWrapper";
+import { ProcessArtifacts } from "@/components/factory/ProcessArtifacts";
+import * as P1 from "@/components/factory/Project1Healthcare";
+import * as P2 from "@/components/factory/Project2WomensHealth";
+import * as P3 from "@/components/factory/Project3AiModule";
+import * as P4 from "@/components/factory/Project4Diet";
+import * as P5 from "@/components/factory/Project5Invitation";
+import * as P6 from "@/components/factory/Project6Booking";
 import { LazyViewport } from "@/components/visuals/LazyViewport";
 import BeforeAfterSlider from "@/components/common/BeforeAfterSlider";
 import { SparkleIcon } from "@/components/common/Stickers";
@@ -117,55 +124,91 @@ export default function CaseStudyView({ project, nextProject }: CaseStudyViewPro
     }
   };
 
-  // Helper to render project-specific hi-fi screens list
-  const renderHiFiGallery = () => {
+  // Helper to render project-specific hi-fi screens list from the Screen Factory
+  const renderHiFiGallery = (): Array<{ id: string; title: string; comp: React.ReactNode; android?: boolean }> => {
     switch (project.slug) {
       case "womens-health-app":
         return [
-          { title: "Cycle Calendar", comp: <Screens.WomensHealthCalendarScreen /> },
-          { title: "Symptom Check-in", comp: <Screens.WomensHealthSymptomLoggerScreen /> },
-          { title: "Hormone Insights", comp: <Screens.WomensHealthInsightsScreen /> },
-          { title: "Clinical Records", comp: <Screens.WomensHealthRecordsScreen /> },
-          { title: "PCOD Lifestyle Guide", comp: <Screens.WomensHealthPcodArticleScreen /> },
+          { id: "wh-onboarding", title: "Privacy Onboarding", comp: <P2.WhOnboardingScreen /> },
+          { id: "wh-cycle-home", title: "Cycle Phase Ring", comp: <P2.WhCycleHomeScreen /> },
+          { id: "wh-calendar-phase", title: "Fertile & Phase Calendar", comp: <P2.WhCalendarPhaseScreen /> },
+          { id: "wh-symptom-logger", title: "Daily Symptom Logger", comp: <P2.WhSymptomLoggerScreen />, android: true },
+          { id: "wh-insights", title: "Cycle Pattern Insights", comp: <P2.WhInsightsScreen /> },
+          { id: "wh-records", title: "Hormone Lab Vault", comp: <P2.WhHealthRecordsScreen /> },
+          { id: "wh-pcod-article", title: "PCOD Lifestyle Guide", comp: <P2.WhPcodArticleScreen /> },
+          { id: "wh-reminders", title: "Gentle Reminders", comp: <P2.WhRemindersScreen /> },
+          { id: "wh-settings", title: "Discreet Lock & Export", comp: <P2.WhSettingsScreen /> },
         ];
       case "ai-healthcare-module":
         return [
-          { title: "Triage Chat", comp: <Screens.AiChatScreen /> },
-          { title: "Quick Answer Pills", comp: <Screens.AiQuickRepliesScreen /> },
-          { title: "Live Synthesis", comp: <Screens.AiTypingIndicatorScreen /> },
-          { title: "Doctor Recommendation", comp: <Screens.AiSuggestionCardsScreen /> },
+          { id: "ai-chat-bubbles", title: "Symptom Intake Chat", comp: <P3.AiChatBubblesScreen /> },
+          { id: "ai-quick-replies", title: "Structured Quick Replies", comp: <P3.AiQuickRepliesScreen /> },
+          { id: "ai-typing", title: "Clinical Synthesis State", comp: <P3.AiTypingStateScreen />, android: true },
+          { id: "ai-triage-result", title: "Urgency Triage Result", comp: <P3.AiTriageResultScreen /> },
+          { id: "ai-doctor-handoff", title: "Doctor Handoff Summary", comp: <P3.AiDoctorHandoffScreen /> },
+          { id: "ai-history", title: "Past Triage Sessions", comp: <P3.AiHistoryScreen /> },
+          { id: "ai-voice-input", title: "Voice Symptom Input", comp: <P3.AiVoiceInputScreen /> },
+          { id: "ai-lab-explainer", title: "Plain-Language Lab Explainer", comp: <P3.AiLabExplainerScreen /> },
+          { id: "ai-emergency", title: "Red-Flag Escalation Card", comp: <P3.AiEmergencyAlertScreen /> },
         ];
       case "diet-nutrition-module":
         return [
-          { title: "Calorie & Macros", comp: <Screens.DietCalorieRingScreen /> },
-          { title: "Hydration Glasses", comp: <Screens.DietWaterTrackerScreen /> },
-          { title: "Meal Logs", comp: <Screens.DietMealLogScreen /> },
-          { title: "7-Day Intake Trend", comp: <Screens.DietWeeklyChartScreen /> },
+          { id: "diet-onboarding", title: "Goal & Thali Calibration", comp: <P4.DietOnboardingScreen /> },
+          { id: "diet-dashboard", title: "Daily Calorie & Macro Rings", comp: <P4.DietDashboardScreen /> },
+          { id: "diet-meal-log", title: "Indian Portion Meal Log", comp: <P4.DietMealLogScreen />, android: true },
+          { id: "diet-food-detail", title: "Food Macro Breakdown", comp: <P4.DietFoodDetailScreen /> },
+          { id: "diet-water", title: "Hydration Glass Tracker", comp: <P4.DietWaterTrackerScreen /> },
+          { id: "diet-weekly", title: "7-Day Nutrition Trend", comp: <P4.DietWeeklyReportScreen /> },
+          { id: "diet-recipes", title: "Vegetarian Tiffin Recipes", comp: <P4.DietRecipesScreen /> },
         ];
       case "invitation-app":
         return [
-          { title: "Theme Inspiration", comp: <Screens.InvitationTemplatePickerScreen /> },
-          { title: "Live Customization", comp: <Screens.InvitationEditorScreen /> },
-          { title: "Wax Seal Monogram", comp: <Screens.InvitationPreviewCardScreen /> },
-          { title: "Guest RSVP Tally", comp: <Screens.InvitationShareSheetScreen /> },
+          { id: "inv-gallery", title: "Festive & Wedding Gallery", comp: <P5.InvTemplateGalleryScreen /> },
+          { id: "inv-editor", title: "Live Foil & Type Editor", comp: <P5.InvEditorCanvasScreen /> },
+          { id: "inv-guests", title: "Family Guest & RSVP List", comp: <P5.InvGuestListScreen />, android: true },
+          { id: "inv-share", title: "WhatsApp & QR Share Sheet", comp: <P5.InvShareSheetScreen /> },
         ];
       case "service-based-booking-platform":
         return [
-          { title: "Service Packages", comp: <Screens.ServiceListCatalogScreen /> },
-          { title: "Specialist Portfolio", comp: <Screens.ServiceProviderCardScreen /> },
-          { title: "Real-Time Slot Matrix", comp: <Screens.ServiceSlotPickerScreen /> },
-          { title: "Instant Confirmation", comp: <Screens.ServiceConfirmationScreen /> },
+          { id: "bk-services", title: "Transparent INR Catalog", comp: <P6.BkServiceListScreen /> },
+          { id: "bk-provider", title: "Specialist Bio & Portfolio", comp: <P6.BkProviderProfileScreen /> },
+          { id: "bk-datetime", title: "Live Slot Matrix", comp: <P6.BkDateTimeScreen />, android: true },
+          { id: "bk-checkout", title: "UPI & Policy Checkout", comp: <P6.BkCheckoutScreen /> },
         ];
       case "healthcare-mobile-app":
       default:
         return [
-          { title: "Doctor Directory", comp: <Screens.HealthcareDoctorListScreen /> },
-          { title: "Calendar Booking", comp: <Screens.HealthcareBookingCalendarScreen /> },
-          { title: "Telemedicine Video", comp: <Screens.HealthcareTelemedicineScreen /> },
-          { title: "Diagnostic Reports", comp: <Screens.HealthcareLabReportsScreen /> },
-          { title: "Insurance Card", comp: <Screens.HealthcareInsuranceCardScreen /> },
-          { title: "Family Care Network", comp: <Screens.HealthcareFamilyProfilesScreen /> },
+          { id: "hc-onboarding", title: "Calm Care Onboarding", comp: <P1.HcOnboardingScreen /> },
+          { id: "hc-otp", title: "OTP Sign-In Verification", comp: <P1.HcOtpSignInScreen /> },
+          { id: "hc-home", title: "Patient Home Dashboard", comp: <P1.HcHomeDashboardScreen /> },
+          { id: "hc-search", title: "Specialist Search & Filters", comp: <P1.HcDoctorSearchScreen />, android: true },
+          { id: "hc-profile", title: "Doctor Profile & Credentials", comp: <P1.HcDoctorProfileScreen /> },
+          { id: "hc-slots", title: "Date & Time Slot Picker", comp: <P1.HcSlotBookingScreen /> },
+          { id: "hc-payment", title: "INR UPI Payment Sheet", comp: <P1.HcPaymentScreen /> },
+          { id: "hc-confirm", title: "Appointment Confirmation", comp: <P1.HcConfirmationScreen /> },
+          { id: "hc-telemed", title: "Telemedicine Video Call", comp: <P1.HcTelemedicineScreen /> },
+          { id: "hc-labs", title: "Diagnostic Lab Reports", comp: <P1.HcLabReportsScreen /> },
+          { id: "hc-insurance", title: "Digital Insurance Card", comp: <P1.HcInsuranceCardScreen /> },
+          { id: "hc-family", title: "Family Care Profiles", comp: <P1.HcFamilyMembersScreen /> },
         ];
+    }
+  };
+
+  const renderWebDashboard = () => {
+    switch (project.slug) {
+      case "womens-health-app":
+        return <P2.WhWebDashboard />;
+      case "ai-healthcare-module":
+        return <P3.AiWebAssistantAdmin />;
+      case "diet-nutrition-module":
+        return <P4.DietWebProgressDashboard />;
+      case "invitation-app":
+        return <P5.InvWebRsvpAndPrintedCards />;
+      case "service-based-booking-platform":
+        return <P6.BkProviderWebAndEmails />;
+      case "healthcare-mobile-app":
+      default:
+        return <P1.HcWebDoctorDashboard />;
     }
   };
 
@@ -318,6 +361,7 @@ export default function CaseStudyView({ project, nextProject }: CaseStudyViewPro
               ))}
             </div>
           </div>
+          <ProcessArtifacts slug={project.slug} mode="research" />
         </section>
 
         {/* ========================================================= */}
@@ -348,6 +392,7 @@ export default function CaseStudyView({ project, nextProject }: CaseStudyViewPro
               </ScrollDraw>
             </div>
           </div>
+          <ProcessArtifacts slug={project.slug} mode="flow" />
         </section>
 
         {/* ========================================================= */}
@@ -374,6 +419,7 @@ export default function CaseStudyView({ project, nextProject }: CaseStudyViewPro
               </PhoneFrame>
             </div>
           </HorizontalPin>
+          <ProcessArtifacts slug={project.slug} mode="wireframes" />
         </section>
 
         {/* ========================================================= */}
@@ -435,21 +481,21 @@ export default function CaseStudyView({ project, nextProject }: CaseStudyViewPro
 
           <HorizontalPin>
             <div className="w-[300px] shrink-0 p-3">
-              <span className="font-serif font-bold text-xs text-plum block mb-2">
-                1. {getScenario(project.slug).brandName} Overview
-              </span>
-              <PhoneFrame screenBg={getScenario(project.slug).palette.bg}>
-                <ScenarioMobileHero slug={project.slug} />
-              </PhoneFrame>
+              <ScreenWrapper projectSlug={project.slug} screenId="hero-overview" title={`1. ${getScenario(project.slug).brandName} Overview`}>
+                <PhoneFrame screenBg={getScenario(project.slug).palette.bg}>
+                  <ScenarioMobileHero slug={project.slug} />
+                </PhoneFrame>
+              </ScreenWrapper>
             </div>
             {renderHiFiGallery().map((screen, idx) => (
-              <div key={idx} className="w-[300px] shrink-0 p-3">
-                <span className="font-serif font-bold text-xs text-plum block mb-2">
-                  {idx + 2}. {screen.title}
-                </span>
-                <PhoneFrame>
-                  {screen.comp}
-                </PhoneFrame>
+              <div key={screen.id} className="w-[300px] shrink-0 p-3">
+                <ScreenWrapper projectSlug={project.slug} screenId={screen.id} title={`${idx + 2}. ${screen.title}`}>
+                  {screen.android ? (
+                    <AndroidFrame>{screen.comp}</AndroidFrame>
+                  ) : (
+                    <PhoneFrame>{screen.comp}</PhoneFrame>
+                  )}
+                </ScreenWrapper>
               </div>
             ))}
           </HorizontalPin>
@@ -460,9 +506,11 @@ export default function CaseStudyView({ project, nextProject }: CaseStudyViewPro
               <span className="font-mono text-xs font-bold uppercase tracking-wider text-plum-500 block">
                 Web &amp; Operations Dashboard View
               </span>
-              <BrowserFrame url={`${project.slug}.concept.design`} title={getScenario(project.slug).brandName}>
-                <ScenarioAdminDashboard slug={project.slug} />
-              </BrowserFrame>
+              <ScreenWrapper projectSlug={project.slug} screenId="web-dashboard" title={`${getScenario(project.slug).brandName} Web Suite`}>
+                <BrowserFrame url={`${project.slug}.concept.design`} title={getScenario(project.slug).brandName}>
+                  {renderWebDashboard()}
+                </BrowserFrame>
+              </ScreenWrapper>
             </div>
           </LazyViewport>
 
@@ -502,21 +550,25 @@ export default function CaseStudyView({ project, nextProject }: CaseStudyViewPro
               <div className="text-xs text-plum-500">Design system token specs defined in Figma.</div>
             )}
           </div>
+          <ProcessArtifacts slug={project.slug} mode="system" />
         </section>
 
         {/* ========================================================= */}
         {/* 9. PROTOTYPE INTERACTION */}
         {/* ========================================================= */}
-        <section id="cs-prototype" className="p-8 sm:p-12 rounded-4xl bg-cream-50 border border-blush-200 shadow-soft text-center space-y-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-rose-700 block">
-            09 • Interactive Prototyping
-          </span>
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-plum">
-            Tested Micro-Interactions in Figma
-          </h2>
-          <p className="font-sans text-xs sm:text-sm text-plum-600 max-w-xl mx-auto leading-relaxed">
-            {project.story?.prototype || "Clickable prototype validating screen transitions, tap targets, and bottom sheet drawers."}
-          </p>
+        <section id="cs-prototype" className="p-8 sm:p-12 rounded-4xl bg-cream-50 border border-blush-200 shadow-soft space-y-6">
+          <div className="text-center space-y-4">
+            <span className="text-xs font-bold uppercase tracking-widest text-rose-700 block">
+              09 • Interactive Prototyping
+            </span>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-plum">
+              Tested Micro-Interactions in Figma
+            </h2>
+            <p className="font-sans text-xs sm:text-sm text-plum-600 max-w-xl mx-auto leading-relaxed">
+              {project.story?.prototype || "Clickable prototype validating screen transitions, tap targets, and bottom sheet drawers."}
+            </p>
+          </div>
+          <ProcessArtifacts slug={project.slug} mode="prototype" />
         </section>
 
         {/* ========================================================= */}

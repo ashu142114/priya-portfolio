@@ -3,15 +3,12 @@
 import React from "react";
 import { PhoneFrame, BrowserFrame } from "@/components/visuals/DeviceFrame";
 import { getScenario } from "@/data/scenarios";
-import { ScenarioMobileHero, ScenarioAdminDashboard } from "@/components/visuals/DeepProjectScreens";
-import {
-  HealthcareDashboardScreen,
-  WomensHealthCycleRingScreen,
-  ServiceListCatalogScreen,
-  DietCalorieRingScreen,
-  InvitationPreviewCardScreen,
-  AiChatScreen,
-} from "@/components/visuals/ProjectScreens";
+import { HcHomeDashboardScreen, HcWebPatientPortal } from "@/components/factory/Project1Healthcare";
+import { WhCycleHomeScreen, WhWebDashboard } from "@/components/factory/Project2WomensHealth";
+import { AiChatBubblesScreen, AiWebAssistantAdmin } from "@/components/factory/Project3AiModule";
+import { DietDashboardScreen, DietWebProgressDashboard } from "@/components/factory/Project4Diet";
+import { InvEditorCanvasScreen, InvWebRsvpAndPrintedCards } from "@/components/factory/Project5Invitation";
+import { BkServiceListScreen, BkProviderWebAndEmails } from "@/components/factory/Project6Booking";
 
 interface MockupFrameProps {
   type?: "mobile" | "web";
@@ -42,21 +39,39 @@ export function MockupFrame({
   const slug = VARIANT_TO_SLUG[variant] || "healthcare-mobile-app";
   const scenario = getScenario(slug);
 
-  const renderWireframe = () => {
+  const renderScreen = (wf: boolean) => {
     switch (variant) {
       case "cycle":
-        return <WomensHealthCycleRingScreen wireframe />;
+        return <WhCycleHomeScreen wireframe={wf} />;
       case "booking":
-        return <ServiceListCatalogScreen wireframe />;
+        return <BkServiceListScreen wireframe={wf} />;
       case "nutrition":
-        return <DietCalorieRingScreen wireframe />;
+        return <DietDashboardScreen wireframe={wf} />;
       case "invitation":
-        return <InvitationPreviewCardScreen wireframe />;
+        return <InvEditorCanvasScreen wireframe={wf} />;
       case "ai":
-        return <AiChatScreen wireframe />;
+        return <AiChatBubblesScreen wireframe={wf} />;
       case "healthcare":
       default:
-        return <HealthcareDashboardScreen wireframe />;
+        return <HcHomeDashboardScreen wireframe={wf} />;
+    }
+  };
+
+  const renderWebScreen = () => {
+    switch (variant) {
+      case "cycle":
+        return <WhWebDashboard />;
+      case "booking":
+        return <BkProviderWebAndEmails />;
+      case "nutrition":
+        return <DietWebProgressDashboard />;
+      case "invitation":
+        return <InvWebRsvpAndPrintedCards />;
+      case "ai":
+        return <AiWebAssistantAdmin />;
+      case "healthcare":
+      default:
+        return <HcWebPatientPortal />;
     }
   };
 
@@ -69,7 +84,7 @@ export function MockupFrame({
         wireframe={wireframe}
       >
         <div className="w-full flex-1 flex flex-col justify-center">
-          {wireframe ? renderWireframe() : <ScenarioAdminDashboard slug={slug} />}
+          {wireframe ? renderScreen(true) : renderWebScreen()}
         </div>
       </BrowserFrame>
     );
@@ -81,7 +96,7 @@ export function MockupFrame({
       wireframe={wireframe}
       screenBg={scenario.palette.bg}
     >
-      {wireframe ? renderWireframe() : <ScenarioMobileHero slug={slug} />}
+      {renderScreen(wireframe)}
     </PhoneFrame>
   );
 }

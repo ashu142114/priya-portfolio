@@ -79,7 +79,7 @@ export default function BeforeAfterSlider({
                   <span>Next Telemedicine Visit</span>
                   <span className="text-rose-600 font-bold">2:30 PM Today</span>
                 </div>
-                <h4 className="font-serif font-bold text-base text-plum">Dr. Alena Vance</h4>
+                <h4 className="font-serif font-bold text-base text-plum">Dr. Ananya Sharma</h4>
                 <span className="text-xs text-plum-500">General Physician & Wellness</span>
                 <button className="mt-3 w-full py-2.5 rounded-xl bg-rose-500 text-white font-sans text-xs font-semibold shadow-sm">
                   Join Video Consultation

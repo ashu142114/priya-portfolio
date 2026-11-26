@@ -1,125 +1,84 @@
 # Priya K. Lakkad — UI/UX & Product Designer Portfolio
 
-> A bespoke, high-performance, feminine design portfolio website built for **Priya K. Lakkad**, UI/UX and Product Designer based in Surat, Gujarat, India.
-> Built on **Next.js 16.4.6 (App Router)**, **React 19**, **Tailwind CSS**, and **GSAP ScrollTrigger + Lenis** pinned scroll storytelling.
+Portfolio website built with Next.js (App Router), Tailwind CSS, and GSAP ScrollTrigger on branch `scroll-story`.
 
----
+- **Designer:** Priya K. Lakkad — UI/UX Designer (Surat, India)
+- **Contact:** priyalakkad11@gmail.com | WhatsApp: +91 70486 28505
+- **Tools:** Figma, Canva
 
-## 🌸 Visual Identity & Emotional Tone
+## Screen Factory & Real-Asset Override System
 
-- **Background (Warm Cream)**: `#FFF8F5`
-- **Soft Blush**: `#F8D7DF`
-- **Accent Rose**: `#D9577B` (WCAG AA accessible contrast)
-- **Soft Lilac**: `#E6DDF7`
-- **Text (Deep Plum)**: `#2B1B2E`
-- **Typography Pairing**:
-  - Display / Headlines: **Fraunces** (Warm optical serif with emotional warmth)
-  - Interface / Body: **DM Sans** (Geometric grotesque with high legibility)
-- **Texture**: Organic micro-grain overlay, soft pastel ambient glow blobs, tactile 3D cards with hover tilt/lift, and custom desktop cursor with interactive modes (`View`, `Drag`, `Play`).
+Every product screen in this portfolio is rendered in code using the reusable `src/ui-kit/` component library and scenario data from `src/data/scenarios.ts`, wrapped with `ScreenWrapper` (`src/components/factory/ScreenWrapper.tsx`).
 
----
+To replace any coded concept screen with a real exported PNG or WebP screenshot from Figma, drop the image into `/public/screens/<project-slug>/<screen-id>.png` (or `.webp`) and register it in `src/data/assetManifest.ts`. `ScreenWrapper` will automatically display your real asset instead of the coded screen.
 
-## ⚡ Architecture & Tech Stack
+### Drop-in Path Checklist
 
-- **Framework**: Next.js 16.4.6 (Turbopack + React 19)
-- **Smooth Scrolling**: Lenis (`lerp: 0.08`) synced to GSAP ticker & ScrollTrigger
-- **Motion System**: Centralized easing tokens (`tokens.ts`), `<SplitText>`, `<MaskImage>`, `<Parallax>`, `<ScrollDraw>`, `<StackedCards>`, `<HorizontalPin>`, `<Marquee>`, `<MagneticButton>`
-- **7-Chapter Pinned Scroll Story**:
-  - Chapter 01: Hero & Animated Roles Strip
-  - Chapter 02: Multi-Theme Scroll (Studio Rose, Clinical Mint, Warm Ember, Midnight Plum with live CSS variables)
-  - Chapter 03: Pinned Before / After Product Transformation
-  - Chapter 04: 5-Stage Transforming Device (Research → Flows → Wireframes → Hi-Fi → Prototype)
-  - Chapter 05: Interactive Design System Lab (Color tokens, Type hierarchy, Radii, Component assembly, Live `tokens.css`)
-  - Chapter 06: Animated Brand Identity Suite (Stroke draw-in, Swatches, 3D Collateral assembly)
-  - Chapter 07: Selected Work Parallax Showcase & Editorial Magnetic CTA
-- **SEO & Search**: Dynamic OpenGraph images, Schema.org `Person` JSON-LD, XML sitemap (`/sitemap.xml`), `robots.txt`, `/llms.txt`, and canonical URLs.
+#### 1. `healthcare-mobile-app` (MediCare Plus)
+- `/public/screens/healthcare-mobile-app/hero-overview.png`
+- `/public/screens/healthcare-mobile-app/hc-onboarding.png`
+- `/public/screens/healthcare-mobile-app/hc-otp.png`
+- `/public/screens/healthcare-mobile-app/hc-home.png`
+- `/public/screens/healthcare-mobile-app/hc-search.png`
+- `/public/screens/healthcare-mobile-app/hc-profile.png`
+- `/public/screens/healthcare-mobile-app/hc-slots.png`
+- `/public/screens/healthcare-mobile-app/hc-payment.png`
+- `/public/screens/healthcare-mobile-app/hc-confirm.png`
+- `/public/screens/healthcare-mobile-app/hc-telemed.png`
+- `/public/screens/healthcare-mobile-app/hc-labs.png`
+- `/public/screens/healthcare-mobile-app/hc-insurance.png`
+- `/public/screens/healthcare-mobile-app/hc-family.png`
+- `/public/screens/healthcare-mobile-app/web-dashboard.png`
 
----
+#### 2. `womens-health-app` (Aura Cycle & Wellness)
+- `/public/screens/womens-health-app/hero-overview.png`
+- `/public/screens/womens-health-app/wh-onboarding.png`
+- `/public/screens/womens-health-app/wh-cycle-home.png`
+- `/public/screens/womens-health-app/wh-calendar-phase.png`
+- `/public/screens/womens-health-app/wh-symptom-logger.png`
+- `/public/screens/womens-health-app/wh-insights.png`
+- `/public/screens/womens-health-app/wh-records.png`
+- `/public/screens/womens-health-app/wh-pcod-article.png`
+- `/public/screens/womens-health-app/wh-reminders.png`
+- `/public/screens/womens-health-app/wh-settings.png`
+- `/public/screens/womens-health-app/web-dashboard.png`
 
-## 📂 Exact Drop-In Asset Checklist for Priya
+#### 3. `ai-healthcare-module` (CarePulse AI Triage)
+- `/public/screens/ai-healthcare-module/hero-overview.png`
+- `/public/screens/ai-healthcare-module/ai-chat-bubbles.png`
+- `/public/screens/ai-healthcare-module/ai-quick-replies.png`
+- `/public/screens/ai-healthcare-module/ai-typing.png`
+- `/public/screens/ai-healthcare-module/ai-triage-result.png`
+- `/public/screens/ai-healthcare-module/ai-doctor-handoff.png`
+- `/public/screens/ai-healthcare-module/ai-history.png`
+- `/public/screens/ai-healthcare-module/ai-voice-input.png`
+- `/public/screens/ai-healthcare-module/ai-lab-explainer.png`
+- `/public/screens/ai-healthcare-module/ai-emergency.png`
+- `/public/screens/ai-healthcare-module/web-dashboard.png`
 
-The portfolio features an intelligent **code-visual fallback system**: every project, logo, brand kit, and marketing graphic has a high-fidelity inline SVG/CSS screen generated in code. Whenever Priya exports real files from Figma or Canva, she simply drops them into the corresponding folder below, and the website will automatically display the real file without needing code edits.
+#### 4. `diet-nutrition-module` (NutriTrack India)
+- `/public/screens/diet-nutrition-module/hero-overview.png`
+- `/public/screens/diet-nutrition-module/diet-onboarding.png`
+- `/public/screens/diet-nutrition-module/diet-dashboard.png`
+- `/public/screens/diet-nutrition-module/diet-meal-log.png`
+- `/public/screens/diet-nutrition-module/diet-food-detail.png`
+- `/public/screens/diet-nutrition-module/diet-water.png`
+- `/public/screens/diet-nutrition-module/diet-weekly.png`
+- `/public/screens/diet-nutrition-module/diet-recipes.png`
+- `/public/screens/diet-nutrition-module/web-dashboard.png`
 
-### 1. Product Case Studies (`/public/projects/<slug>/`)
-For each of the 6 case studies:
-- `healthcare-mobile-app`
-- `womens-health-app`
-- `ai-healthcare-module`
-- `diet-nutrition-module`
-- `invitation-app`
-- `service-based-booking-platform`
+#### 5. `invitation-app` (Utsav Studio)
+- `/public/screens/invitation-app/hero-overview.png`
+- `/public/screens/invitation-app/inv-gallery.png`
+- `/public/screens/invitation-app/inv-editor.png`
+- `/public/screens/invitation-app/inv-guests.png`
+- `/public/screens/invitation-app/inv-share.png`
+- `/public/screens/invitation-app/web-dashboard.png`
 
-Drop the following files into `/public/projects/<slug>/`:
-```
-/public/projects/<slug>/
-├── cover.png           # 1200x800px Hero card preview image
-├── before.png          # Cluttered legacy / unoptimized interface
-├── after.png           # Redesigned high-fidelity hero interface
-├── screen-1.png        # Key screen 1 (e.g. Dashboard)
-├── screen-2.png        # Key screen 2 (e.g. Calendar/Booking)
-├── screen-3.png        # Key screen 3 (e.g. Telemedicine/Records)
-├── screen-4.png        # Key screen 4 (e.g. Profile/Detail)
-├── flow.png            # User journey / task flow diagram
-├── wireframe.png       # Low-fidelity structural wireframe
-└── design-system.png   # Component tokens & typography board
-```
-
-### 2. Logo Design Lab (`/public/logos/<slug>/`)
-For each concept logo:
-- `careflow-telehealth`
-- `aura-womens-wellness`
-- `zenith-saas-suite`
-- `celebre-invitations`
-
-Drop into `/public/logos/<slug>/`:
-```
-/public/logos/<slug>/
-├── logo-old.svg        # Previous unrefined logo mark
-├── logo-new.svg        # Refined vector mark with balanced geometry
-└── concept.png         # Real-world mockup or merchandise application
-```
-
-### 3. Brand Identity Kits (`/public/brand/<slug>/`)
-For each concept brand identity:
-```
-/public/brand/<slug>/
-├── logo.svg            # Primary vector logo
-├── collateral.png      # Assembled 3D collateral (business cards, stationery, bags)
-└── guideline.pdf       # Brand guidelines document (optional)
-```
-
-### 4. Graphic Design Creatives (`/public/graphics/<slug>/`)
-For advertising and social media creatives:
-```
-/public/graphics/<slug>/
-└── cover.png           # Exported banner, flyer, brochure, business card, or social post
-```
-
----
-
-## 🔒 Ethical Design & Fact-Checking Policy
-
-- **No Invented Claims**: Zero false metrics, percentages, years of experience, fake testimonials, or fabricated client names.
-- **Concept Work Transparency**: All concept brand kits, logos, and advertising graphics display a visible `Concept` or `Sample` badge chip.
-- **Scope Integrity**: Priya is accurately represented as a UI/UX & Product Designer working at ProjectTree (Surat). The site strictly excludes web development, WordPress, Shopify, and AI video creation.
-
----
-
-## 🚀 Local Development & Build
-
-```bash
-# Install dependencies
-npm install
-
-# Run development server (Turbopack)
-npm run dev
-
-# Run linter
-npm run lint
-
-# Production build
-npm run build
-
-# Start production server
-npm run start -p 3000
-```
+#### 6. `service-based-booking-platform` (BookEase Local)
+- `/public/screens/service-based-booking-platform/hero-overview.png`
+- `/public/screens/service-based-booking-platform/bk-services.png`
+- `/public/screens/service-based-booking-platform/bk-provider.png`
+- `/public/screens/service-based-booking-platform/bk-datetime.png`
+- `/public/screens/service-based-booking-platform/bk-checkout.png`
+- `/public/screens/service-based-booking-platform/web-dashboard.png`

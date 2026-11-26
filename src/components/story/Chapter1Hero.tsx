@@ -6,7 +6,12 @@ import gsap from "gsap";
 import { siteConfig } from "@/data/site";
 import { themePresets, applyTheme, ThemePreset } from "@/data/themes";
 import { SparkleIcon, FourPointStar } from "@/components/common/Stickers";
-import { MockupFrame } from "@/components/common/MockupFrame";
+import { ComboSceneFrame } from "@/components/visuals/DeviceFrame";
+import {
+  HcHomeDashboardScreen,
+  HcLabReportsScreen,
+  HcWebPatientPortal,
+} from "@/components/factory/Project1Healthcare";
 import { ArrowDown, MessageCircle, Palette } from "lucide-react";
 
 export default function Chapter1Hero() {
@@ -48,7 +53,7 @@ export default function Chapter1Hero() {
       <div className="max-w-6xl mx-auto px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Intro & Line-by-line headline */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left z-10">
+          <div className="lg:col-span-6 flex flex-col items-start text-left z-10">
             {/* Top pill */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--accent-secondary)]/80 border border-[var(--border-color)] text-xs sm:text-sm font-medium text-[var(--text-primary)] shadow-soft-sm mb-6">
               <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse" />
@@ -134,8 +139,8 @@ export default function Chapter1Hero() {
             </div>
           </div>
 
-          {/* Right Column: Empathic Mockup preview */}
-          <div className="lg:col-span-5 relative flex justify-center items-center">
+          {/* Right Column: 3-Device Combo Scene (Laptop + Tablet + Mobile) */}
+          <div className="lg:col-span-6 relative flex justify-center items-center">
             {/* Decorative Stars */}
             <div className="absolute -top-6 -right-2 pointer-events-none z-20">
               <FourPointStar className="w-8 h-8 text-[var(--accent-primary)] animate-float-slow" />
@@ -147,21 +152,19 @@ export default function Chapter1Hero() {
               aria-hidden="true"
             />
 
-            <div className="relative z-10 w-full max-w-[310px] transform hover:-translate-y-2 transition-transform duration-500 ease-out">
-              <MockupFrame
-                type="mobile"
-                variant="healthcare"
-                title="Healthcare Companion"
-                category="Healthcare"
+            <div className="relative z-10 w-full">
+              <ComboSceneFrame
+                url="medicareplus.concept.design"
+                title="MediCare Plus • Concept"
+                screenBg="#F4FAFA"
+                desktop={<HcWebPatientPortal />}
+                tablet={<HcLabReportsScreen />}
+                mobile={<HcHomeDashboardScreen />}
               />
-              <div className="absolute -bottom-4 -left-4 sm:-left-8 px-4 py-2.5 rounded-2xl bg-white/95 backdrop-blur-md border border-[var(--border-color)] shadow-soft-lg flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-[var(--accent-secondary)] flex items-center justify-center text-[var(--accent-primary)] font-serif font-bold text-xs">
-                  01
-                </span>
-                <div>
-                  <span className="block text-[11px] font-semibold text-plum">User-Centered</span>
-                  <span className="block text-[10px] text-plum-500">Calm, accessible flows</span>
-                </div>
+              <div className="mt-2 inline-flex px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[var(--border-color)] shadow-soft-sm items-center gap-2 text-[10px]">
+                <span className="font-bold uppercase tracking-wider text-rose-700">Recreated concept</span>
+                <span className="text-plum-500">•</span>
+                <span className="text-plum-600 font-medium">3-Device Healthcare Product Suite</span>
               </div>
             </div>
           </div>

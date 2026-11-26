@@ -299,7 +299,7 @@ export default function PinnedStorySection() {
                       Upcoming Consultation
                     </div>
                     <div className="p-2 rounded-xl bg-blush-50 border border-blush-100 text-[10px] text-plum mb-2">
-                      <span className="font-bold block">Dr. Alena Vance</span>
+                      <span className="font-bold block">Dr. Ananya Sharma</span>
                       <span className="text-plum-400 text-[9px]">Confirmed for 2:30 PM</span>
                     </div>
                     <button className="w-full py-1.5 rounded-xl bg-rose-500 text-white text-[10px] font-bold">

@@ -288,13 +288,18 @@ export default function Chapter6BrandKit() {
                     <div className="flex justify-between items-start">
                       <div>
                         <h4 className="font-serif font-bold text-sm text-plum">Priya K. Lakkad</h4>
-                        <span className="text-[10px] text-rose-700 font-medium">UI/UX & Product Designer</span>
+                        <span className="text-[10px] text-rose-700 font-medium">UI/UX Designer</span>
                       </div>
-                      <div
-                        className="w-8 h-8 rounded-xl flex items-center justify-center text-white font-serif font-bold text-xs shadow-soft"
-                        style={{ backgroundColor: activeTheme.primaryColor }}
-                      >
-                        {activeTheme.symbol}
+                      <div className="scale-75 origin-top-right">
+                        {activeBrandIndex === 0 ? (
+                          <CareFlowLogo variant="symbol" />
+                        ) : activeBrandIndex === 1 ? (
+                          <AuraWellnessLogo variant="symbol" />
+                        ) : activeBrandIndex === 2 ? (
+                          <ZenithLogo variant="symbol" />
+                        ) : (
+                          <CelebreLogo variant="symbol" />
+                        )}
                       </div>
                     </div>
                     <div className="pt-2 border-t border-blush-100 flex justify-between items-end text-[9px] font-mono text-plum-500">

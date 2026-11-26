@@ -197,8 +197,8 @@ export default function Chapter3BeforeAfter() {
                 <div>
                   <div className="flex items-center justify-between pb-3 border-b border-blush-100 mb-4">
                     <div>
-                      <span className="text-[10px] font-semibold text-rose-700 uppercase tracking-wider block">
-                        CareFlow Telemedicine (Concept)
+                      <span className="text-[10px] font-semibold text-[#0D7C85] uppercase tracking-wider block">
+                        MediCare Plus • Concept
                       </span>
                       <h4 className="font-serif font-bold text-base text-plum">
                         Appointment Confirmed
@@ -210,19 +210,19 @@ export default function Chapter3BeforeAfter() {
                   </div>
 
                   {/* Doctor Card */}
-                  <div className="p-4 rounded-2xl bg-cream-50 border border-blush-200/80 shadow-soft-sm mb-3">
+                  <div className="p-4 rounded-2xl bg-[#F4FAFA] border border-[#CBE6E6] shadow-soft-sm mb-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-blush-200 flex items-center justify-center font-serif font-bold text-sm text-rose-700">
-                        AV
+                      <div className="w-10 h-10 rounded-full bg-[#E4F5F4] flex items-center justify-center font-serif font-bold text-sm text-[#0D7C85]">
+                        MN
                       </div>
                       <div>
-                        <h5 className="font-serif font-bold text-sm text-plum">Dr. Alena Vance</h5>
-                        <p className="text-[11px] text-plum-500">General Physician & Wellness</p>
+                        <h5 className="font-serif font-bold text-sm text-plum">Dr. Meera Nair</h5>
+                        <p className="text-[11px] text-plum-500">General Physician • ₹650</p>
                       </div>
                     </div>
-                    <div className="mt-3 pt-2.5 border-t border-blush-100 flex justify-between items-center text-xs text-plum-700">
-                      <span>Today at 2:30 PM</span>
-                      <span className="font-medium text-rose-700">Video Call Ready</span>
+                    <div className="mt-3 pt-2.5 border-t border-[#CBE6E6] flex justify-between items-center text-xs text-plum-700">
+                      <span>Thu, 26 Nov • 10:30 AM</span>
+                      <span className="font-medium text-[#0D7C85]">Video Call Ready</span>
                     </div>
                   </div>
 

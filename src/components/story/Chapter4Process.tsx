@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SparkleIcon } from "@/components/common/Stickers";
 import { PhoneFrame } from "@/components/visuals/DeviceFrame";
 import { HealthcareDashboardScreen } from "@/components/visuals/ProjectScreens";
+import { ScenarioMobileHero } from "@/components/visuals/DeepProjectScreens";
 import { Search, GitBranch, Layout, Sparkles, Smartphone, Check } from "lucide-react";
 
 const processSteps = [
@@ -220,8 +221,12 @@ export default function Chapter4Process() {
                   </div>
                 ) : (
                   // STAGE 03, 04, 05: Wireframe -> Hi-Fi -> Clickable Prototype
-                  <div className="relative">
-                    <HealthcareDashboardScreen wireframe={isWireframeStage} />
+                  <div className="relative h-full">
+                    {isWireframeStage ? (
+                      <HealthcareDashboardScreen wireframe />
+                    ) : (
+                      <ScenarioMobileHero slug="healthcare-mobile-app" />
+                    )}
                     {currentStep === 4 && (
                       // Hotspot pulses for clickable prototype
                       <div className="absolute inset-0 pointer-events-none flex flex-col justify-around p-6">

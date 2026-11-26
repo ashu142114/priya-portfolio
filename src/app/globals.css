@@ -32,26 +32,33 @@ html[data-motion="reduced"] * {
   transition-duration: 0.01ms !important;
 }
 
+/* Light Theme Contrast Guard (never white text on light surfaces) */
+html[data-theme="light"] body,
+html:not([data-theme="dark"]) body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
 /* Dark Theme Contrast Guard (never black text on dark surfaces) */
 html[data-theme="dark"] body {
   background-color: var(--bg-primary) !important;
   color: var(--text-primary) !important;
 }
 
-html[data-theme="dark"] :where(.bg-white, .bg-cream-50, .bg-cream-100, .bg-cream-200, .bg-white\/80, .bg-white\/75, .bg-white\/90, .bg-white\/95):not([data-device-screen] *) {
+html[data-theme="dark"] :where(.bg-white, .bg-cream-50, .bg-cream-100, .bg-cream-200, .bg-white\/60, .bg-white\/70, .bg-white\/75, .bg-white\/80, .bg-white\/85, .bg-white\/90, .bg-white\/95, .bg-cream-50\/80, .bg-cream-100\/80):not([data-device-screen] *) {
   background-color: var(--surface) !important;
   color: var(--text-primary);
 }
 
-html[data-theme="dark"] :where(.bg-blush-50, .bg-blush-100, .bg-cream-100\/90, .bg-slate-50):not([data-device-screen] *) {
+html[data-theme="dark"] :where(.bg-blush-50, .bg-blush-100, .bg-blush-200\/50, .bg-cream-100\/90, .bg-slate-50, .bg-slate-100):not([data-device-screen] *) {
   background-color: var(--surface-muted) !important;
 }
 
-html[data-theme="dark"] :where(.text-plum, .text-plum-950, .text-plum-900, .text-plum-800, .text-slate-900, .text-slate-800):not([data-device-screen] *) {
+html[data-theme="dark"] :where(.text-plum, .text-plum-950, .text-plum-900, .text-plum-800, .text-slate-950, .text-slate-900, .text-slate-800):not([data-device-screen] *) {
   color: #FAF3F6 !important;
 }
 
-html[data-theme="dark"] :where(.text-plum-700, .text-plum-600, .text-plum-500, .text-plum-400, .text-slate-700, .text-slate-600, .text-slate-500):not([data-device-screen] *) {
+html[data-theme="dark"] :where(.text-plum-700, .text-plum-600, .text-plum-500, .text-plum-400, .text-slate-700, .text-slate-600, .text-slate-500, .text-slate-400):not([data-device-screen] *) {
   color: #D5C4CF !important;
 }
 
@@ -59,7 +66,7 @@ html[data-theme="dark"] :where(.text-rose-700, .text-rose-800, .text-rose-600):n
   color: var(--accent-primary) !important;
 }
 
-html[data-theme="dark"] :where(.border-blush-100, .border-blush-200, .border-blush-300, .border-black\/5, .border-black\/10):not([data-device-screen] *) {
+html[data-theme="dark"] :where(.border-blush-100, .border-blush-200, .border-blush-200\/80, .border-blush-300, .border-slate-200, .border-slate-300, .border-black\/5, .border-black\/10):not([data-device-screen] *) {
   border-color: var(--border-color) !important;
 }
 

@@ -38,7 +38,6 @@ export default function Chapter2Themes() {
           totalSteps - 1
         );
         setCurrentStep(step);
-        applyTheme(themePresets[step]);
       },
     });
 

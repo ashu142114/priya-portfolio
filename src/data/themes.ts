@@ -122,7 +122,15 @@ export function applyTheme(
 ) {
   if (typeof document === "undefined") return;
   const root = document.documentElement;
-  const accent = overrides?.accentOverride || theme.tokens.accentPrimary;
+  const rawOverride = overrides?.accentOverride;
+  const validOverride =
+    rawOverride &&
+    /^#[0-9A-Fa-f]{6}$/.test(rawOverride) &&
+    rawOverride.toLowerCase() !== "#ffffff" &&
+    rawOverride.toLowerCase() !== "#000000"
+      ? rawOverride
+      : undefined;
+  const accent = validOverride || theme.tokens.accentPrimary;
   const radius = overrides?.cardRadiusPx !== undefined ? `${overrides.cardRadiusPx}px` : theme.tokens.cardRadius;
 
   root.setAttribute("data-theme", theme.isDark ? "dark" : "light");

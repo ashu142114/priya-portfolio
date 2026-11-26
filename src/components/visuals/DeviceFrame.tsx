@@ -197,40 +197,32 @@ export function BrowserFrame({
   );
 }
 
-/** 3-Device Combo Scene (Laptop Browser + Floating Tablet + Tilted Phone) */
+/** 2-Device Hero Combo Scene (Clean Desktop Browser + Floating Phone) */
 export function ComboSceneFrame({
   desktop,
-  tablet,
   mobile,
   url,
   title,
   screenBg,
 }: {
   desktop: React.ReactNode;
-  tablet: React.ReactNode;
+  tablet?: React.ReactNode;
   mobile: React.ReactNode;
   url: string;
   title: string;
   screenBg?: string;
 }) {
   return (
-    <div className="relative w-full pb-10 sm:pb-12">
+    <div className="relative w-full pb-8 sm:pb-12">
       {/* Main Desktop Browser */}
-      <div className="w-full lg:w-[88%] ml-auto">
+      <div className="w-full lg:w-[92%]">
         <BrowserFrame url={url} title={title} className="shadow-soft-xl">
-          {desktop}
+          <div className="min-h-[260px] pr-0 md:pr-28">{desktop}</div>
         </BrowserFrame>
       </div>
 
-      {/* Floating Left Tablet (Desktop/Tablet) */}
-      <div className="hidden md:block absolute -left-2 bottom-2 w-[38%] max-w-[270px] z-20 transform -rotate-2 hover:rotate-0 transition-transform duration-500">
-        <TabletFrame title={title} className="shadow-soft-xl">
-          {tablet}
-        </TabletFrame>
-      </div>
-
       {/* Floating Right Phone */}
-      <div className="relative md:absolute mt-4 md:mt-0 mx-auto md:mx-0 md:right-2 md:bottom-0 w-[210px] sm:w-[225px] z-30 transform md:rotate-2 hover:rotate-0 transition-transform duration-500">
+      <div className="relative md:absolute mt-4 md:mt-0 mx-auto md:mx-0 md:right-0 md:bottom-0 w-[195px] sm:w-[210px] z-30 transform md:rotate-2 hover:rotate-0 transition-transform duration-500">
         <PhoneFrame screenBg={screenBg} className="shadow-soft-2xl">
           {mobile}
         </PhoneFrame>

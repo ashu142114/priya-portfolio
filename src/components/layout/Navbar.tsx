@@ -137,7 +137,7 @@ export default function Navbar() {
               </button>
               <Link
                 href="/contact"
-                style={{ backgroundColor: "var(--accent-primary)", color: "#FFFFFF" }}
+                style={{ backgroundColor: "var(--accent-primary, #D9577B)", color: "#FFFFFF" }}
                 className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide shadow-soft-sm hover:opacity-95 hover:shadow-soft transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-rose-500"
               >
                 <span>Let&apos;s talk</span>

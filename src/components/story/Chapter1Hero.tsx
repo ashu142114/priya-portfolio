@@ -4,12 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { siteConfig } from "@/data/site";
-import { themePresets, applyTheme, ThemePreset } from "@/data/themes";
+import { themePresets, applyTheme, ThemePreset, THEME_STORAGE_KEY } from "@/data/themes";
 import { SparkleIcon, FourPointStar } from "@/components/common/Stickers";
 import { ComboSceneFrame } from "@/components/visuals/DeviceFrame";
 import {
   HcHomeDashboardScreen,
-  HcLabReportsScreen,
   HcWebPatientPortal,
 } from "@/components/factory/Project1Healthcare";
 import { ArrowDown, MessageCircle, Palette } from "lucide-react";
@@ -18,6 +17,17 @@ export default function Chapter1Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const headlineLinesRef = useRef<(HTMLSpanElement | null)[]>([]);
   const [activeThemeId, setActiveThemeId] = useState("studio");
+
+  useEffect(() => {
+    const syncSkin = () => {
+      const skin = document.documentElement.getAttribute("data-skin");
+      if (skin) setActiveThemeId(skin);
+    };
+    syncSkin();
+    const obs = new MutationObserver(syncSkin);
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-skin"] });
+    return () => obs.disconnect();
+  }, []);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -42,6 +52,19 @@ export default function Chapter1Hero() {
   const handleSelectTheme = (theme: ThemePreset) => {
     setActiveThemeId(theme.id);
     applyTheme(theme);
+    try {
+      localStorage.setItem(
+        THEME_STORAGE_KEY,
+        JSON.stringify({
+          skinId: theme.id,
+          cardRadiusPx: parseInt(theme.tokens.cardRadius, 10),
+          paperGrain: true,
+          reducedMotion: false,
+        })
+      );
+    } catch {
+      // ignore
+    }
   };
 
   return (
@@ -123,7 +146,11 @@ export default function Chapter1Hero() {
             <div className="flex flex-wrap items-center gap-4">
               <a
                 href="#chapter-themes"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[var(--accent-primary)] text-white font-sans text-sm font-semibold tracking-wide shadow-soft hover:opacity-90 transition-all duration-200 active:scale-95"
+                style={{
+                  backgroundColor: "var(--accent-primary, #D9577B)",
+                  color: "#FFFFFF",
+                }}
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-sans text-sm font-semibold tracking-wide shadow-soft hover:opacity-90 transition-all duration-200 active:scale-95"
               >
                 <span>Scroll the Story</span>
                 <ArrowDown className="w-4 h-4" />
@@ -131,7 +158,12 @@ export default function Chapter1Hero() {
 
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white text-[var(--text-primary)] border border-[var(--border-color)] font-sans text-sm font-semibold shadow-soft-sm hover:border-[var(--accent-primary)] transition-all duration-200 active:scale-95"
+                style={{
+                  backgroundColor: "var(--surface)",
+                  color: "var(--text-primary)",
+                  borderColor: "var(--border-color)",
+                }}
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border font-sans text-sm font-semibold shadow-soft-sm hover:border-[var(--accent-primary)] transition-all duration-200 active:scale-95"
               >
                 <MessageCircle className="w-4 h-4 text-[var(--accent-primary)]" />
                 <span>Say hello</span>
@@ -139,7 +171,7 @@ export default function Chapter1Hero() {
             </div>
           </div>
 
-          {/* Right Column: 3-Device Combo Scene (Laptop + Tablet + Mobile) */}
+          {/* Right Column: Clean 2-Device Combo Scene (Browser + Floating Mobile) */}
           <div className="lg:col-span-6 relative flex justify-center items-center">
             {/* Decorative Stars */}
             <div className="absolute -top-6 -right-2 pointer-events-none z-20">
@@ -155,10 +187,9 @@ export default function Chapter1Hero() {
             <div className="relative z-10 w-full">
               <ComboSceneFrame
                 url="medicareplus.concept.design"
-                title="MediCare Plus • Concept"
+                title="MediCare Plus"
                 screenBg="#F4FAFA"
                 desktop={<HcWebPatientPortal />}
-                tablet={<HcLabReportsScreen />}
                 mobile={<HcHomeDashboardScreen />}
               />
               <div className="mt-2 inline-flex px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[var(--border-color)] shadow-soft-sm items-center gap-2 text-[10px]">

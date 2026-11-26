@@ -1,7 +1,27 @@
 "use client";
 
 import React from "react";
-import { QrCode, Sparkles, Heart, FileText, Layers, Calendar, Clock } from "lucide-react";
+import { QrCode } from "lucide-react";
+import {
+  CareFlowLogo,
+  AuraWellnessLogo,
+  ZenithLogo,
+  CelebreLogo,
+} from "@/components/visuals/LogoVisuals";
+
+function renderBrandSvgMark(index: number, variant: "symbol" | "full" | "grid" = "symbol") {
+  switch (index % 4) {
+    case 0:
+      return <CareFlowLogo variant={variant} />;
+    case 1:
+      return <AuraWellnessLogo variant={variant} />;
+    case 2:
+      return <ZenithLogo variant={variant} />;
+    case 3:
+    default:
+      return <CelebreLogo variant={variant} />;
+  }
+}
 
 interface BrandCardVisualProps {
   slug: string;
@@ -70,24 +90,15 @@ interface GraphicVisualCardProps {
 }
 
 export function LogoVisualCard({ title, industry, index }: { title: string; industry: string; index: number }) {
-  const letters = title.split(" ")[0].slice(0, 2).toUpperCase();
-  const colors = ["#D9577B", "#C25E71", "#7B5EA7", "#D48B47"];
-  const color = colors[index % colors.length];
-
   return (
-    <div className="w-full aspect-square rounded-2xl bg-cream-100/70 border border-blush-200 relative flex items-center justify-center p-4 mb-4 overflow-hidden group-hover:bg-cream-100 transition-colors">
-      <svg className="absolute inset-0 w-full h-full opacity-25" viewBox="0 0 100 100" fill="none">
-        <circle cx="50" cy="50" r="38" stroke={color} strokeWidth="1" strokeDasharray="3 3" />
-        <circle cx="50" cy="50" r="22" stroke={color} strokeWidth="1" strokeDasharray="2 2" />
-        <line x1="10" y1="50" x2="90" y2="50" stroke={color} strokeWidth="0.8" strokeDasharray="2 2" />
-      </svg>
-      <div
-        className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-serif text-2xl font-bold shadow-soft relative z-10 transform group-hover:scale-110 transition-transform duration-300"
-        style={{ backgroundColor: color }}
-      >
-        {letters}
+    <div className="w-full aspect-[4/3] rounded-2xl bg-cream-100/70 border border-blush-200 relative flex items-center justify-center p-4 mb-4 overflow-hidden group-hover:bg-cream-100 transition-colors">
+      <div className="absolute inset-0 opacity-30 pointer-events-none p-2">
+        {renderBrandSvgMark(index, "grid")}
       </div>
-      <div className="absolute bottom-2 right-2 text-[8px] font-mono text-plum-400">1:1.618</div>
+      <div className="relative z-10 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-2xl border border-blush-200 shadow-soft transform group-hover:scale-105 transition-transform duration-300">
+        {renderBrandSvgMark(index, "full")}
+      </div>
+      <div className="absolute bottom-2 right-2 text-[8px] font-mono text-plum-500">Custom SVG • {industry}</div>
     </div>
   );
 }

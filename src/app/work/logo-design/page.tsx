@@ -188,6 +188,42 @@ export default function LogoDesignPage() {
             </div>
           </div>
 
+          {/* 3-Stage Evolution: Sketch -> Construction Grid -> Clear-Space -> Min Size */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-blush-100">
+            <div className="p-5 rounded-3xl bg-cream-50 border border-blush-200 flex flex-col items-center justify-between text-center space-y-3">
+              <span className="text-[10px] font-mono font-bold uppercase text-rose-700">01 • Rough Sketch</span>
+              <div className="w-24 h-24 rounded-2xl bg-white border border-dashed border-plum-300 flex items-center justify-center p-3 opacity-75">
+                {renderLogoComponent("mono", "grid")}
+              </div>
+              <span className="text-[10px] text-plum-500">Initial proportions &amp; stroke balance</span>
+            </div>
+
+            <div className="p-5 rounded-3xl bg-cream-50 border border-blush-200 flex flex-col items-center justify-between text-center space-y-3">
+              <span className="text-[10px] font-mono font-bold uppercase text-rose-700">02 • Construction Grid</span>
+              <div className="w-24 h-24 rounded-2xl bg-white border border-blush-200 flex items-center justify-center p-2">
+                {renderLogoComponent("light", "grid")}
+              </div>
+              <span className="text-[10px] text-plum-500">Geometric arcs &amp; optical alignment</span>
+            </div>
+
+            <div className="p-5 rounded-3xl bg-cream-50 border border-blush-200 flex flex-col items-center justify-between text-center space-y-3">
+              <span className="text-[10px] font-mono font-bold uppercase text-rose-700">03 • Clear-Space (1x)</span>
+              <div className="p-4 rounded-2xl bg-white border border-dashed border-rose-400 flex items-center justify-center">
+                {renderLogoComponent("light", "symbol")}
+              </div>
+              <span className="text-[10px] text-plum-500">Minimum margin = 1x icon height</span>
+            </div>
+
+            <div className="p-5 rounded-3xl bg-cream-50 border border-blush-200 flex flex-col items-center justify-between text-center space-y-3">
+              <span className="text-[10px] font-mono font-bold uppercase text-rose-700">04 • Minimum Sizes</span>
+              <div className="flex items-end gap-3 py-3">
+                <div className="scale-100">{renderLogoComponent("light", "symbol")}</div>
+                <div className="scale-75 opacity-80">{renderLogoComponent("light", "symbol")}</div>
+              </div>
+              <span className="text-[10px] text-plum-500">Digital 24px • Print 12mm</span>
+            </div>
+          </div>
+
           {/* Section: Draggable Old vs New Logo Slider */}
           <div className="pt-8 border-t border-blush-100 space-y-4">
             <span className="font-mono text-xs font-bold text-rose-700 uppercase block">

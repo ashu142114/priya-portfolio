@@ -7,6 +7,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SparkleIcon } from "@/components/common/Stickers";
 import { brandKits } from "@/data/brandKits";
 import {
+  CareFlowLogo,
+  AuraWellnessLogo,
+  ZenithLogo,
+  CelebreLogo,
+} from "@/components/visuals/LogoVisuals";
+import {
   ArrowRight,
   Layers,
   Palette,
@@ -191,45 +197,26 @@ export default function Chapter6BrandKit() {
                 </span>
               </div>
 
-              {/* Construction Grid Canvas with SVG circles and arcs */}
+              {/* Construction Grid Canvas with Custom SVG Vector Mark */}
               <div className="w-full h-56 rounded-3xl bg-cream-100/90 border border-blush-200/80 relative flex items-center justify-center p-6 overflow-hidden">
-                {/* SVG Geometry Grid Background */}
-                <svg
-                  className="absolute inset-0 w-full h-full opacity-35"
-                  viewBox="0 0 400 220"
-                  fill="none"
-                  stroke={activeTheme.primaryColor}
-                  strokeWidth="0.8"
-                >
-                  <circle cx="200" cy="110" r="90" strokeDasharray="3 3" />
-                  <circle cx="200" cy="110" r="55" strokeDasharray="3 3" />
-                  <circle cx="160" cy="110" r="40" strokeDasharray="2 2" />
-                  <circle cx="240" cy="110" r="40" strokeDasharray="2 2" />
-                  <line x1="20" y1="110" x2="380" y2="110" strokeDasharray="4 4" />
-                  <line x1="200" y1="10" x2="200" y2="210" strokeDasharray="4 4" />
-                </svg>
-
-                {/* Main Prominent Vector Monogram Mark */}
-                <div className="relative z-10 flex flex-col items-center">
-                  <div
-                    className="w-24 h-24 rounded-3xl flex items-center justify-center text-white shadow-soft-xl border-2 border-white/80 transition-all duration-500 transform hover:scale-110"
-                    style={{ backgroundColor: activeTheme.primaryColor }}
-                  >
-                    <span className="font-serif text-4xl font-bold tracking-tight">
-                      {activeTheme.symbol}
-                    </span>
-                  </div>
-                  <span className="font-serif font-bold text-base text-plum mt-3 tracking-wide">
-                    {activeTheme.name.split(" ")[0]}
-                  </span>
+                <div className="w-44 h-44 opacity-85 transition-transform duration-500 hover:scale-105">
+                  {activeBrandIndex === 0 ? (
+                    <CareFlowLogo variant="grid" />
+                  ) : activeBrandIndex === 1 ? (
+                    <AuraWellnessLogo variant="grid" />
+                  ) : activeBrandIndex === 2 ? (
+                    <ZenithLogo variant="grid" />
+                  ) : (
+                    <CelebreLogo variant="grid" />
+                  )}
                 </div>
 
                 {/* Subtle Grid Measure Chips */}
                 <div className="absolute left-4 bottom-3 px-2 py-1 rounded-md bg-white/90 border border-blush-200 text-[10px] font-mono text-plum-600">
-                  Golden Ratio • 1:1.618
+                  Custom SVG Geometry
                 </div>
                 <div className="absolute right-4 bottom-3 px-2 py-1 rounded-md bg-white/90 border border-blush-200 text-[10px] font-mono text-plum-600">
-                  48px Baseline Grid
+                  Clear-Space &amp; Grid
                 </div>
               </div>
 

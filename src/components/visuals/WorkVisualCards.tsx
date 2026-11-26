@@ -65,11 +65,11 @@ export function BrandKitVisualCard({ slug, title, palette }: BrandCardVisualProp
               <span className="font-serif font-bold text-[11px] text-plum block">{brandWord}</span>
               <span className="text-[8px] text-rose-700 font-semibold block">Brand Kit</span>
             </div>
-            <div
-              className="w-5 h-5 rounded-md flex items-center justify-center text-white text-[9px] font-bold"
-              style={{ backgroundColor: primaryHex }}
-            >
-              {brandWord.slice(0, 2).toUpperCase()}
+            <div className="scale-75 origin-top-right">
+              {renderBrandSvgMark(
+                slug.includes("careflow") ? 0 : slug.includes("aura") ? 1 : slug.includes("zenith") ? 2 : 3,
+                "symbol"
+              )}
             </div>
           </div>
           <div className="flex gap-1 pt-1 border-t border-blush-100">

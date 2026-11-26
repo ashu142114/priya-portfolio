@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { SparkleIcon } from "@/components/common/Stickers";
+import { WebLandingShowcase } from "@/components/visuals/WebLandingShowcase";
+import { PrintAndBannerStudio } from "@/components/visuals/PrintAndBannerStudio";
 import { ArrowLeft, Image as ImageIcon, Sparkles, X, Eye, ZoomIn } from "lucide-react";
 
 interface GraphicPiece {
@@ -389,6 +391,25 @@ export default function GraphicDesignPage() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Full Responsive Websites & Print/Banner Studio */}
+        <div className="space-y-20 mb-20">
+          <div className="space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-blush-200 pb-4">
+              <div>
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-lilac-200 text-plum-900 border border-lilac-300 mr-2">
+                  Concept
+                </span>
+                <span className="text-xs font-mono text-rose-700 font-bold uppercase">
+                  Responsive Website Landing Pages (Scroll inside browser)
+                </span>
+              </div>
+            </div>
+            <WebLandingShowcase />
+          </div>
+
+          <PrintAndBannerStudio />
         </div>
 
         {/* Lightbox Modal */}

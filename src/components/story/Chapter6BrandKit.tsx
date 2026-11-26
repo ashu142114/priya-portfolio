@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SparkleIcon } from "@/components/common/Stickers";
 import { brandKits } from "@/data/brandKits";
 import {
@@ -20,59 +22,101 @@ import {
   Instagram,
 } from "lucide-react";
 
+const brandThemes = [
+  {
+    id: "careflow",
+    name: "CareFlow Telehealth",
+    tagline: "Empathetic healthcare identity with calming rose & warm cream tones",
+    primaryColor: "#D9577B",
+    secondaryColor: "#F8D7DF",
+    darkColor: "#2B1B2E",
+    symbol: "CF",
+  },
+  {
+    id: "aura",
+    name: "Aura Women's Health",
+    tagline: "Holistic feminine wellness system with lilac curves and warm terracotta",
+    primaryColor: "#C25E71",
+    secondaryColor: "#E6DDF7",
+    darkColor: "#2B1B2E",
+    symbol: "AW",
+  },
+  {
+    id: "zenith",
+    name: "Zenith Cloud SaaS",
+    tagline: "High-performance enterprise software branding with electric plum contrast",
+    primaryColor: "#7B5EA7",
+    secondaryColor: "#F0EBF9",
+    darkColor: "#1A1024",
+    symbol: "ZS",
+  },
+  {
+    id: "celebre",
+    name: "Célèbre Event Design",
+    tagline: "Luxury bespoke celebration branding with gold accents and editorial typography",
+    primaryColor: "#D48B47",
+    secondaryColor: "#FDF4EB",
+    darkColor: "#2D1D14",
+    symbol: "CE",
+  },
+];
+
 export default function Chapter6BrandKit() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const stRef = useRef<ScrollTrigger | null>(null);
   const [activeBrandIndex, setActiveBrandIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
   const currentBrand = brandKits[activeBrandIndex] || brandKits[0];
+  const activeTheme = brandThemes[activeBrandIndex] || brandThemes[0];
 
-  const brandThemes = [
-    {
-      id: "careflow",
-      name: "CareFlow Telehealth",
-      tagline: "Empathetic healthcare identity with calming rose & warm cream tones",
-      primaryColor: "#D9577B",
-      secondaryColor: "#F8D7DF",
-      darkColor: "#2B1B2E",
-      symbol: "CF",
-    },
-    {
-      id: "aura",
-      name: "Aura Women's Health",
-      tagline: "Holistic feminine wellness system with lilac curves and warm terracotta",
-      primaryColor: "#C25E71",
-      secondaryColor: "#E6DDF7",
-      darkColor: "#2B1B2E",
-      symbol: "AW",
-    },
-    {
-      id: "zenith",
-      name: "Zenith Cloud SaaS",
-      tagline: "High-performance enterprise software branding with electric plum contrast",
-      primaryColor: "#7B5EA7",
-      secondaryColor: "#F0EBF9",
-      darkColor: "#1A1024",
-      symbol: "ZS",
-    },
-    {
-      id: "celebre",
-      name: "Célèbre Event Design",
-      tagline: "Luxury bespoke celebration branding with gold accents and editorial typography",
-      primaryColor: "#D48B47",
-      secondaryColor: "#FDF4EB",
-      darkColor: "#2D1D14",
-      symbol: "CE",
-    },
-  ];
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.innerWidth < 768;
+    if (prefersReducedMotion || isMobile || !containerRef.current) return;
 
-  const activeTheme = brandThemes[activeBrandIndex];
+    gsap.registerPlugin(ScrollTrigger);
+
+    const st = ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 25%",
+      end: "bottom 75%",
+      scrub: 0.4,
+      onUpdate: (self) => {
+        setProgress(self.progress);
+        const idx = Math.min(
+          Math.floor(self.progress * brandThemes.length),
+          brandThemes.length - 1
+        );
+        setActiveBrandIndex(idx);
+      },
+    });
+
+    stRef.current = st;
+
+    return () => {
+      st.kill();
+      stRef.current = null;
+    };
+  }, []);
+
+  const handleBrandClick = (idx: number) => {
+    setActiveBrandIndex(idx);
+    const st = stRef.current;
+    if (st) {
+      const targetScroll = st.start + (st.end - st.start) * ((idx + 0.1) / brandThemes.length);
+      window.scrollTo({ top: targetScroll, behavior: "smooth" });
+    }
+  };
 
   return (
     <div
       id="chapter-brand-kit"
-      className="relative w-full py-20 sm:py-28 border-b border-blush-200/80 bg-cream-50 transition-colors duration-500 overflow-hidden"
+      ref={containerRef}
+      className="relative w-full py-20 sm:py-28 border-b border-blush-200/80 bg-cream-50 transition-colors duration-500"
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8 w-full">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blush-100 border border-blush-200 text-xs font-semibold text-rose-700 mb-3 shadow-soft-sm">
             <SparkleIcon className="w-3.5 h-3.5 text-rose-500" />
             <span>Chapter 06 • Brand Identity Kit</span>
@@ -84,14 +128,16 @@ export default function Chapter6BrandKit() {
             From geometric SVG vector curves to tangible, real-world touchpoints: luxury stationery, packaging, 
             social marketing systems, and advertising collateral.
           </p>
+        </div>
 
-          {/* Interactive Concept Brand Switcher */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+        {/* Sticky Scroll-Synced Concept Brand Switcher */}
+        <div className="sticky top-20 z-20 max-w-4xl mx-auto mb-10 py-3 px-4 rounded-3xl bg-cream-50/90 backdrop-blur-md border border-blush-200/70 shadow-soft-sm">
+          <div className="flex flex-wrap items-center justify-center gap-2.5 mb-2.5">
             {brandThemes.map((brand, idx) => (
               <button
                 key={brand.id}
-                onClick={() => setActiveBrandIndex(idx)}
-                className={`min-h-[44px] px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center gap-2.5 ${
+                onClick={() => handleBrandClick(idx)}
+                className={`min-h-[40px] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
                   activeBrandIndex === idx
                     ? "bg-rose-500 text-white shadow-soft scale-105"
                     : "bg-white text-plum-700 border border-blush-200 hover:bg-blush-50"
@@ -107,6 +153,21 @@ export default function Chapter6BrandKit() {
                 </span>
               </button>
             ))}
+          </div>
+
+          <div className="hidden md:flex items-center gap-3 px-2">
+            <span className="font-mono text-[11px] font-bold text-rose-700 shrink-0">
+              0{activeBrandIndex + 1} / 0{brandThemes.length}
+            </span>
+            <div className="flex-1 h-1.5 rounded-full bg-cream-200 overflow-hidden">
+              <div
+                className="h-full bg-rose-500 rounded-full transition-all duration-200"
+                style={{
+                  width: `${Math.max(((activeBrandIndex + 1) / brandThemes.length) * 100, progress * 100)}%`,
+                }}
+              />
+            </div>
+            <span className="font-mono text-[10px] text-plum-400 shrink-0">Scroll to switch brand kit</span>
           </div>
         </div>
 

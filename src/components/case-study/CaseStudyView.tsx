@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { Project } from "@/data/projects";
+import { getScenario } from "@/data/scenarios";
 import {
   SplitText,
   MaskImage,
@@ -12,9 +13,15 @@ import {
   HorizontalPin,
   MagneticButton,
 } from "@/components/motion";
-import { PhoneFrame, BrowserFrame } from "@/components/visuals/DeviceFrame";
+import { PhoneFrame, TabletFrame, BrowserFrame } from "@/components/visuals/DeviceFrame";
 import * as Screens from "@/components/visuals/ProjectScreens";
 import * as Legacy from "@/components/visuals/LegacyScreens";
+import {
+  ScenarioMobileHero,
+  ScenarioAdminDashboard,
+  ScenarioUiStates,
+} from "@/components/visuals/DeepProjectScreens";
+import { LazyViewport } from "@/components/visuals/LazyViewport";
 import BeforeAfterSlider from "@/components/common/BeforeAfterSlider";
 import { SparkleIcon } from "@/components/common/Stickers";
 import {
@@ -295,23 +302,20 @@ export default function CaseStudyView({ project, nextProject }: CaseStudyViewPro
               Qualitative Discoveries
             </h2>
           </div>
-          <div className="p-8 rounded-4xl bg-cream-50 border border-blush-200 shadow-soft space-y-4">
+          <div className="p-8 rounded-4xl bg-cream-50 border border-blush-200 shadow-soft space-y-6">
             <p className="font-sans text-sm text-plum-700 leading-relaxed">
-              {project.story?.research || "Conducted comprehensive qualitative journey evaluations, identifying critical friction drop-off points."}
+              {project.story?.research || "Conducted qualitative journey evaluations, identifying friction points and key user personas."}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-blush-200 text-xs">
-              <div className="p-4 rounded-2xl bg-white border border-blush-100">
-                <span className="font-bold text-plum block mb-1">Qualitative Interviews</span>
-                <span className="text-plum-500">Uncovering emotional triggers during appointments</span>
-              </div>
-              <div className="p-4 rounded-2xl bg-white border border-blush-100">
-                <span className="font-bold text-plum block mb-1">Accessibility Audit</span>
-                <span className="text-plum-500">48px+ touch targets and WCAG AA contrast ratio</span>
-              </div>
-              <div className="p-4 rounded-2xl bg-white border border-blush-100">
-                <span className="font-bold text-plum block mb-1">Thumb-Zone Mapping</span>
-                <span className="text-plum-500">One-handed reachability for bottom navigation</span>
-              </div>
+              {getScenario(project.slug).personas.map((persona) => (
+                <div key={persona.name} className="p-4 rounded-2xl bg-white border border-blush-100 space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-plum">{persona.name}, {persona.age}</span>
+                    <span className="px-2 py-0.5 rounded-full text-[9px] font-semibold bg-blush-100 text-rose-800">{persona.role}</span>
+                  </div>
+                  <p className="text-plum-600 leading-relaxed">{persona.goal}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -417,22 +421,31 @@ export default function CaseStudyView({ project, nextProject }: CaseStudyViewPro
         </section>
 
         {/* ========================================================= */}
-        {/* 7. HI-FI SCREENS GALLERY */}
+        {/* 7. HI-FI SCREENS GALLERY (MOBILE + ADMIN WEB + STATES) */}
         {/* ========================================================= */}
-        <section id="cs-hifi" className="space-y-6">
+        <section id="cs-hifi" className="space-y-10">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-rose-700 block mb-2">
-              07 • High-Fidelity UI Gallery
+              07 • Multi-Platform High-Fidelity UI
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-plum">
-              Key Interactive Experiences
+              Mobile, Tablet, Web &amp; System States
             </h2>
           </div>
+
           <HorizontalPin>
+            <div className="w-[300px] shrink-0 p-3">
+              <span className="font-serif font-bold text-xs text-plum block mb-2">
+                1. {getScenario(project.slug).brandName} Overview
+              </span>
+              <PhoneFrame screenBg={getScenario(project.slug).palette.bg}>
+                <ScenarioMobileHero slug={project.slug} />
+              </PhoneFrame>
+            </div>
             {renderHiFiGallery().map((screen, idx) => (
               <div key={idx} className="w-[300px] shrink-0 p-3">
                 <span className="font-serif font-bold text-xs text-plum block mb-2">
-                  {idx + 1}. {screen.title}
+                  {idx + 2}. {screen.title}
                 </span>
                 <PhoneFrame>
                   {screen.comp}
@@ -440,6 +453,28 @@ export default function CaseStudyView({ project, nextProject }: CaseStudyViewPro
               </div>
             ))}
           </HorizontalPin>
+
+          {/* Desktop / Admin Operations Console */}
+          <LazyViewport minHeight="360px">
+            <div className="space-y-3">
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-plum-500 block">
+                Web &amp; Operations Dashboard View
+              </span>
+              <BrowserFrame url={`${project.slug}.concept.design`} title={getScenario(project.slug).brandName}>
+                <ScenarioAdminDashboard slug={project.slug} />
+              </BrowserFrame>
+            </div>
+          </LazyViewport>
+
+          {/* Edge States: Skeleton / Empty / Success / Error */}
+          <LazyViewport minHeight="180px">
+            <div className="space-y-3">
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-plum-500 block">
+                Component &amp; Edge States (Loading, Empty, Success, Error)
+              </span>
+              <ScenarioUiStates slug={project.slug} />
+            </div>
+          </LazyViewport>
         </section>
 
         {/* ========================================================= */}

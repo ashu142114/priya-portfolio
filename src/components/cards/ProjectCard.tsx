@@ -3,18 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Project } from "@/data/projects";
+import { getScenario } from "@/data/scenarios";
 import { hasRealAsset } from "@/data/assetManifest";
 import { ArrowUpRight } from "lucide-react";
 import { Parallax, MagneticButton } from "@/components/motion";
 import { PhoneFrame } from "@/components/visuals/DeviceFrame";
-import {
-  HealthcareDashboardScreen,
-  WomensHealthCycleRingScreen,
-  AiChatScreen,
-  DietCalorieRingScreen,
-  InvitationTemplatePickerScreen,
-  ServiceListCatalogScreen,
-} from "@/components/visuals/ProjectScreens";
+import { ScenarioMobileHero } from "@/components/visuals/DeepProjectScreens";
+import { LazyViewport } from "@/components/visuals/LazyViewport";
 
 interface ProjectCardProps {
   project: Project;
@@ -28,51 +23,43 @@ export default function ProjectCard({
   index = 0,
 }: ProjectCardProps) {
   const [imageError, setImageError] = useState(false);
-
-  const renderProjectScreen = () => {
-    switch (project.slug) {
-      case "healthcare-mobile-app":
-        return <HealthcareDashboardScreen />;
-      case "womens-health-app":
-        return <WomensHealthCycleRingScreen />;
-      case "ai-healthcare-module":
-        return <AiChatScreen />;
-      case "diet-nutrition-module":
-        return <DietCalorieRingScreen />;
-      case "invitation-app":
-        return <InvitationTemplatePickerScreen />;
-      case "service-based-booking-platform":
-        return <ServiceListCatalogScreen />;
-      default:
-        return <HealthcareDashboardScreen />;
-    }
-  };
+  const scenario = getScenario(project.slug);
 
   const isFeatured = layout === "featured";
   const isAlternate = isFeatured && index % 2 === 1;
 
   const deviceElement = (
     <div
-      className={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-blush-100/90 via-cream-100 to-lilac-100/60 p-6 sm:p-8 flex items-center justify-center border border-blush-200/80 ${
-        isFeatured ? "w-full min-h-[380px] sm:min-h-[440px]" : "mb-6 aspect-[16/11]"
+      className={`relative overflow-hidden rounded-3xl p-5 sm:p-7 flex items-center justify-center border ${
+        isFeatured ? "w-full min-h-[420px] sm:min-h-[480px]" : "mb-6 min-h-[300px]"
       }`}
+      style={{
+        background: `linear-gradient(135deg, ${scenario.palette.primarySoft} 0%, ${scenario.palette.bg} 55%, #FFFFFF 100%)`,
+        borderColor: scenario.palette.border,
+      }}
     >
-      {/* Ambient Glow Blob */}
+      {/* Scenario App Label Pill */}
       <div
-        className="absolute -right-8 -top-8 w-48 h-48 rounded-full bg-rose-200/40 blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-700"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute -left-8 -bottom-8 w-48 h-48 rounded-full bg-lilac-200/40 blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-700"
-        aria-hidden="true"
-      />
+        className="absolute top-3.5 left-3.5 z-20 px-2.5 py-1 rounded-full text-[10px] font-bold bg-white/95 backdrop-blur-sm border shadow-soft-sm flex items-center gap-1.5"
+        style={{ color: scenario.palette.primary, borderColor: scenario.palette.border }}
+      >
+        <span
+          className="w-2 h-2 rounded-full"
+          style={{ backgroundColor: scenario.palette.primary }}
+        />
+        <span>{scenario.brandName}</span>
+      </div>
 
       {/* 3D Tilted Device Container */}
-      <div className="relative w-full max-w-[260px] transition-all duration-700 ease-out transform group-hover:-translate-y-2 group-hover:scale-[1.03]">
+      <div
+        className={`relative w-full transition-all duration-700 ease-out transform group-hover:-translate-y-2 group-hover:scale-[1.03] ${
+          isFeatured ? "max-w-[250px]" : "max-w-[195px]"
+        }`}
+      >
         <div
           className="transform transition-transform duration-700 ease-out"
           style={{
-            transform: "perspective(1000px) rotateY(-8deg) rotateX(4deg)",
+            transform: "perspective(1000px) rotateY(-6deg) rotateX(3deg)",
           }}
         >
           {hasRealAsset(project.cover) && !imageError ? (
@@ -84,12 +71,15 @@ export default function ProjectCard({
               className="w-full h-auto rounded-3xl shadow-soft-lg object-cover"
             />
           ) : (
-            <PhoneFrame
-              time="9:41"
-              className="shadow-soft-xl ring-1 ring-black/5"
-            >
-              {renderProjectScreen()}
-            </PhoneFrame>
+            <LazyViewport minHeight={isFeatured ? "400px" : "260px"}>
+              <PhoneFrame
+                time="09:41"
+                screenBg={scenario.palette.bg}
+                className="shadow-soft-xl ring-1 ring-black/5"
+              >
+                <ScenarioMobileHero slug={project.slug} />
+              </PhoneFrame>
+            </LazyViewport>
           )}
         </div>
       </div>
@@ -112,14 +102,19 @@ export default function ProjectCard({
           : "p-6 sm:p-8"
       }`}
     >
-      {/* Featured Mode: Alternate Column Order */}
       {isFeatured ? (
         <>
           <div className={`lg:col-span-6 ${isAlternate ? "lg:order-2" : "lg:order-1"}`}>
             <div>
-              {/* Category Chip & Domain Tags */}
               <div className="flex flex-wrap items-center gap-2 mb-3.5">
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blush-100 text-rose-800 border border-blush-200 shadow-soft-sm">
+                <span
+                  className="px-3 py-1 rounded-full text-xs font-semibold border shadow-soft-sm"
+                  style={{
+                    backgroundColor: scenario.palette.primarySoft,
+                    color: scenario.palette.primary,
+                    borderColor: scenario.palette.border,
+                  }}
+                >
                   {project.category.toUpperCase()}
                 </span>
                 {project.domainTags.map((tag) => (
@@ -132,19 +127,16 @@ export default function ProjectCard({
                 ))}
               </div>
 
-              {/* Title */}
               <h3 className="font-serif font-bold text-2xl sm:text-3xl text-plum mb-3 group-hover:text-rose-700 transition-colors leading-tight">
                 <Link href={`/work/${project.slug}`} data-cursor="View">
                   {project.title}
                 </Link>
               </h3>
 
-              {/* Summary */}
               <p className="font-sans text-sm sm:text-base text-plum-600 leading-relaxed mb-6">
                 {project.summary}
               </p>
 
-              {/* Role & Tools Specs */}
               <div className="space-y-1.5 text-xs text-plum-500 pt-4 border-t border-blush-100/90 mb-8">
                 <div>
                   <strong className="text-plum">Role:</strong> {project.role}
@@ -155,7 +147,6 @@ export default function ProjectCard({
               </div>
             </div>
 
-            {/* CTA Magnetic Button */}
             <div className="pt-2">
               <MagneticButton
                 as="a"
@@ -180,9 +171,15 @@ export default function ProjectCard({
           {deviceElement}
           <div className="flex flex-col justify-between flex-1">
             <div>
-              {/* Category Chip & Domain Tags */}
               <div className="flex flex-wrap items-center gap-2 mb-3.5">
-                <span className="px-3 py-1 rounded-full text-[11px] font-semibold bg-blush-100 text-rose-800 border border-blush-200 shadow-soft-sm">
+                <span
+                  className="px-3 py-1 rounded-full text-[11px] font-semibold border shadow-soft-sm"
+                  style={{
+                    backgroundColor: scenario.palette.primarySoft,
+                    color: scenario.palette.primary,
+                    borderColor: scenario.palette.border,
+                  }}
+                >
                   {project.category.toUpperCase()}
                 </span>
                 {project.domainTags.map((tag) => (
@@ -195,19 +192,16 @@ export default function ProjectCard({
                 ))}
               </div>
 
-              {/* Title */}
               <h3 className="font-serif font-bold text-xl sm:text-2xl text-plum mb-2.5 group-hover:text-rose-700 transition-colors leading-tight">
                 <Link href={`/work/${project.slug}`} data-cursor="View">
                   {project.title}
                 </Link>
               </h3>
 
-              {/* Summary */}
               <p className="font-sans text-xs sm:text-sm text-plum-600 leading-relaxed mb-6 line-clamp-3">
                 {project.summary}
               </p>
 
-              {/* Role & Tools Specs */}
               <div className="space-y-1.5 text-xs text-plum-500 pt-4 border-t border-blush-100/90 mb-6">
                 <div className="flex items-center gap-1.5">
                   <span className="font-semibold text-plum-700">Role:</span>
@@ -220,7 +214,6 @@ export default function ProjectCard({
               </div>
             </div>
 
-            {/* CTA Link */}
             <div className="pt-2">
               <Link
                 href={`/work/${project.slug}`}
@@ -237,4 +230,3 @@ export default function ProjectCard({
     </div>
   );
 }
-

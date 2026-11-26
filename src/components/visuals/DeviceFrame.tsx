@@ -54,7 +54,7 @@ export function PhoneFrame({
           </div>
         </div>
 
-        <div className="relative z-10 flex-1 overflow-y-auto no-scrollbar flex flex-col">
+        <div data-device-screen="true" className="relative z-10 flex-1 overflow-y-auto no-scrollbar flex flex-col">
           {children}
         </div>
 
@@ -94,7 +94,7 @@ export function AndroidFrame({
             <Battery className="w-3.5 h-3.5" />
           </div>
         </div>
-        <div className="relative z-10 flex-1 overflow-y-auto no-scrollbar flex flex-col">
+        <div data-device-screen="true" className="relative z-10 flex-1 overflow-y-auto no-scrollbar flex flex-col">
           {children}
         </div>
         <div className="relative z-30 pb-1.5 pt-1 flex justify-center pointer-events-none shrink-0">
@@ -128,7 +128,7 @@ export function TabletFrame({
             <span>100%</span>
           </div>
         </div>
-        <div className="flex-1 overflow-hidden">{children}</div>
+        <div data-device-screen="true" className="flex-1 overflow-hidden">{children}</div>
       </div>
     </div>
   );
@@ -190,7 +190,7 @@ export function BrowserFrame({
         </div>
       </div>
 
-      <div className="relative w-full bg-white overflow-hidden flex flex-col">
+      <div data-device-screen="true" className="relative w-full bg-white overflow-hidden flex flex-col">
         {children}
       </div>
     </div>

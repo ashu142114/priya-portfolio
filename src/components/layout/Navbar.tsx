@@ -5,7 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/data/site";
 import { SparkleIcon } from "@/components/common/Stickers";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { ThemeStudioDrawer, useThemeController } from "@/components/layout/ThemeStudioDrawer";
+import { Menu, X, ArrowUpRight, Palette, Sun, Moon } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -13,6 +14,8 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [themeDrawerOpen, setThemeDrawerOpen] = useState(false);
+  const { prefs, updatePrefs, isDark, toggleDarkLight } = useThemeController();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -102,26 +105,83 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* Desktop Let's Talk CTA */}
-            <div className="hidden md:flex items-center gap-3">
+            {/* Desktop Theme Controls + Let's Talk CTA */}
+            <div className="hidden md:flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setThemeDrawerOpen(true)}
+                aria-label="Open Theme Studio Sidebar"
+                title="Customize Theme"
+                style={{
+                  backgroundColor: "var(--surface)",
+                  borderColor: "var(--border-color)",
+                  color: "var(--text-primary)",
+                }}
+                className="w-9 h-9 rounded-full border flex items-center justify-center shadow-soft-sm hover:opacity-85 transition active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+              >
+                <Palette className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={toggleDarkLight}
+                aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                title={isDark ? "Light Mode" : "Dark Mode"}
+                style={{
+                  backgroundColor: "var(--surface)",
+                  borderColor: "var(--border-color)",
+                  color: "var(--text-primary)",
+                }}
+                className="w-9 h-9 rounded-full border flex items-center justify-center shadow-soft-sm hover:opacity-85 transition active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+              >
+                {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-rose-500 text-white text-xs font-semibold tracking-wide shadow-soft-sm hover:bg-rose-600 hover:shadow-soft transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-rose-500"
+                style={{ backgroundColor: "var(--accent-primary)", color: "#FFFFFF" }}
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide shadow-soft-sm hover:opacity-95 hover:shadow-soft transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-rose-500"
               >
-                <span>Let's talk</span>
-                <SparkleIcon className="w-3 h-3 text-blush-200" />
+                <span>Let&apos;s talk</span>
+                <SparkleIcon className="w-3 h-3 text-white/90" />
               </Link>
             </div>
 
-            {/* Mobile Menu Hamburger (min 44px tap target) */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden w-11 h-11 rounded-full bg-white/90 border border-blush-200 flex items-center justify-center text-plum hover:text-rose-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 shadow-soft-sm active:scale-95"
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+            {/* Mobile Theme + Hamburger Controls (min 44px tap target) */}
+            <div className="md:hidden flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setThemeDrawerOpen(true)}
+                aria-label="Open Theme Studio Sidebar"
+                style={{
+                  backgroundColor: "var(--surface)",
+                  borderColor: "var(--border-color)",
+                  color: "var(--text-primary)",
+                }}
+                className="w-11 h-11 rounded-full border flex items-center justify-center shadow-soft-sm active:scale-95"
+              >
+                <Palette className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={toggleDarkLight}
+                aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                style={{
+                  backgroundColor: "var(--surface)",
+                  borderColor: "var(--border-color)",
+                  color: "var(--text-primary)",
+                }}
+                className="w-11 h-11 rounded-full border flex items-center justify-center shadow-soft-sm active:scale-95"
+              >
+                {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="w-11 h-11 rounded-full bg-white/90 border border-blush-200 flex items-center justify-center text-plum hover:text-rose-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 shadow-soft-sm active:scale-95"
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileMenuOpen}
+              >
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
           </nav>
         </div>
       </header>
@@ -207,6 +267,12 @@ export default function Navbar() {
           </a>
         </div>
       </div>
+      <ThemeStudioDrawer
+        open={themeDrawerOpen}
+        onClose={() => setThemeDrawerOpen(false)}
+        prefs={prefs}
+        onUpdatePrefs={updatePrefs}
+      />
     </>
   );
 }

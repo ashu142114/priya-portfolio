@@ -82,7 +82,7 @@ export default function RootLayout({
       <head>
         <JsonLd />
       </head>
-      <body className="font-sans bg-cream-100 text-plum antialiased selection:bg-blush-200 selection:text-plum min-h-screen relative overflow-x-hidden">
+      <body className="font-sans bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased selection:bg-[var(--accent-secondary)] selection:text-[var(--text-primary)] min-h-screen relative overflow-x-hidden">
         {/* Subtle background grain texture */}
         <div className="fixed inset-0 grain-overlay -z-20 pointer-events-none" aria-hidden="true" />
         {/* Soft pastel ambient gradient blobs */}

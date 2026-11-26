@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Project } from "@/data/projects";
+import { hasRealAsset } from "@/data/assetManifest";
 import { ArrowUpRight } from "lucide-react";
 import { Parallax, MagneticButton } from "@/components/motion";
 import { PhoneFrame } from "@/components/visuals/DeviceFrame";
@@ -74,7 +75,7 @@ export default function ProjectCard({
             transform: "perspective(1000px) rotateY(-8deg) rotateX(4deg)",
           }}
         >
-          {project.cover && !imageError ? (
+          {hasRealAsset(project.cover) && !imageError ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={project.cover}

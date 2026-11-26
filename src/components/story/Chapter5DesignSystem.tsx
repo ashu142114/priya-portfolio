@@ -96,7 +96,7 @@ export default function Chapter5DesignSystem() {
     <div
       id="chapter-design-system"
       ref={triggerRef}
-      className="relative w-full min-h-screen py-16 sm:py-24 border-b border-[var(--border-color)] bg-white transition-colors duration-500 flex items-center overflow-hidden"
+      className="relative w-full min-h-screen pt-24 pb-16 sm:pt-28 sm:pb-20 border-b border-[var(--border-color)] bg-white transition-colors duration-500 flex items-center overflow-hidden"
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8 w-full">
         {/* Header */}

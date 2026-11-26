@@ -18,19 +18,23 @@ export default function ScrollProgress() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight * 0.35;
       setIsVisible(window.scrollY > 100);
+      const viewportMid = window.innerHeight * 0.42;
 
-      chapters.forEach((ch, idx) => {
-        const el = document.getElementById(ch.id);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveChapter(idx);
-          }
+      let matched = 0;
+      for (let i = 0; i < chapters.length; i++) {
+        const el = document.getElementById(chapters[i].id);
+        if (!el) continue;
+        // GSAP ScrollTrigger wraps pinned elements in a .pin-spacer whose rect tracks true scroll span
+        const target = el.parentElement?.classList.contains("pin-spacer")
+          ? el.parentElement
+          : el;
+        const rect = target.getBoundingClientRect();
+        if (rect.top <= viewportMid) {
+          matched = i;
         }
-      });
+      }
+      setActiveChapter(matched);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -40,9 +44,12 @@ export default function ScrollProgress() {
 
   const scrollToChapter = (id: string) => {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    if (!el) return;
+    const target = el.parentElement?.classList.contains("pin-spacer")
+      ? el.parentElement
+      : el;
+    const top = target.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top, behavior: "smooth" });
   };
 
   return (
@@ -53,7 +60,7 @@ export default function ScrollProgress() {
       aria-label="Story chapter navigation"
     >
       {/* Chapter Counter 01 / 07 */}
-      <div className="px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[var(--border-color)] shadow-soft text-right">
+      <div className="px-3 py-1.5 rounded-full bg-white/85 backdrop-blur-md border border-[var(--border-color)] shadow-soft text-right">
         <span className="font-serif font-bold text-sm text-[var(--accent-primary)]">
           {chapters[activeChapter].number}
         </span>
@@ -61,7 +68,7 @@ export default function ScrollProgress() {
       </div>
 
       {/* 7 Chapter Trackers */}
-      <nav className="flex flex-col gap-2 p-2 rounded-2xl bg-white/60 backdrop-blur-md border border-[var(--border-color)] shadow-soft-sm">
+      <nav className="flex flex-col gap-2 p-2 rounded-2xl bg-white/70 backdrop-blur-md border border-[var(--border-color)] shadow-soft-sm">
         {chapters.map((ch, idx) => {
           const isActive = activeChapter === idx;
           return (
@@ -72,12 +79,10 @@ export default function ScrollProgress() {
               aria-label={`Scroll to ${ch.number} ${ch.label}`}
               aria-current={isActive ? "step" : undefined}
             >
-              {/* Tooltip on hover */}
               <span className="absolute right-7 px-2.5 py-1 rounded-lg bg-plum text-white text-[10px] font-medium opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-soft">
                 {ch.number} {ch.label}
               </span>
 
-              {/* Indicator bar */}
               <span
                 className={`rounded-full transition-all duration-300 ${
                   isActive

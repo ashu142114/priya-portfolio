@@ -34,9 +34,9 @@ export default function Chapter3BeforeAfter() {
     };
   }, []);
 
-  // Scrubbed values
-  const beforeOpacity = Math.max(0, 1 - scrollProgress * 1.8);
-  const afterOpacity = Math.min(1, Math.max(0, (scrollProgress - 0.2) * 1.6));
+  // Scrubbed values (mutually exclusive crossfade to prevent text overlap)
+  const beforeOpacity = Math.max(0, 1 - scrollProgress * 2.5);
+  const afterOpacity = Math.min(1, Math.max(0, (scrollProgress - 0.42) * 2.2));
   const isAfter = scrollProgress >= 0.5;
 
   return (
@@ -75,7 +75,7 @@ export default function Chapter3BeforeAfter() {
                   {isAfter ? "Redesign (After)" : "Legacy System (Before)"}
                 </span>
                 <span className="text-xs font-serif font-bold text-rose-500">
-                  {Math.round(scrollProgress * 100)}% Redesigned
+                  Before → After Transition
                 </span>
               </div>
 
@@ -106,7 +106,7 @@ export default function Chapter3BeforeAfter() {
                   <div>
                     <h4 className="font-serif font-bold text-xs text-plum">1. Hierarchy</h4>
                     <p className="text-[11px] text-plum-600 leading-snug">
-                      Prioritized critical patient actions; eliminated 4 redundant confirmation steps.
+                      Prioritized critical patient actions with a single, clear primary confirmation step.
                     </p>
                   </div>
                 </div>

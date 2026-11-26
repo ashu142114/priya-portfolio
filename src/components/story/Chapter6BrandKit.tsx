@@ -376,7 +376,7 @@ export default function Chapter6BrandKit() {
                     </div>
                     <div>
                       <div className="text-xs font-bold text-plum">Priya K. Lakkad</div>
-                      <div className="text-[10px] text-plum-500">Lead Product Designer</div>
+                      <div className="text-[10px] text-plum-500">UI/UX Designer</div>
                     </div>
                   </div>
 

@@ -186,23 +186,23 @@ export default function Chapter4Process() {
                       <span className="font-serif font-bold text-xs text-gray-700">Patient Journey Insights</span>
                     </div>
                     <div className="p-3.5 rounded-2xl bg-amber-100 border border-amber-300 text-amber-900 text-xs shadow-xs transform -rotate-1">
-                      <span className="font-bold block text-[10px] mb-0.5">Pain Point #1</span>
-                      "Patients feel stressed when booking telemedicine because cancellation rules are hidden."
+                      <span className="font-bold block text-[10px] mb-0.5">Sample insight #1</span>
+                      Surface cancellation and reschedule policies clearly before confirming telemedicine slots.
                     </div>
                     <div className="p-3.5 rounded-2xl bg-rose-100 border border-rose-300 text-rose-900 text-xs shadow-xs transform rotate-1">
-                      <span className="font-bold block text-[10px] mb-0.5">Core Need #2</span>
-                      "Lab test values need clear reference ranges (Normal vs. Elevated) without medical jargon."
+                      <span className="font-bold block text-[10px] mb-0.5">Sample insight #2</span>
+                      Display lab values with plain-language reference ranges (Normal vs. Attention).
                     </div>
                     <div className="p-3.5 rounded-2xl bg-purple-100 border border-purple-300 text-purple-900 text-xs shadow-xs transform -rotate-1">
-                      <span className="font-bold block text-[10px] mb-0.5">Architecture #3</span>
-                      "Emergency consultations must be reachable in 1 single tap from the home screen."
+                      <span className="font-bold block text-[10px] mb-0.5">Sample insight #3</span>
+                      Keep urgent care consultations directly accessible from the primary home screen.
                     </div>
                   </div>
                 ) : currentStep === 1 ? (
                   // STAGE 02: Flow Nodes Connected by SVG lines
                   <div className="p-4 space-y-4">
                     <div className="pb-1 border-b border-gray-300">
-                      <span className="font-serif font-bold text-xs text-gray-700">Frictionless Funnel (3 Taps)</span>
+                      <span className="font-serif font-bold text-xs text-gray-700">Streamlined Consultation Flow</span>
                     </div>
                     <div className="space-y-3 relative">
                       <div className="p-3 rounded-2xl bg-white border border-gray-300 shadow-xs text-center text-xs font-mono font-bold text-gray-700">

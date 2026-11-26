@@ -199,7 +199,7 @@ export default function Chapter2Themes() {
                     <input
                       type="text"
                       readOnly
-                      value="priya@projecttree.com"
+                      value="priyalakkad11@gmail.com"
                       className="mt-2 w-full py-2 px-3 text-xs bg-white border border-[var(--border-color)] text-plum"
                       style={{ borderRadius: `calc(${activeTheme.tokens.cardRadius} / 2)` }}
                     />

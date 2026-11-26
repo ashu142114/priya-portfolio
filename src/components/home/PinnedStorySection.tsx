@@ -254,7 +254,7 @@ export default function PinnedStorySection() {
                     <div className="space-y-2 text-xs text-plum-600">
                       <div className="flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-rose-400" />
-                        <span>Friction points removed: 4 redundant confirmation steps</span>
+                        <span>Streamlined multi-step confirmation flow</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-lilac-400" />

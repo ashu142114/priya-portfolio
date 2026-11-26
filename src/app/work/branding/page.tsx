@@ -3,8 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import { brandKits } from "@/data/brandKits";
+import { CareFlowLogo, AuraWellnessLogo, ZenithLogo, CelebreLogo } from "@/components/visuals/LogoVisuals";
 import { SparkleIcon } from "@/components/common/Stickers";
 import { ArrowLeft, Sparkles, CheckCircle2, XCircle, Layers, Check } from "lucide-react";
+
+function hexToRgb(hex: string) {
+  const clean = hex.replace("#", "");
+  const num = parseInt(clean.length === 3 ? clean.split("").map((c) => c + c).join("") : clean, 16);
+  if (Number.isNaN(num)) return "";
+  return `rgb(${(num >> 16) & 255}, ${(num >> 8) & 255}, ${num & 255})`;
+}
 
 export default function BrandingPage() {
   const [activeKitId, setActiveKitId] = useState("careflow-brand-identity");
@@ -87,7 +95,7 @@ export default function BrandingPage() {
                       <span className="w-6 h-6 rounded-xl border border-black/10 shrink-0" style={{ backgroundColor: p.hex }} />
                       <span className="font-bold text-plum">{p.name}</span>
                     </div>
-                    <span className="font-mono text-plum-500 text-[11px]">{p.hex}</span>
+                    <span className="font-mono text-plum-500 text-[10px]">{p.hex} • {hexToRgb(p.hex)}</span>
                   </div>
                 ))}
               </div>
@@ -118,9 +126,14 @@ export default function BrandingPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {/* Business Card Front/Back */}
               <div className="p-6 rounded-3xl bg-gradient-to-br from-cream-100 via-white to-blush-100 border border-blush-300 shadow-soft-md aspect-[16/10] flex flex-col justify-between transform hover:-translate-y-1 transition-transform">
-                <span className="text-[9px] uppercase font-mono text-rose-700 font-bold">Business Card (Spot UV)</span>
+                <div className="flex items-center justify-between">
+                  <span className="text-[9px] uppercase font-mono text-rose-700 font-bold">Business Card</span>
+                  <span className="scale-75 origin-right">
+                    {selectedKit.id.includes("careflow") ? <CareFlowLogo variant="symbol" /> : selectedKit.id.includes("aura") ? <AuraWellnessLogo variant="symbol" /> : selectedKit.id.includes("zenith") ? <ZenithLogo variant="symbol" /> : <CelebreLogo variant="symbol" />}
+                  </span>
+                </div>
                 <span className="font-serif font-bold text-base text-plum">{selectedKit.title.split(" ")[0]}</span>
-                <span className="text-[9px] font-mono text-plum-500">Front / Back Print Spec</span>
+                <span className="text-[9px] font-mono text-plum-500">350gsm Spot UV • Front/Back</span>
               </div>
 
               {/* Letterhead & Envelope */}
@@ -132,16 +145,20 @@ export default function BrandingPage() {
 
               {/* Fabric Tote Bag Mockup */}
               <div className="p-6 rounded-3xl bg-cream-200/90 border border-blush-300 shadow-soft-md aspect-[16/10] flex flex-col justify-between transform hover:-translate-y-1 transition-transform">
-                <span className="text-[9px] uppercase font-mono text-rose-700 font-bold">Fabric Merch</span>
+                <span className="text-[9px] uppercase font-mono text-rose-700 font-bold">Packaging &amp; Tote</span>
                 <span className="font-serif font-bold text-sm text-plum">Organic Cotton Tote</span>
-                <span className="text-[9px] font-mono text-plum-500">Screenprinted Screen Spec</span>
+                <span className="text-[9px] font-mono text-plum-500">Screenprinted Vector Spec</span>
               </div>
 
-              {/* Social Creative Post */}
-              <div className="p-6 rounded-3xl bg-plum-950 text-white shadow-soft-md aspect-[16/10] flex flex-col justify-between transform hover:-translate-y-1 transition-transform">
-                <span className="text-[9px] uppercase font-mono text-rose-300 font-bold">Digital Presence</span>
-                <span className="font-serif font-bold text-sm text-white">Social Grid Template</span>
-                <span className="text-[9px] font-mono text-rose-200/70">1080x1080px Vector Canvas</span>
+              {/* SVG Brand Pattern & Iconography */}
+              <div className="p-6 rounded-3xl bg-plum-950 text-white shadow-soft-md aspect-[16/10] flex flex-col justify-between transform hover:-translate-y-1 transition-transform relative overflow-hidden">
+                <svg className="absolute right-0 bottom-0 w-24 h-24 opacity-20" viewBox="0 0 80 80" fill="none">
+                  <circle cx="40" cy="40" r="30" stroke="white" strokeWidth="1.5" strokeDasharray="4 4" />
+                  <circle cx="40" cy="40" r="16" stroke="white" strokeWidth="1.5" />
+                </svg>
+                <span className="text-[9px] uppercase font-mono text-rose-300 font-bold">SVG Pattern &amp; Imagery</span>
+                <span className="font-serif font-bold text-sm text-white">Geometric Motif + Icon Set</span>
+                <span className="text-[9px] font-mono text-rose-200/70">Warm editorial tone • 1.5px stroke</span>
               </div>
             </div>
           </div>

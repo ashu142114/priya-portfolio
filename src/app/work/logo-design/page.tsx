@@ -248,6 +248,54 @@ export default function LogoDesignPage() {
               afterLabel="NEW VECTOR"
             />
           </div>
+
+          {/* Section: Real-World Brand Applications (App Icon, Signage, Packaging, Stationery) */}
+          <div className="pt-8 border-t border-blush-100 space-y-4">
+            <span className="font-mono text-xs font-bold text-rose-700 uppercase block">
+              Real-World Mark Applications • Concept
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* App Icon */}
+              <div className="p-5 rounded-3xl bg-cream-50 border border-blush-200 flex flex-col items-center justify-between text-center space-y-3">
+                <span className="text-[10px] font-mono uppercase text-plum-500">iOS / Android App Icon</span>
+                <div className="w-20 h-20 rounded-[22px] bg-white shadow-soft-md border border-black/5 flex items-center justify-center">
+                  {renderLogoComponent("light", "symbol")}
+                </div>
+                <span className="text-[10px] text-plum-600">Squircle safe-area 1024px</span>
+              </div>
+
+              {/* Architectural Signage */}
+              <div className="p-5 rounded-3xl bg-slate-900 text-white flex flex-col items-center justify-between text-center space-y-3">
+                <span className="text-[10px] font-mono uppercase text-slate-400">Outdoor Facade Signage</span>
+                <div className="px-4 py-3 rounded-xl bg-slate-800 border border-white/10 shadow-inner">
+                  {renderLogoComponent("dark", "full")}
+                </div>
+                <span className="text-[10px] text-slate-300">Brushed aluminum + backlit halo</span>
+              </div>
+
+              {/* Packaging Box */}
+              <div className="p-5 rounded-3xl bg-gradient-to-br from-[#FBF7F0] to-[#F3E9DC] border border-amber-200/70 flex flex-col items-center justify-between text-center space-y-3">
+                <span className="text-[10px] font-mono uppercase text-amber-900">Kraft Packaging Sleeve</span>
+                <div className="w-28 h-20 rounded-xl bg-white/90 border border-amber-200 shadow-sm flex items-center justify-center p-2">
+                  {renderLogoComponent("light", "full")}
+                </div>
+                <span className="text-[10px] text-amber-900/80">Matte soy-ink spot print</span>
+              </div>
+
+              {/* Stationery Card */}
+              <div className="p-5 rounded-3xl bg-white border border-blush-200 shadow-soft flex flex-col items-center justify-between text-center space-y-3">
+                <span className="text-[10px] font-mono uppercase text-plum-500">Letterhead &amp; Card</span>
+                <div className="w-full p-3 rounded-xl bg-cream-50 border border-blush-100 flex items-center justify-between">
+                  <div className="scale-75 origin-left">{renderLogoComponent("light", "symbol")}</div>
+                  <div className="text-right text-[9px] text-plum-500 font-mono">
+                    <div>350gsm Cotton</div>
+                    <div>Surat Studio</div>
+                  </div>
+                </div>
+                <span className="text-[10px] text-plum-600">Stationery lockup</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
